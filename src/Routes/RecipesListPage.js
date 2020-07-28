@@ -11,13 +11,18 @@ class RecipesListPage extends React.Component {
   componentDidMount() {
     this.context.clearError()
     RecipeApiService.getRecipes()
-      .then(recipes => console.log(recipes))
-      .catch(this.context.setError)
+      .then(res => {
+        if(!res.ok) {
+          throw new Error('something went wrong')
+        } return res.json()
+      })
+      .then(recipes => this.context.setRecipesList(recipes))
+      .catch(error => this.context.setError(error))
   }
 
   //render recipes
   renderRecipes() {
-    const { recipesList = [] } = this.context.recipesList;
+    const recipesList = this.context.recipesList;
     return recipesList.map(recipe => 
       <RecipeListItem
         key={recipe.id}
