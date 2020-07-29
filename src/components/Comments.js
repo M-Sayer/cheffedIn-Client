@@ -1,18 +1,79 @@
 import React from 'react';
 
 import RecipeContext from '../contexts/RecipeContext';
+import CommentsApiService from '../services/comments-api-service';
+import RecipesApiService from '../services/recipes-api-service';
+import CommentsForm from '../components/CommentsForm';
 
 export default class Comments extends React.Component {
   static contextType = RecipeContext;
 
+  state = {
+    edit: false,
+    edit_id: null,
+    comment: '',
+  }
+
+  handleEdit(e, id, comment) {
+    e.preventDefault();
+    this.setState({
+      edit: !this.state.edit,
+      edit_id: id,
+      comment: comment
+    })
+  }
+
+  handleDelete(e) {
+    e.preventDefault();
+  }
+
+  handleCommentChange = (e) => {
+    this.setState({
+      comment: e.target.value
+    })
+  }
+
+  handleSubmit(e, comment_id) {
+    e.preventDefault();
+    const recipeId = this.context.recipe.id;
+    CommentsApiService.updateComment(comment_id, this.state.comment)
+      .then(() => RecipesApiService.getRecipeComments(recipeId))
+      .then(comments => this.context.setComments(comments))
+      .then(() => this.setState({
+        edit: false,
+        edit_id: null,
+        comment: ''
+      }))
+      .catch(error => this.context.setError(error))
+  }
+
   renderComments() {
     return this.context.comments.map((comment, idx) => (
       <li className='comment' id={idx} key={comment.id}>
-        <p className='username'>{comment.username}:</p>
-        <p>{comment.message}</p>
+        <p className='username'>{comment.author}:</p>
+        {this.state.edit_id !== comment.id && 
+          <section>       
+            <p>{comment.message}</p>
+            {!this.state.edit &&
+              <section>
+                <button onClick={(e) => this.handleEdit(e, comment.id, comment.message)}>Edit</button>
+                <button onClick={(e) => this.handleDelete(e)}>Delete</button>
+              </section>}
+          </section>
+          } 
+          {this.state.edit && this.state.edit_id === comment.id &&
+            <form className='comment-form'
+            onSubmit={(e) => this.handleSubmit(e, comment.id,)}>
+              <label>
+                Comment:
+                <textarea required type='text' id='comment-body'
+                value={this.state.comment}
+                onChange={(e) => this.handleCommentChange(e)} />
+              </label>
+              <input type='submit' />
+            </form>}
       </li>
     ));
-    // return comments
   }
 
   render() {
@@ -23,6 +84,9 @@ export default class Comments extends React.Component {
           <ul className='comments'>
             {this.renderComments()}
           </ul>
+      </section>
+      <section>
+        {!this.state.edit && <CommentsForm />}
       </section>
       </div>
     )

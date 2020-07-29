@@ -3,7 +3,7 @@ import React from 'react';
 import RecipeContext from '../contexts/RecipeContext';
 import RecipeApiService from '../services/recipes-api-service';
 import Comments from '../components/Comments';
-import CommentsForm from '../components/CommentsForm';
+
 
 class RecipePage extends React.Component {
   static contextType = RecipeContext;
@@ -20,16 +20,11 @@ class RecipePage extends React.Component {
       .then(recipe => this.context.setRecipe(recipe))
       .catch(error => this.context.setError(error))
     RecipeApiService.getRecipeComments(recipeId)
-    .then(res => {
-      if(!res.ok) {
-        throw new Error('something went wrong')
-      } return res.json()
-    })
     .then(comments => this.context.setComments(comments))
     .catch(error => this.context.setError(error))
   }
 
-  componentWillMount() {
+  componentWillUnmount() {
     this.context.clearRecipe()
   }
 
@@ -106,7 +101,6 @@ class RecipePage extends React.Component {
      <div className='recipe-full'>
       {this.renderRecipe()}
       <Comments />
-      <CommentsForm />
      </div>
     )
   }

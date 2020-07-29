@@ -30,11 +30,6 @@ export default class CommentForm extends React.Component {
     CommentsApiService.createComment(recipeId, this.state.comment)
       //why can't i use ternary here?
       .then(() => RecipesApiService.getRecipeComments(recipeId))
-      .then(res => {
-        if(!res.ok) {
-          throw new Error('something went wrong')
-        } return res.json()
-      })
       // .then(res => (!res.ok) ? {error: res.statusText} : res.json())
       .then(comments => this.context.setComments(comments))
       .catch(error => this.context.setError(error))

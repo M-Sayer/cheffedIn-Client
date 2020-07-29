@@ -18,7 +18,7 @@ function App() {
      <main>
        <Switch>
          <Route exact path={'/'} component={RecipesListPage}  />
-         <Route path={'/recipe/:recipeId'} component={RecipePage}/>
+         <Route path={'/recipes/:recipeId'} component={RecipePage}/>
          <Route path={'/create'} component={CreateRecipePage}/>
          {/* <Route path={'/login'} component={LoginPage}/>
          <Route path={'/register'} component={RegisterPage}/>
