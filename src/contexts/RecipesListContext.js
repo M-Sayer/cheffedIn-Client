@@ -6,6 +6,7 @@ const RecipesListContext = React.createContext({
   setError: () => {},
   clearError: () => {},
   setRecipesList: () => {},
+  handleSearchChange: () => {},
 })
 
 export default RecipesListContext;

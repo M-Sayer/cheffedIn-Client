@@ -22,7 +22,14 @@ const CommentsApiService = {
       },
       body: JSON.stringify({message: newData})
     }) //why - should i verify response?
-    
+  },
+  deleteComment(id) {
+    return fetch(`${config.API_ENDPOINT}/comments/${id}`, {
+      method: 'DELETE',
+      headers: {
+        'content-type': 'application/json'
+      },
+    })
   }
 }
 

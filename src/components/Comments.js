@@ -23,8 +23,12 @@ export default class Comments extends React.Component {
     })
   }
 
-  handleDelete(e) {
+  handleDelete(e, id) {
     e.preventDefault();
+    CommentsApiService.deleteComment(id)
+      .then(() => RecipesApiService.getRecipeComments(this.context.recipe.id))
+      .then(comments => this.context.setComments(comments))
+      .catch(error => this.context.setError(error))
   }
 
   handleCommentChange = (e) => {
@@ -57,7 +61,7 @@ export default class Comments extends React.Component {
             {!this.state.edit &&
               <section>
                 <button onClick={(e) => this.handleEdit(e, comment.id, comment.message)}>Edit</button>
-                <button onClick={(e) => this.handleDelete(e)}>Delete</button>
+                <button onClick={(e) => this.handleDelete(e, comment.id)}>Delete</button>
               </section>}
           </section>
           } 

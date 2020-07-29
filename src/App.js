@@ -1,7 +1,8 @@
 import React from 'react';
 import { Route, Switch } from 'react-router-dom';
 
-import RecipesListPage from './Routes/RecipesListPage';
+import Home from './Routes/Home';
+
 // import LoginPage from './Routes/LoginPage';
 // import RegisterPage from './Routes/RegisterPage';
 import RecipePage from './Routes/RecipePage';
@@ -17,7 +18,7 @@ function App() {
      <Header />
      <main>
        <Switch>
-         <Route exact path={'/'} component={RecipesListPage}  />
+         <Route exact path={'/'} component={Home}  />
          <Route path={'/recipes/:recipeId'} component={RecipePage}/>
          <Route path={'/create'} component={CreateRecipePage}/>
          {/* <Route path={'/login'} component={LoginPage}/>

@@ -2,7 +2,7 @@ import React from 'react';
 
 import RecipeApiService from '../services/recipes-api-service';
 import RecipesListContext from '../contexts/RecipesListContext';
-import RecipeListItem from '../components/RecipeListItem';
+import RecipeListItem from './RecipeListItem';
 
 class RecipesListPage extends React.Component {
   static contextType = RecipesListContext;
