@@ -14,9 +14,7 @@ import Header from './components/Header';
 function App() {
   return (
    <div>
-     <header>
-
-     </header>
+     <Header />
      <main>
        <Switch>
          <Route exact path={'/'} component={RecipesListPage}  />

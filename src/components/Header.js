@@ -1,12 +1,22 @@
-// import React from 'react';
+import React from 'react';
+import {NavLink} from 'react-router-dom';
 
-// class Header extends React.Component() {
+
+
+export default class Header extends React.Component {
   
-//   render() {
-//     return (
+  render() {
+    return (
+      <header>
+        <section className='header-text'>
+          <h1>the village cooks</h1>
+          <h3>a communal cookbook</h3>
+        </section>
+        <NavLink exact to='/'>home</NavLink>
+        <NavLink exact to='/create'>create recipe</NavLink>
 
-//     )
-//   }
-// }
-
-// export default Header;
+       
+      </header>
+    ) 
+  }
+}
