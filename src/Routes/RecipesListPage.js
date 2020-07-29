@@ -16,7 +16,7 @@ class RecipesListPage extends React.Component {
           throw new Error('something went wrong')
         } return res.json()
       })
-      .then(recipes => this.context.setRecipesList(recipes))
+      .then(this.context.setRecipesList)
       .catch(error => this.context.setError(error))
   }
 
@@ -32,10 +32,14 @@ class RecipesListPage extends React.Component {
   }
 
   render() {
-   
+    const { error } = this.context;
     return (
       <div className='RecipeList'>
-        {this.renderRecipes()}
+        {error
+          ? <p>error</p>
+          : this.renderRecipes()
+        }
+        
       </div>
       
     )
