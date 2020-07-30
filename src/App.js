@@ -3,7 +3,7 @@ import { Route, Switch } from 'react-router-dom';
 
 import Home from './Routes/Home';
 
-// import LoginPage from './Routes/LoginPage';
+import LoginPage from './Routes/LoginPage';
 // import RegisterPage from './Routes/RegisterPage';
 import RecipePage from './Routes/RecipePage';
 import CreateRecipePage from './Routes/CreateRecipePage';
@@ -21,8 +21,8 @@ function App() {
          <Route exact path={'/'} component={Home}  />
          <Route path={'/recipes/:recipeId'} component={RecipePage}/>
          <Route path={'/create'} component={CreateRecipePage}/>
-         {/* <Route path={'/login'} component={LoginPage}/>
-         <Route path={'/register'} component={RegisterPage}/>
+         <Route path={'/login'} component={LoginPage}/>
+         {/* <Route path={'/register'} component={RegisterPage}/>
          <Route path={'/about'} component={AboutPage}/>
          <Route path={'/account'} component={AccountPage}/> */}
        </Switch>
