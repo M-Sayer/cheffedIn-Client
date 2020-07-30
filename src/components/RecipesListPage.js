@@ -22,7 +22,7 @@ class RecipesListPage extends React.Component {
 
   //render recipes
   renderRecipes() {
-    const recipesList = this.context.recipesList;
+    const recipesList = this.context.filteredRecipes;
     return recipesList.map(recipe => 
       <RecipeListItem
         key={recipe.id}

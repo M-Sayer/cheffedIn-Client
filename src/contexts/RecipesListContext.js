@@ -30,11 +30,6 @@ export class RecipesListProvider extends React.Component {
     }
   };
 
-  handleSearchChange(e) {
-    e.preventDefault();
-    console.log(this.state)
-    
-  }
 
   setRecipesList = (recipesList) => {
     this.setState({ recipesList })
@@ -49,15 +44,31 @@ export class RecipesListProvider extends React.Component {
     this.setState({ error: null })
   }
 
-  // doFilter() {
-  //   const recipes = this.state.recipesList;
-  //   const filteredRecipes = recipes.filter(recipe => recipe.title.toLowerCase().indexOf(this.state.search.title.trim()) > -1 && recipe.dish_type.indexOf(this.state.search.type) > -1 && (this.state.search.time === '' || (recipe.prep_time_hours + recipe.prep_time_minutes) <= this.state.search.time))
+  handleSearchChange = (e) => {
+    e.preventDefault();
+    this.setState({
+      search: {...this.state.search, [e.target.id]: e.target.value.toLowerCase()}
+    })
+  }
 
-  //   return filteredRecipes
-  // }
+  doFilter() {
+    const recipes = this.state.recipesList;
+    const filteredRecipes = recipes.filter(recipe => {
+    let vegetarian;
+    (recipe.vegetarian) 
+      ? vegetarian = 'true' 
+      : vegetarian = 'false'
+    
+    const prepTime = recipe.prep_time_minutes + (recipe.prep_time_hours * 60)
+
+    return recipe.title.toLowerCase().indexOf(this.state.search.title.trim()) > -1 && recipe.dish_type.indexOf(this.state.search.type) > -1 && (this.state.search.vegetarian && vegetarian.indexOf(this.state.search.vegetarian) || vegetarian.indexOf(this.state.search.vegetarian)) > -1 && (this.state.search.time === '' || prepTime <= this.state.search.time)
+      })
+
+    return filteredRecipes
+  }
 
   render() {
-    // let filteredRecipes = this.doFilter()
+    let filteredRecipes = this.doFilter()
 
     const value = {
       recipesList: this.state.recipesList,
@@ -66,7 +77,7 @@ export class RecipesListProvider extends React.Component {
       clearError: this.clearError,
       setRecipesList: this.setRecipesList,
       search: this.state.search,
-      // filteredRecipes: filteredRecipes,
+      filteredRecipes: filteredRecipes,
       handleSearchChange: this.handleSearchChange,
     }
     return (

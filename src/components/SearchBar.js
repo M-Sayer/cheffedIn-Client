@@ -39,8 +39,8 @@ export default class SearchBar extends React.Component {
                   diet:
                   <select id='vegetarian' onChange={(e) => this.context.handleSearchChange(e)}>
                     <option value=''>select</option>
-                    <option value={false}>non-vegetarian</option>
-                    <option value={true}>vegetarian</option>
+                    <option value='false'>non-vegetarian</option>
+                    <option value='true'>vegetarian</option>
                   </select>
                 </label>
             </section>
