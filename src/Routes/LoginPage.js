@@ -3,8 +3,18 @@ import { Formik, Field, Form, ErrorMessage } from 'formik';
 import * as Yup from 'yup';
 
 import LoginApiService from '../services/login-api-service'
+import TokenService from '../services/token-service'
 
 class LoginPage extends React.Component {
+
+
+  handleSubmit(creds) {
+    LoginApiService.postCreds(creds)
+      .then(res => {
+        TokenService.saveToken(res.authToken)
+      })
+      
+  }
 
   createLoginForm() {
     return (
@@ -18,7 +28,7 @@ class LoginPage extends React.Component {
           password: Yup.string().required('Required')
         })}
         onSubmit={ (values, { setSubmitting }) => {
-          LoginApiService.postCreds(values)
+          this.handleSubmit(values)
         }}
       >
         <Form>

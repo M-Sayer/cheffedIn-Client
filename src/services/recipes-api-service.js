@@ -1,4 +1,5 @@
 import config from '../config';
+import TokenService from './token-service';
 
 const RecipeApiService = {
   getRecipes() {
@@ -20,7 +21,8 @@ const RecipeApiService = {
     return fetch(`${config.API_ENDPOINT}/recipes`, {
       method: 'POST',
       headers: {
-        'content-type': 'application/json'
+        'content-type': 'application/json',
+        'authorization': `bearer ${TokenService.getToken()}`
       },
       body: JSON.stringify(newRecipe)
     })
