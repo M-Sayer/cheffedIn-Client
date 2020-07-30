@@ -11,13 +11,13 @@ export default class SearchBar extends React.Component {
           <form className='search-form'>
             <section className='search'>
               <input placeholder='search for recipes...'
-              type='text' id='name' 
-              // value={this.context.search.name} 
+              type='text' id='title' 
+              value={this.context.search.title} 
               onChange={(e) => this.context.handleSearchChange(e)} />
             </section>
             <section className='filter-bar'>
                 <label>
-                  time:
+                  prep-time:
                   <select id='time' onChange={(e) => this.context.handleSearchChange(e)}>
                     <option value=''>select</option>
                     <option value={30}>30 minutes or less</option>
@@ -25,7 +25,7 @@ export default class SearchBar extends React.Component {
                   </select>
                 </label>
                 <label>
-                  type:
+                  meal type:
                   <select id='type' onChange={(e) => this.context.handleSearchChange(e)}>
                   <option value=''>select</option>
                   <option value='appetizer'>appetizer</option>
@@ -39,8 +39,8 @@ export default class SearchBar extends React.Component {
                   diet:
                   <select id='vegetarian' onChange={(e) => this.context.handleSearchChange(e)}>
                     <option value=''>select</option>
-                    <option value='false'>non-vegetarian</option>
-                    <option value='true'>vegetarian</option>
+                    <option value={false}>non-vegetarian</option>
+                    <option value={true}>vegetarian</option>
                   </select>
                 </label>
             </section>
