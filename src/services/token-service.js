@@ -1,4 +1,6 @@
 import config from '../config';
+import jwtDecode from 'jwt-decode';
+import jwt from 'jsonwebtoken'
 
 const TokenService = {
   saveToken(token) {
@@ -7,6 +9,11 @@ const TokenService = {
   },
   getToken() {
     return window.localStorage.getItem(config.AUTH_TOKEN)
+  },
+  getUserIdFromToken() {
+    if(this.getToken() !== null) {
+      return jwt.decode(this.getToken()).uid
+    }
   }
 }
 

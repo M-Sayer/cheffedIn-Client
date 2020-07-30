@@ -12,7 +12,6 @@ const CommentsApiService = {
       body: JSON.stringify({
         recipe_id: recipeId,
         message: message,
-        author_id: 1
       })
     })
   },

@@ -1,9 +1,11 @@
 import React from 'react';
+import decode from 'jwt-decode';
 
 import RecipeContext from '../contexts/RecipeContext';
 import CommentsApiService from '../services/comments-api-service';
 import RecipesApiService from '../services/recipes-api-service';
 import CommentsForm from '../components/CommentsForm';
+import TokenService from '../services/token-service'
 
 export default class Comments extends React.Component {
   static contextType = RecipeContext;
@@ -52,13 +54,14 @@ export default class Comments extends React.Component {
   }
 
   renderComments() {
+    const uid = TokenService.getUserIdFromToken()
     return this.context.comments.map((comment, idx) => (
       <li className='comment' id={idx} key={comment.id}>
         <p className='username'>{comment.author}:</p>
         {this.state.edit_id !== comment.id && 
           <section>       
             <p>{comment.message}</p>
-            {!this.state.edit &&
+            {!this.state.edit && uid === comment.author_id &&
               <section>
                 <button onClick={(e) => this.handleEdit(e, comment.id, comment.message)}>Edit</button>
                 <button onClick={(e) => this.handleDelete(e, comment.id)}>Delete</button>
@@ -90,7 +93,7 @@ export default class Comments extends React.Component {
           </ul>
       </section>
       <section>
-        {!this.state.edit && <CommentsForm />}
+        {!this.state.edit && (TokenService.getToken() !== null) && <CommentsForm />}
       </section>
       </div>
     )
