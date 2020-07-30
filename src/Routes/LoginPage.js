@@ -14,8 +14,8 @@ class LoginPage extends React.Component {
           password: ''
         }}
         validationSchema={Yup.object({
-          user_name: Yup.string().required,
-          password: Yup.string().required
+          user_name: Yup.string().required('Required'),
+          password: Yup.string().required('Required')
         })}
         onSubmit={ (values, { setSubmitting }) => {
           LoginApiService.postCreds(values)
@@ -30,6 +30,7 @@ class LoginPage extends React.Component {
             <Field name='password' type='text' />
             <ErrorMessage name='password' />
           </label>
+          <button type='submit'>Submit</button>
         </Form>
       </Formik>
     )
