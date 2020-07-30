@@ -1,5 +1,4 @@
 import React from 'react';
-import decode from 'jwt-decode';
 
 import RecipeContext from '../contexts/RecipeContext';
 import CommentsApiService from '../services/comments-api-service';
