@@ -15,7 +15,7 @@ export default class Header extends React.Component {
         <NavLink exact to='/'>home</NavLink>
         <NavLink exact to='/create'>create recipe</NavLink>
         <NavLink exact to='/login'>login</NavLink>
-       
+        <NavLink exact to='/register'>register</NavLink>
       </header>
     ) 
   }

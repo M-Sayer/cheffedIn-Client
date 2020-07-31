@@ -1,5 +1,4 @@
 import config from '../config';
-import jwtDecode from 'jwt-decode';
 import jwt from 'jsonwebtoken'
 
 const TokenService = {
