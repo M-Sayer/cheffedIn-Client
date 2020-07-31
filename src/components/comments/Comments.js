@@ -1,10 +1,10 @@
-import React from 'react';
+import React from './node_modules/react';
 
-import RecipeContext from '../contexts/RecipeContext';
-import CommentsApiService from '../services/comments-api-service';
-import RecipesApiService from '../services/recipes-api-service';
+import RecipeContext from '../../contexts/RecipeContext';
+import CommentsApiService from '../../services/comments-api-service';
+import RecipesApiService from '../../services/recipes-api-service';
 import CommentsForm from '../components/CommentsForm';
-import TokenService from '../services/token-service'
+import TokenService from '../../services/token-service'
 
 export default class Comments extends React.Component {
   static contextType = RecipeContext;

@@ -10,6 +10,7 @@ import CreateRecipePage from './Routes/CreateRecipePage';
 // import AboutPage from './Routes/AboutPage';
 // import AccountPage from './Routes/AccountPage';
 import Header from './components/Header';
+import UserDash from './Routes/UserDash'
 
 
 function App() {
@@ -20,9 +21,10 @@ function App() {
        <Switch>
          <Route exact path={'/'} component={Home}  />
          <Route path={'/recipes/:recipeId'} component={RecipePage}/>
-         <Route path={'/create'} component={CreateRecipePage}/>
-         <Route path={'/login'} component={LoginPage}/>
-         <Route path={'/register'} component={RegisterPage}/>
+         <Route path={'/create'} component={CreateRecipePage} />
+         <Route path={'/login'} component={LoginPage} />
+         <Route path={'/register'} component={RegisterPage} />
+         <Route path={'/dashboard'} component={UserDash} />
          {/* <Route path={'/about'} component={AboutPage}/>
          <Route path={'/account'} component={AccountPage}/> */}
        </Switch>

@@ -9,8 +9,11 @@ const TokenService = {
   getToken() {
     return window.localStorage.getItem(config.AUTH_TOKEN)
   },
+  hasAuthToken() {
+    return !!this.getToken()
+  },
   getUserIdFromToken() {
-    if(this.getToken() !== null) {
+    if(this.hasAuthToken()) {
       return jwt.decode(this.getToken()).uid
     }
   }

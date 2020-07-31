@@ -2,7 +2,7 @@ import React from 'react';
 
 import RecipeContext from '../contexts/RecipeContext';
 import RecipeApiService from '../services/recipes-api-service';
-import Comments from '../components/Comments';
+import Comments from '../components/comments/Comments';
 
 
 class RecipePage extends React.Component {

@@ -1,4 +1,4 @@
-import React from 'react';
+import React from './node_modules/react';
 
 import RecipeApiService from '../services/recipes-api-service';
 import RecipesListContext from '../contexts/RecipesListContext';
