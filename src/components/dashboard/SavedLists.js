@@ -4,6 +4,7 @@ import { Link } from 'react-router-dom'
 import UsersApiService from '../../services/users-api-service'
 import TokenService from '../../services/token-service'
 import NewListForm from '../../components/NewListForm'
+import ListsApiService from '../../services/lists-api-service'
 
 export default class SavedLists extends React.Component {
   constructor(props) {
@@ -48,6 +49,14 @@ export default class SavedLists extends React.Component {
       })
   }
 
+  deleteList(e, list_id) {
+    e.preventDefault()
+    const uid = TokenService.getUserIdFromToken()
+    ListsApiService.deleteList(list_id)
+      .then(() => UsersApiService.getListsForUser(uid))
+      .then(lists => this.setUserLists(lists))
+  }
+
   createUserLists() {
     const lists = this.state.userLists.map(list => (
      <Link key={list.id} to={`/users/${list.author_id}/lists/${list.id}`}>
@@ -57,7 +66,7 @@ export default class SavedLists extends React.Component {
       {this.state.editList && 
        <section className='edit-lists'>
          <button>edit</button>
-         <button>delete</button>
+         <button onClick={(e) => this.deleteList(e, list.id)}>delete</button>
        </section>
        }
      </Link>
@@ -85,7 +94,7 @@ export default class SavedLists extends React.Component {
           setUserLists={this.setUserLists}/>
         }
         {this.state.editList && 
-          <button>cancel</button>
+          <button onClick={(e) => this.toggleEditList(e)}>cancel</button>
         }
         {this.createUserLists()}
       </div>
