@@ -16,6 +16,11 @@ export default class NewListForm extends React.Component {
       .then(lists => this.props.setUserLists(lists))
       .catch(error => console.log(error))
   }
+
+  cancelForm(e) {
+    e.preventDefault()
+    this.props.toggleCreateList()
+  }
   
   createListForm() {
     return (
@@ -38,6 +43,7 @@ export default class NewListForm extends React.Component {
             <ErrorMessage name='list_name' />
           </label>
           <button type='submit'>create</button>
+          <button onClick={(e) => this.cancelForm(e)}>cancel</button>
         </Form>
       </Formik>
     )

@@ -9,16 +9,24 @@ export default class SavedLists extends React.Component {
   constructor(props) {
     super(props)
     this.setUserLists = this.setUserLists.bind(this)
+    this.toggleCreateList = this.toggleCreateList.bind(this)
   }
 
   state = {
     userLists: [],
     createList: false,
+    editList: false,
   }
 
   setUserLists(lists) {
     this.setState({
       ...this.state, userLists : lists
+    })
+  }
+
+  toggleCreateList() {
+    this.setState({
+      ...this.state, createList: !this.state.createList
     })
   }
 
@@ -44,22 +52,23 @@ export default class SavedLists extends React.Component {
 
   handleCreateList(e) {
     e.preventDefault();
-    this.setState({
-      ...this.state, createList: true
-    })
+    this.toggleCreateList()
   }
 
   render() {
     return (
       <div className='saved-lists'>
         <h3>saved lists</h3>
-        <section className='manage-lists'>
+        {!this.state.createList && <section className='manage-lists'>
           <button onClick={(e) => this.handleCreateList(e)}>create list</button>
           <button>edit lists</button>
-          {this.state.createList && 
-            <NewListForm setUserLists={this.setUserLists}/>
-          }
-        </section>
+        </section>}
+
+        {this.state.createList && 
+          <NewListForm 
+          toggleCreateList={this.toggleCreateList}
+          setUserLists={this.setUserLists}/>
+        }
         {this.createUserLists()}
       </div>
     )
