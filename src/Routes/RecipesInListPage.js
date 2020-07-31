@@ -21,7 +21,7 @@ export default class RecipesInListPage extends React.Component {
 
   createRecipesList() {
     const list = this.state.recipes.map(recipe => (
-      <Link to={`/recipes/${recipe.id}`}>
+      <Link key={recipe.id} to={`/recipes/${recipe.id}`}>
         <section className='user-list-recipe-item'>
           <img src={recipe.image} alt={recipe.title}></img>
           <h4>{recipe.title}</h4>
