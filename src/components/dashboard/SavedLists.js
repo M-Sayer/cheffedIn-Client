@@ -12,11 +12,12 @@ export default class SavedLists extends React.Component {
     this.setUserLists = this.setUserLists.bind(this)
     this.toggleCreateList = this.toggleCreateList.bind(this)
   }
+  // create new lists
+  // delete lists
 
   state = {
     userLists: [],
     createList: false,
-    editList: false,
   }
 
   setUserLists(lists) {
@@ -29,14 +30,6 @@ export default class SavedLists extends React.Component {
     this.setState({
       ...this.state, 
       createList: !this.state.createList, 
-      editList: !this.state.editList
-
-    })
-  }
-
-  toggleEditList() {
-    this.setState({
-      ...this.state, editList: !this.state.editList
     })
   }
 
@@ -47,10 +40,6 @@ export default class SavedLists extends React.Component {
       .then(lists => {
         this.setUserLists(lists)
       })
-  }
-
-  handleEditList(e, list_id) {
-    console.log('booyah')
   }
 
   handleDeleteList(e, list_id) {
@@ -67,12 +56,9 @@ export default class SavedLists extends React.Component {
        <section className='user-list'>
         <h2>{list.list_name}</h2>
       </section>
-      {this.state.editList && 
-       <section className='edit-lists'>
-         <button onClick={(e) => this.handleEditList(e, list.id)}>edit</button>
+       <section className='delete-lists'>
          <button onClick={(e) => this.handleDeleteList(e, list.id)}>delete</button>
        </section>
-       }
      </Link>
     ))
     return lists
@@ -87,18 +73,14 @@ export default class SavedLists extends React.Component {
     return (
       <div className='saved-lists'>
         <h3>saved lists</h3>
-        {!this.state.editList && <section className='manage-lists'>
-          <button onClick={(e) => this.handleCreateList(e)}>create list</button>
-          <button onClick={(e) => this.toggleEditList()}>edit lists</button>
-        </section>}
+          <section className='create-list'>
+            <button onClick={(e) => this.handleCreateList(e)}>create list</button>
+          </section>
 
         {this.state.createList && 
           <NewListForm 
           toggleCreateList={this.toggleCreateList}
           setUserLists={this.setUserLists}/>
-        }
-        {this.state.editList && 
-          <button onClick={(e) => this.toggleEditList(e)}>cancel</button>
         }
         {this.createUserLists()}
       </div>

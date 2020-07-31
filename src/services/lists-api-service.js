@@ -33,6 +33,16 @@ const ListsApiService = {
         'authorization': `bearer ${TokenService.getToken()}`
       },
     })  
+  },
+  patchList(list_id, newData) {
+    return fetch(`${config.API_ENDPOINT}/lists/${list_id}`, {
+      method: 'PATCH',
+      headers: {
+        'content-type': 'application/json',
+        'authorization': `bearer ${TokenService.getToken()}`
+      },
+      body: JSON.stringify(newData)
+    })
   }
 }
 

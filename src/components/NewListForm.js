@@ -11,6 +11,7 @@ export default class NewListForm extends React.Component {
 
   handleSubmit(newList) {
     const uid = TokenService.getUserIdFromToken()
+    this.props.toggleCreateList()
     ListsApiService.postList(newList)
       .then(() => UsersApiService.getListsForUser(uid))
       .then(lists => this.props.setUserLists(lists))
