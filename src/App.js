@@ -11,6 +11,7 @@ import CreateRecipePage from './Routes/CreateRecipePage';
 // import AccountPage from './Routes/AccountPage';
 import Header from './components/Header';
 import UserDash from './Routes/UserDash'
+import RecipesInListPage from './Routes/RecipesInListPage'
 
 
 function App() {
@@ -25,6 +26,7 @@ function App() {
          <Route path={'/login'} component={LoginPage} />
          <Route path={'/register'} component={RegisterPage} />
          <Route path={'/dashboard'} component={UserDash} />
+         <Route path={'/users/:user_id/lists/:list_id'} component={RecipesInListPage} />
          {/* <Route path={'/about'} component={AboutPage}/>
          <Route path={'/account'} component={AccountPage}/> */}
        </Switch>

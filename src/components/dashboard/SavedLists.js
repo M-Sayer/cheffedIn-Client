@@ -19,7 +19,7 @@ export default class SavedLists extends React.Component {
   //get user lists
   componentDidMount() {
     const uid = TokenService.getUserIdFromToken()
-    UsersApiService.getListsByUser(uid)
+    UsersApiService.getListsForUser(uid)
       .then(lists => {
         this.setUserLists(lists)
       })

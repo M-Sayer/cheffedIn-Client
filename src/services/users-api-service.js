@@ -1,7 +1,7 @@
 import config from '../config'
 
 const UsersApiService = {
-  getListsByUser(userId) {
+  getListsForUser(userId) {
     return fetch(`${config.API_ENDPOINT}/users/${userId}/lists`)
       .then(res =>
         (!res.ok)
