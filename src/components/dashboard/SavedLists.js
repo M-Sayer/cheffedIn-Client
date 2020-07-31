@@ -6,6 +6,10 @@ import TokenService from '../../services/token-service'
 import NewListForm from '../../components/NewListForm'
 
 export default class SavedLists extends React.Component {
+  constructor(props) {
+    super(props)
+    this.setUserLists = this.setUserLists.bind(this)
+  }
 
   state = {
     userLists: [],
@@ -14,7 +18,7 @@ export default class SavedLists extends React.Component {
 
   setUserLists(lists) {
     this.setState({
-      userLists : lists
+      ...this.state, userLists : lists
     })
   }
 
@@ -53,7 +57,7 @@ export default class SavedLists extends React.Component {
           <button onClick={(e) => this.handleCreateList(e)}>create list</button>
           <button>edit lists</button>
           {this.state.createList && 
-            <NewListForm />
+            <NewListForm setUserLists={this.setUserLists}/>
           }
         </section>
         {this.createUserLists()}

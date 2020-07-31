@@ -3,10 +3,18 @@ import React from 'react'
 import { Formik, Form, Field, ErrorMessage } from 'formik'
 import * as Yup from 'yup'
 
+import ListsApiService from '../services/lists-api-service'
+import UsersApiService from '../services/users-api-service'
+import TokenService from '../services/token-service'
+
 export default class NewListForm extends React.Component {
 
   handleSubmit(newList) {
-
+    const uid = TokenService.getUserIdFromToken()
+    ListsApiService.postList(newList)
+      .then(() => UsersApiService.getListsForUser(uid))
+      .then(lists => this.props.setUserLists(lists))
+      .catch(error => console.log(error))
   }
   
   createListForm() {
