@@ -26,7 +26,16 @@ export default class SavedLists extends React.Component {
 
   toggleCreateList() {
     this.setState({
-      ...this.state, createList: !this.state.createList
+      ...this.state, 
+      createList: !this.state.createList, 
+      editList: !this.state.editList
+
+    })
+  }
+
+  toggleEditList() {
+    this.setState({
+      ...this.state, editList: !this.state.editList
     })
   }
 
@@ -45,6 +54,12 @@ export default class SavedLists extends React.Component {
        <section className='user-list'>
         <h2>{list.list_name}</h2>
       </section>
+      {this.state.editList && 
+       <section className='edit-lists'>
+         <button>edit</button>
+         <button>delete</button>
+       </section>
+       }
      </Link>
     ))
     return lists
@@ -59,15 +74,18 @@ export default class SavedLists extends React.Component {
     return (
       <div className='saved-lists'>
         <h3>saved lists</h3>
-        {!this.state.createList && <section className='manage-lists'>
+        {!this.state.editList && <section className='manage-lists'>
           <button onClick={(e) => this.handleCreateList(e)}>create list</button>
-          <button>edit lists</button>
+          <button onClick={(e) => this.toggleEditList()}>edit lists</button>
         </section>}
 
         {this.state.createList && 
           <NewListForm 
           toggleCreateList={this.toggleCreateList}
           setUserLists={this.setUserLists}/>
+        }
+        {this.state.editList && 
+          <button>cancel</button>
         }
         {this.createUserLists()}
       </div>
