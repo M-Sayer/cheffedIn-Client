@@ -1,7 +1,8 @@
 import React from 'react';
 
-import SavedLists from '../components/dashboard/PostedRecipes'
+import SavedLists from '../components/dashboard/SavedLists'
 import PostedRecipes from '../components/dashboard/PostedRecipes'
+import TokenService from '../services/token-service'
 
 export default class UserDash extends React.Component {
 
@@ -9,9 +10,17 @@ export default class UserDash extends React.Component {
 
   //posted recipes
 
+  createWelcome() {
+    const userName = TokenService.getUserNameFromToken()
+    return (
+      <h2>Welcome {userName}</h2>
+    )
+  }
+
   render() {
     return (
       <div className='user-dashboard'>
+        {this.createWelcome()}
         <SavedLists />
         <PostedRecipes />
       </div>

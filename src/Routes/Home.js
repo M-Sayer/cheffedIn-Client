@@ -1,6 +1,6 @@
 import React from 'react';
 
-import RecipesListPage from '../components/RecipesListPage';
+import RecipesListPage from '../components/recipes/RecipesListPage';
 import SearchBar from '../components/SearchBar';
 
 export default class Home extends React.Component {

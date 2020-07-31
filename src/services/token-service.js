@@ -16,6 +16,11 @@ const TokenService = {
     if(this.hasAuthToken()) {
       return jwt.decode(this.getToken()).uid
     }
+  },
+  getUserNameFromToken() {
+    if(this.hasAuthToken()) {
+      return jwt.decode(this.getToken()).sub
+    }
   }
 }
 

@@ -1,7 +1,7 @@
-import React from './node_modules/react';
+import React from 'react';
 
-import RecipeApiService from '../services/recipes-api-service';
-import RecipesListContext from '../contexts/RecipesListContext';
+import RecipeApiService from '../../services/recipes-api-service';
+import RecipesListContext from '../../contexts/RecipesListContext';
 import RecipeListItem from './RecipeListItem';
 
 class RecipesListPage extends React.Component {
