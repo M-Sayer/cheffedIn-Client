@@ -49,7 +49,11 @@ export default class SavedLists extends React.Component {
       })
   }
 
-  deleteList(e, list_id) {
+  handleEditList(e, list_id) {
+    console.log('booyah')
+  }
+
+  handleDeleteList(e, list_id) {
     e.preventDefault()
     const uid = TokenService.getUserIdFromToken()
     ListsApiService.deleteList(list_id)
@@ -65,8 +69,8 @@ export default class SavedLists extends React.Component {
       </section>
       {this.state.editList && 
        <section className='edit-lists'>
-         <button>edit</button>
-         <button onClick={(e) => this.deleteList(e, list.id)}>delete</button>
+         <button onClick={(e) => this.handleEditList(e, list.id)}>edit</button>
+         <button onClick={(e) => this.handleDeleteList(e, list.id)}>delete</button>
        </section>
        }
      </Link>
