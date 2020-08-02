@@ -2,10 +2,16 @@ import React from 'react'
 import { Link } from 'react-router-dom'
 
 import ListsApiService from '../services/lists-api-service'
-import RecipeNameForm from '../components/RecipeNameForm'
+import ListNameForm from '../components/ListNameForm'
 
 export default class RecipesInListPage extends React.Component {
   // display all recipes in a list saved by a user
+  constructor(props) {
+    super(props)
+    this.toggleEditListName = this.toggleEditListName.bind(this)
+    this.handleEditSubmit = this.handleEditSubmit.bind(this)
+  }
+
   state = {
     recipes: [],
     list: {},
@@ -16,8 +22,12 @@ export default class RecipesInListPage extends React.Component {
     this.setState({ list })
   }
 
-  handleSubmit(values) {
-    console.log('booyah')
+  handleEditSubmit(values) {
+    ListsApiService.patchList(this.state.list.id, values)
+      .then(() => ListsApiService.getListById(this.state.list.id))
+      .then(list => this.setList(list))
+      .then(() => this.toggleEditListName())
+      .catch(error => console.log(error))
   }
 
   toggleEditListName() {
@@ -59,11 +69,13 @@ export default class RecipesInListPage extends React.Component {
       <div className='list-of-recipes'>
         <h2>{this.state.list.list_name}</h2>
         {this.state.editListName &&
-         <RecipeNameForm
-          handleSubmit={this.handleSubmit()}  
+         <ListNameForm
+          handleSubmit={this.handleEditSubmit}  
+          cancelForm={this.toggleEditListName}
         />
         }
-        <button onClick={(e) => this.toggleEditListName(e)}>edit name</button>
+        {!this.state.editListName && 
+        <button onClick={(e) => this.toggleEditListName(e)}>edit name</button>}
         <section className='recipesList'>
         {this.createRecipesList()}
         </section>

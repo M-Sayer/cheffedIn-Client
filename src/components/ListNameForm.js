@@ -2,18 +2,18 @@ import React from 'react'
 import { Formik, Form, Field, ErrorMessage } from 'formik'
 import * as Yup from 'yup'
 
-export default class RecipeNameForm extends React.Component {
+export default class ListNameForm extends React.Component {
 
   createForm() {
     return (
       <Formik
         initialValues={{
-          title: '',
+          list_name: '',
         }}
         validationSchema={Yup.object({
-          title: Yup.string()
+          list_name: Yup.string()
             .required('Required')
-            .max(15, 'Must be 15 characters or less')
+            .max(25, 'Must be 15 characters or less')
         })}
         onSubmit={ (values, {setSubmitting}) => {
           this.props.handleSubmit(values)
@@ -21,11 +21,12 @@ export default class RecipeNameForm extends React.Component {
       >
         <Form>
           <label>list name:
-            <Field name='title' type='text' />
-            <ErrorMessage name='title' />
+            <Field name='list_name' type='text' />
+            <ErrorMessage name='list_name' />
           </label>
           <button type='submit'>submit</button>
-          <button type='cancel'>cancel</button>
+          <button onClick={() => this.props.cancelForm()}
+           type='cancel'>cancel</button>
         </Form>
       </Formik>
     )
