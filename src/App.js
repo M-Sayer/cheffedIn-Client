@@ -26,7 +26,7 @@ function App() {
          <Route path={'/login'} component={LoginPage} />
          <Route path={'/register'} component={RegisterPage} />
          <Route path={'/dashboard'} component={UserDash} />
-         <Route path={'/users/:user_id/lists/:list_id'} component={RecipesInListPage} />
+         <Route path={'/users/:user_id/lists/:list_id/recipes'} component={RecipesInListPage} />
          {/* <Route path={'/about'} component={AboutPage}/>
          <Route path={'/account'} component={AccountPage}/> */}
        </Switch>

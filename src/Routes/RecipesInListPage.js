@@ -22,8 +22,12 @@ export default class RecipesInListPage extends React.Component {
     this.setState({ list })
   }
 
+  setRecipes(recipes) {
+    this.setState({ recipes })
+  }
+
   handleEditSubmit(values) {
-    ListsApiService.patchList(this.state.list.id, values)
+    ListsApiService.patchList(this.state.list.list_id, values)
       .then(() => ListsApiService.getListById(this.state.list.id))
       .then(list => this.setList(list))
       .then(() => this.toggleEditListName())
@@ -37,13 +41,20 @@ export default class RecipesInListPage extends React.Component {
     })
   }
 
+  removeRecipeFromList(e, recipe_id) {
+    e.preventDefault()
+    const list_id = this.props.match.params.list_id
+    ListsApiService.deleteRecipeFromList(list_id, recipe_id)
+      .then(() => ListsApiService.getRecipesForList(list_id))
+      .then(recipes => this.setRecipes(recipes))
+      .catch(error => console.log(error))
+  }
+
   //fetch all recipes in list, using list id
   componentDidMount() {
     ListsApiService.getRecipesForList(this.props.match.params.list_id)
       .then(recipes => {
-        this.setState({
-          recipes: recipes
-        })
+        this.setRecipes(recipes)
       })
 
     ListsApiService.getListById(this.props.match.params.list_id)
@@ -53,13 +64,15 @@ export default class RecipesInListPage extends React.Component {
 
   createRecipesList() {
     const list = this.state.recipes.map(recipe => (
-      <Link key={recipe.id} to={`/recipes/${recipe.id}`}>
+      <section key={recipe.id} className='recipe-list-item'>
+        <Link to={`/recipes/${recipe.id}`}>
         <section className='user-list-recipe-item'>
           <img src={recipe.image} alt={recipe.title}></img>
           <h4>{recipe.title}</h4>
         </section>
-        <button>remove</button>
       </Link>
+      <button onClick={(e) => this.removeRecipeFromList(e, recipe.id)}>remove</button>
+      </section>
     ))
     return list
   }

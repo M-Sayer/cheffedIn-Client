@@ -52,7 +52,7 @@ export default class SavedLists extends React.Component {
 
   createUserLists() {
     const lists = this.state.userLists.map(list => (
-     <Link key={list.id} to={`/users/${list.author_id}/lists/${list.id}`}>
+     <Link key={list.id} to={`/users/${list.author_id}/lists/${list.id}/recipes`}>
        <section className='user-list'>
         <h2>{list.list_name}</h2>
       </section>

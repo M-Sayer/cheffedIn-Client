@@ -10,6 +10,15 @@ const ListsApiService = {
           : res.json()
       )
   },
+  deleteRecipeFromList(list_id, recipe_id) {
+    return fetch(`${config.API_ENDPOINT}/lists/${list_id}/recipes/${recipe_id}`, {
+      method: 'DELETE',
+      headers: {
+        'content-type': 'application/json',
+        'authorization': `bearer ${TokenService.getToken()}`
+      }
+    })
+  },
   postList(newList) {
     return fetch(`${config.API_ENDPOINT}/lists`, {
       method: 'POST',
