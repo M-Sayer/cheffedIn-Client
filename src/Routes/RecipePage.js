@@ -3,7 +3,7 @@ import React from 'react';
 import RecipeContext from '../contexts/RecipeContext';
 import RecipeApiService from '../services/recipes-api-service';
 import Comments from '../components/comments/Comments';
-
+import TokenService from '../services/token-service';
 
 class RecipePage extends React.Component {
   static contextType = RecipeContext;
@@ -67,6 +67,13 @@ class RecipePage extends React.Component {
         <section className='recipe-heading'>
           <h1>{recipe.title}</h1>
           <h5>by {recipe.author}</h5>
+        </section>
+        {TokenService.hasAuthToken() &&
+          <section className='save-recipe'>
+            <button>save recipe</button>
+          </section>
+        }
+        <section className='recipe-image'>
           <img src={recipe.image} alt={recipe.title} />
         </section>
         <section>
