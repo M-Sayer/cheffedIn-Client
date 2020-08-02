@@ -8,7 +8,7 @@ export default class ListNameForm extends React.Component {
     return (
       <Formik
         initialValues={{
-          list_name: '',
+          list_name: this.props.listName(),
         }}
         validationSchema={Yup.object({
           list_name: Yup.string()

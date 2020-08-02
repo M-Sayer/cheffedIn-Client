@@ -8,6 +8,10 @@ import TokenService from '../services/token-service';
 class RecipePage extends React.Component {
   static contextType = RecipeContext;
 
+  state = {
+    saveRecipe : false
+  }
+  
   componentDidMount() {
     const { recipeId } = this.props.match.params;
     this.context.clearError();
@@ -58,6 +62,17 @@ class RecipePage extends React.Component {
       return vegetarian
   }
 
+  toggleSaveRecipe() {
+    this.setState({
+      saveRecipe: !this.state.saveRecipe
+    })
+  }
+
+  handleSaveRecipe(e) {
+    e.preventDefault()
+    this.toggleSaveRecipe()
+  }
+
   renderRecipe() {
     const recipe = this.context.recipe;
     const time = this.makeTime(recipe);
@@ -70,7 +85,8 @@ class RecipePage extends React.Component {
         </section>
         {TokenService.hasAuthToken() &&
           <section className='save-recipe'>
-            <button>save recipe</button>
+            <button onClick={(e) => this.handleSaveRecipe(e)}
+            >save recipe</button>
           </section>
         }
         <section className='recipe-image'>

@@ -21,7 +21,6 @@ export class RecipesListProvider extends React.Component {
   state = {
     recipesList: [],
     error: null,
-    test: 'sdfsdfsdf',
     search: {
       title: '',
       type: '',

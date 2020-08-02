@@ -6,15 +6,17 @@ import * as Yup from 'yup'
 import ListsApiService from '../services/lists-api-service'
 import UsersApiService from '../services/users-api-service'
 import TokenService from '../services/token-service'
+import UserListsContext from '../contexts/UserListsContext'
 
 export default class NewListForm extends React.Component {
+  static contextType = UserListsContext
 
   handleSubmit(newList) {
     const uid = TokenService.getUserIdFromToken()
     this.props.toggleCreateList()
     ListsApiService.postList(newList)
       .then(() => UsersApiService.getListsForUser(uid))
-      .then(lists => this.props.setUserLists(lists))
+      .then(lists => this.context.setUserLists(lists))
       .catch(error => console.log(error))
   }
 
@@ -27,7 +29,7 @@ export default class NewListForm extends React.Component {
     return (
       <Formik
         initialValues={{
-          list_name: 'test',
+          list_name: '',
         }}
         validationSchema={Yup.object({
           list_name: Yup.string()
@@ -40,7 +42,7 @@ export default class NewListForm extends React.Component {
       >
         <Form>
           <label>list name:
-            <Field name='list_name' type='text' placeholder='test'/>
+            <Field name='list_name' type='text'/>
             <ErrorMessage name='list_name' />
           </label>
           <button type='submit'>create</button>

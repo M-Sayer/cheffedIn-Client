@@ -3,9 +3,12 @@ import { Link } from 'react-router-dom'
 
 import ListsApiService from '../services/lists-api-service'
 import ListNameForm from '../components/ListNameForm'
+import UserListsContext from '../contexts/UserListsContext'
 
 export default class RecipesInListPage extends React.Component {
   // display all recipes in a list saved by a user
+  static contextType = UserListsContext
+  
   constructor(props) {
     super(props)
     this.toggleEditListName = this.toggleEditListName.bind(this)
@@ -28,13 +31,11 @@ export default class RecipesInListPage extends React.Component {
   }
 
   getListName() {
-    console.log(this.state.list.list_name)
-    console.log('hello')
     return this.state.list.list_name
   }
 
   handleEditSubmit(values) {
-    ListsApiService.patchList(this.state.list.list_id, values)
+    ListsApiService.patchList(this.state.list.id, values)
       .then(() => ListsApiService.getListById(this.state.list.id))
       .then(list => this.setList(list))
       .then(() => this.toggleEditListName())

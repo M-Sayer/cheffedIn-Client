@@ -5,25 +5,20 @@ import UsersApiService from '../../services/users-api-service'
 import TokenService from '../../services/token-service'
 import NewListForm from '../../components/NewListForm'
 import ListsApiService from '../../services/lists-api-service'
+import UserListsContext from '../../contexts/UserListsContext'
 
 export default class SavedLists extends React.Component {
   constructor(props) {
     super(props)
-    this.setUserLists = this.setUserLists.bind(this)
     this.toggleCreateList = this.toggleCreateList.bind(this)
   }
+
+  static contextType = UserListsContext
   // create new lists
   // delete lists
 
   state = {
-    userLists: [],
     createList: false,
-  }
-
-  setUserLists(lists) {
-    this.setState({
-      ...this.state, userLists : lists
-    })
   }
 
   toggleCreateList() {
@@ -38,7 +33,7 @@ export default class SavedLists extends React.Component {
     const uid = TokenService.getUserIdFromToken()
     UsersApiService.getListsForUser(uid)
       .then(lists => {
-        this.setUserLists(lists)
+        this.context.setUserLists(lists)
       })
   }
 
@@ -47,11 +42,11 @@ export default class SavedLists extends React.Component {
     const uid = TokenService.getUserIdFromToken()
     ListsApiService.deleteList(list_id)
       .then(() => UsersApiService.getListsForUser(uid))
-      .then(lists => this.setUserLists(lists))
+      .then(lists => this.context.setUserLists(lists))
   }
 
   createUserLists() {
-    const lists = this.state.userLists.map(list => (
+    const lists = this.context.userLists.map(list => (
      <Link key={list.id} to={`/users/${list.author_id}/lists/${list.id}/recipes`}>
        <section className='user-list'>
         <h2>{list.list_name}</h2>
@@ -79,8 +74,7 @@ export default class SavedLists extends React.Component {
 
         {this.state.createList && 
           <NewListForm 
-          toggleCreateList={this.toggleCreateList}
-          setUserLists={this.setUserLists}/>
+          toggleCreateList={this.toggleCreateList} />
         }
         {this.createUserLists()}
       </div>
