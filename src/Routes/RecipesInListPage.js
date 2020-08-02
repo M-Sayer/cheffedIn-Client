@@ -2,6 +2,7 @@ import React from 'react'
 import { Link } from 'react-router-dom'
 
 import ListsApiService from '../services/lists-api-service'
+import RecipeNameForm from '../components/RecipeNameForm'
 
 export default class RecipesInListPage extends React.Component {
   // display all recipes in a list saved by a user
@@ -13,6 +14,17 @@ export default class RecipesInListPage extends React.Component {
 
   setList(list) {
     this.setState({ list })
+  }
+
+  handleSubmit(values) {
+    console.log('booyah')
+  }
+
+  toggleEditListName() {
+    this.setState({
+      ...this.state,
+      editListName: !this.state.editListName
+    })
   }
 
   //fetch all recipes in list, using list id
@@ -46,7 +58,12 @@ export default class RecipesInListPage extends React.Component {
     return (
       <div className='list-of-recipes'>
         <h2>{this.state.list.list_name}</h2>
-        <button>edit name</button>
+        {this.state.editListName &&
+         <RecipeNameForm
+          handleSubmit={this.handleSubmit()}  
+        />
+        }
+        <button onClick={(e) => this.toggleEditListName(e)}>edit name</button>
         <section className='recipesList'>
         {this.createRecipesList()}
         </section>
