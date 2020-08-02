@@ -1,9 +1,10 @@
-import React from 'react';
+import React, { useContext } from 'react';
 
 import RecipeContext from '../contexts/RecipeContext';
 import RecipeApiService from '../services/recipes-api-service';
 import Comments from '../components/comments/Comments';
 import TokenService from '../services/token-service';
+import UserListsContext from '../contexts/UserListsContext'
 
 class RecipePage extends React.Component {
   static contextType = RecipeContext;
@@ -60,6 +61,10 @@ class RecipePage extends React.Component {
       : vegetarian = 'no'
     
       return vegetarian
+  }
+
+  renderLists() {
+
   }
 
   toggleSaveRecipe() {

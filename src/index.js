@@ -13,9 +13,9 @@ ReactDOM.render(
   <BrowserRouter>
     <RecipesListProvider>
       <UserListsProvider>
-      <RecipeProvider>
-        <App />
-      </RecipeProvider>
+        <RecipeProvider>
+          <App />
+        </RecipeProvider>
       </UserListsProvider>
     </RecipesListProvider>
   </BrowserRouter>,
