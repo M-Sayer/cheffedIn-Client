@@ -27,7 +27,7 @@ export default class NewListForm extends React.Component {
     return (
       <Formik
         initialValues={{
-          list_name: '',
+          list_name: 'test',
         }}
         validationSchema={Yup.object({
           list_name: Yup.string()
@@ -40,7 +40,7 @@ export default class NewListForm extends React.Component {
       >
         <Form>
           <label>list name:
-            <Field name='list_name' type='text' />
+            <Field name='list_name' type='text' placeholder='test'/>
             <ErrorMessage name='list_name' />
           </label>
           <button type='submit'>create</button>

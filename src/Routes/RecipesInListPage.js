@@ -10,6 +10,7 @@ export default class RecipesInListPage extends React.Component {
     super(props)
     this.toggleEditListName = this.toggleEditListName.bind(this)
     this.handleEditSubmit = this.handleEditSubmit.bind(this)
+    this.getListName = this.getListName.bind(this) 
   }
 
   state = {
@@ -24,6 +25,12 @@ export default class RecipesInListPage extends React.Component {
 
   setRecipes(recipes) {
     this.setState({ recipes })
+  }
+
+  getListName() {
+    console.log(this.state.list.list_name)
+    console.log('hello')
+    return this.state.list.list_name
   }
 
   handleEditSubmit(values) {
@@ -85,6 +92,7 @@ export default class RecipesInListPage extends React.Component {
          <ListNameForm
           handleSubmit={this.handleEditSubmit}  
           cancelForm={this.toggleEditListName}
+          listName={this.getListName}
         />
         }
         {!this.state.editListName && 
