@@ -98,7 +98,10 @@ const RecipePage = (props) => {
             {!state.saveRecipe && <button onClick={(e) => handleSaveRecipe(e)}
             >save recipe</button>}
             {state.saveRecipe &&
-              <SaveToList listsContext={listsContext}/>
+              <SaveToList
+              props={props} 
+              toggle={toggleSaveRecipe}
+              listsContext={listsContext}/>
             }
           </section>
         }

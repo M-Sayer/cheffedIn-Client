@@ -19,6 +19,16 @@ const ListsApiService = {
       }
     })
   },
+  postRecipeToList(list_id, recipe_id, newData) {
+    return fetch(`${config.API_ENDPOINT}/lists/${list_id}/recipes/${recipe_id}`, {
+      method: 'POST',
+      headers: {
+        'content-type': 'application/json',
+        'authorization': `bearer ${TokenService.getToken()}`
+      },
+      body: JSON.stringify(newData)
+    })
+  },
   postList(newList) {
     return fetch(`${config.API_ENDPOINT}/lists`, {
       method: 'POST',

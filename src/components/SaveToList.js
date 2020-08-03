@@ -2,19 +2,24 @@ import React, { useContext } from 'react'
 import { Formik, Form, Field, ErrorMessage } from 'formik'
 import * as Yup from 'yup'
 
+import ListsApiService from '../services/lists-api-service'
 
 const SaveToList = (props) => {
 
   function createOptions() {
     const lists = props.listsContext.userLists.map(list => (
-      <option key={list.id} value={list.list_name}>{list.list_name}</option>
+      <option key={list.id} value={list.id}>{list.list_name}</option>
     ))
     
     return lists
   }
   
   function handleSubmit(values) {
-    console.log(values)
+    const list_id = values.list_id
+    const recipe_id = props.props.match.params.recipeId
+    const newData = { list_id: list_id, recipe_id: recipe_id }
+    ListsApiService.postRecipeToList(recipe_id, list_id, newData)
+      .then(() => props.toggle())
   }
   
   function renderListsSelection() {
@@ -22,10 +27,10 @@ const SaveToList = (props) => {
       <div className='user-list-selection'>
        <Formik
        initialValues={{
-         list: ''
+         list_id: ''
        }}
        validationSchema={Yup.object({
-         list: Yup.string().required('A selection is required')
+         list_id: Yup.string().required('A selection is required')
        })}
        onSubmit={ (values, {setSubmitting}) => {
          handleSubmit(values)
@@ -33,11 +38,14 @@ const SaveToList = (props) => {
        >
          <Form>
            <label>Choose a list
-            <Field name='list' as='select'>
+            <Field name='list_id' as='select'>
               <option value=''>select</option>
               {createOptions()}
             </Field>
+            <ErrorMessage name='list_id' />
            </label>
+           <button type='submit'>save</button>
+           <button onClick={() => props.toggle()}>cancel</button>
          </Form>
        </Formik>
       </div>
