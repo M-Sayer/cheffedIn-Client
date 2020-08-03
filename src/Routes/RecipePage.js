@@ -1,4 +1,4 @@
-import React, { useContext } from 'react';
+import React, { useContext, useState, useEffect } from 'react';
 
 import RecipeContext from '../contexts/RecipeContext';
 import RecipeApiService from '../services/recipes-api-service';
@@ -6,34 +6,30 @@ import Comments from '../components/comments/Comments';
 import TokenService from '../services/token-service';
 import UserListsContext from '../contexts/UserListsContext'
 
-class RecipePage extends React.Component {
-  static contextType = RecipeContext;
+const RecipePage = (props) => {
 
-  state = {
-    saveRecipe : false
-  }
+  // const [saveRecipe, setSaveRecipe] = useState({saveRecipe: false})
   
-  componentDidMount() {
-    const { recipeId } = this.props.match.params;
-    this.context.clearError();
+  const recipeContext = useContext(RecipeContext)
+  const listsContext = useContext(UserListsContext)
+
+  useEffect(() => {
+    const { recipeId } = props.match.params;
+    recipeContext.clearError();
     RecipeApiService.getRecipe(recipeId)
       .then(res => {
         if(!res.ok) {
           throw new Error('something went wrong')
         } return res.json()
       })
-      .then(recipe => this.context.setRecipe(recipe))
-      .catch(error => this.context.setError(error))
+      .then(recipe => recipeContext.setRecipe(recipe))
+      .catch(error => recipeContext.setError(error))
     RecipeApiService.getRecipeComments(recipeId)
-    .then(comments => this.context.setComments(comments))
-    .catch(error => this.context.setError(error))
-  }
+    .then(comments => recipeContext.setComments(comments))
+    .catch(error => recipeContext.setError(error))
+  })
 
-  componentWillUnmount() {
-    this.context.clearRecipe()
-  }
-
-  makeTime(recipe) {
+  function makeTime(recipe) {
     let minutes = recipe.prep_time_minutes;
     minutes > 0 
       ? minutes = `${minutes} minutes` 
@@ -54,7 +50,7 @@ class RecipePage extends React.Component {
     return time
   }
 
-  checkVegetarian(recipe) {
+  function checkVegetarian(recipe) {
     let vegetarian
     (recipe.vegetarian)
       ? vegetarian = 'yes'
@@ -63,25 +59,19 @@ class RecipePage extends React.Component {
       return vegetarian
   }
 
-  renderLists() {
+  // function toggleSaveRecipe() {
+  //   setSaveRecipe({ saveRecipe: !saveRecipe})
+  // }
 
-  }
-
-  toggleSaveRecipe() {
-    this.setState({
-      saveRecipe: !this.state.saveRecipe
-    })
-  }
-
-  handleSaveRecipe(e) {
+  function handleSaveRecipe(e) {
     e.preventDefault()
-    this.toggleSaveRecipe()
+    toggleSaveRecipe()
   }
 
-  renderRecipe() {
-    const recipe = this.context.recipe;
-    const time = this.makeTime(recipe);
-    const vegetarian = this.checkVegetarian(recipe);
+  function renderRecipe() {
+    const recipe = recipeContext.recipe;
+    const time = makeTime(recipe);
+    const vegetarian = checkVegetarian(recipe);
     return (
       <div className='recipe'>
         <section className='recipe-heading'>
@@ -90,7 +80,7 @@ class RecipePage extends React.Component {
         </section>
         {TokenService.hasAuthToken() &&
           <section className='save-recipe'>
-            <button onClick={(e) => this.handleSaveRecipe(e)}
+            <button onClick={(e) => handleSaveRecipe(e)}
             >save recipe</button>
           </section>
         }
@@ -121,17 +111,12 @@ class RecipePage extends React.Component {
     )
   }
 
-  RecipeComments
-
-  render() {
-    
     return (
      <div className='recipe-full'>
-      {this.renderRecipe()}
+      {renderRecipe()}
       <Comments />
      </div>
     )
-  }
 }
 
 export default RecipePage;
