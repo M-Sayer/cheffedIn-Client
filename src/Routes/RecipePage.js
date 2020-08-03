@@ -1,14 +1,18 @@
 import React, { useContext, useState, useEffect } from 'react';
 
 import RecipeContext from '../contexts/RecipeContext';
-import RecipeApiService from '../services/recipes-api-service';
-import Comments from '../components/comments/Comments';
-import TokenService from '../services/token-service';
 import UserListsContext from '../contexts/UserListsContext'
+import TokenService from '../services/token-service';
+import RecipeApiService from '../services/recipes-api-service';
+import UsersApiService from '../services/users-api-service'
+
+import Comments from '../components/comments/Comments';
+
+
 
 const RecipePage = (props) => {
 
-  // const [saveRecipe, setSaveRecipe] = useState({saveRecipe: false})
+  const [state, setState] = useState({saveRecipe: false})
   
   const recipeContext = useContext(RecipeContext)
   const listsContext = useContext(UserListsContext)
@@ -21,13 +25,22 @@ const RecipePage = (props) => {
         if(!res.ok) {
           throw new Error('something went wrong')
         } return res.json()
+        //render comments conditionally
       })
       .then(recipe => recipeContext.setRecipe(recipe))
       .catch(error => recipeContext.setError(error))
     RecipeApiService.getRecipeComments(recipeId)
     .then(comments => recipeContext.setComments(comments))
     .catch(error => recipeContext.setError(error))
-  })
+  }, [])
+
+  useEffect(() => {
+    if(TokenService.hasAuthToken()) {
+      const uid = TokenService.getUserIdFromToken()
+      UsersApiService.getListsForUser(uid)
+        .then(res => console.log(res))
+    }
+  }, [])
 
   function makeTime(recipe) {
     let minutes = recipe.prep_time_minutes;
@@ -59,9 +72,9 @@ const RecipePage = (props) => {
       return vegetarian
   }
 
-  // function toggleSaveRecipe() {
-  //   setSaveRecipe({ saveRecipe: !saveRecipe})
-  // }
+  function toggleSaveRecipe() {
+    setState({ saveRecipe: !state.saveRecipe})
+  }
 
   function handleSaveRecipe(e) {
     e.preventDefault()
