@@ -7,7 +7,7 @@ import RecipeApiService from '../services/recipes-api-service';
 import UsersApiService from '../services/users-api-service'
 
 import Comments from '../components/comments/Comments';
-
+import SaveToList from '../components/SaveToList'
 
 
 const RecipePage = (props) => {
@@ -37,8 +37,10 @@ const RecipePage = (props) => {
   useEffect(() => {
     if(TokenService.hasAuthToken()) {
       const uid = TokenService.getUserIdFromToken()
+      listsContext.clearError()
       UsersApiService.getListsForUser(uid)
-        .then(res => console.log(res))
+        .then(lists => listsContext.setUserLists(lists))
+        .catch(error => listsContext.setError)
     }
   }, [])
 
@@ -93,8 +95,11 @@ const RecipePage = (props) => {
         </section>
         {TokenService.hasAuthToken() &&
           <section className='save-recipe'>
-            <button onClick={(e) => handleSaveRecipe(e)}
-            >save recipe</button>
+            {!state.saveRecipe && <button onClick={(e) => handleSaveRecipe(e)}
+            >save recipe</button>}
+            {state.saveRecipe &&
+              <SaveToList listsContext={listsContext}/>
+            }
           </section>
         }
         <section className='recipe-image'>
