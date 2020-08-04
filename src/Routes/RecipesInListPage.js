@@ -2,6 +2,7 @@ import React from 'react'
 import { Link } from 'react-router-dom'
 import './RecipePage.css'
 import '../components/recipes/RecipeListItem.css'
+import './RecipesInListPage.css'
 
 import ListsApiService from '../services/lists-api-service'
 import ListNameForm from '../components/ListNameForm'

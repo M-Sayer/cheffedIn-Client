@@ -11,6 +11,8 @@
 
 .search input {
   height: 50%;
+  width: 80%;
+  margin-left: 10%;
 }
 
 .filter-bar {
@@ -18,8 +20,8 @@
   flex-direction: row;
   justify-content: center;
   text-align: center;
-  width: 80%;
-  margin-left: 10%;
+  /* width: 80%;
+  margin-left: 10%; */
 }
 
 .filter-bar label {
@@ -29,4 +31,8 @@
   font-family: 'cairo', sans-serif;
   font-size: 12px;
   line-height: 50%;
+}
+
+.filter-bar select {
+  width: 100px;
 }

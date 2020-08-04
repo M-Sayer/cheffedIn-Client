@@ -54,7 +54,7 @@ export default class NewListForm extends React.Component {
 
   render() {
     return (
-      <section className='create-list'>
+      <section className='create-list-form'>
         {this.createListForm()}
       </section>
     )

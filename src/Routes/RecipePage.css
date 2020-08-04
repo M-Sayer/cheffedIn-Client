@@ -7,6 +7,12 @@
   justify-content: left;
 }
 
+.recipe select {
+  width: 120px;
+  text-align: center;
+  margin-left: 5px;
+}
+
 .recipe h3 {
   line-height: 25%;
   margin-bottom: 0;
@@ -28,7 +34,7 @@
 
 .user-list-selection button {
   width: 45%;
-  margin: 5px 2px 10px 2px;
+  margin: 10px 5px;
 }
 
 .recipe-image img {
