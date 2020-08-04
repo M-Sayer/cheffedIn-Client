@@ -1,4 +1,5 @@
 import React from 'react';
+import './SearchBar.css'
 
 import RecipesListContext from '../contexts/RecipesListContext';
 

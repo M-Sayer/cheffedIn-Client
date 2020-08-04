@@ -1,0 +1,24 @@
+.recipe-tile {
+  display: flex;
+  flex-direction: column;
+  width: 25%;
+  text-align: center;
+  margin: 5px;
+  margin-bottom: 15px;
+  line-height: 50%;
+}
+
+.recipe-tile h4 {
+  margin-bottom: 0;
+  
+}
+
+.recipe-tile:hover {
+  cursor: pointer;
+}
+
+.recipe-tile img {
+  height: 100px;
+  width: 100%;
+  object-fit: cover;
+}

@@ -9,6 +9,9 @@ const TokenService = {
   getToken() {
     return window.localStorage.getItem(config.AUTH_TOKEN)
   },
+  clearToken() {
+    window.localStorage.removeItem(config.AUTH_TOKEN)
+  },
   hasAuthToken() {
     return !!this.getToken()
   },

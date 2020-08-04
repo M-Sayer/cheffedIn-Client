@@ -1,4 +1,5 @@
 import React from 'react';
+import './RecipesListPage.css'
 
 import RecipeApiService from '../../services/recipes-api-service';
 import RecipesListContext from '../../contexts/RecipesListContext';
@@ -34,7 +35,7 @@ class RecipesListPage extends React.Component {
   render() {
     const { error } = this.context;
     return (
-      <div className='RecipeList'>
+      <div className='recipes-list'>
         {error
           ? <p>error</p>
           : this.renderRecipes()

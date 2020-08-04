@@ -1,5 +1,6 @@
 import React from 'react';
 import { Route, Switch } from 'react-router-dom';
+import './App.css'
 
 import Home from './Routes/Home';
 
@@ -8,7 +9,6 @@ import RegisterPage from './Routes/RegisterPage';
 import RecipePage from './Routes/RecipePage';
 import CreateRecipePage from './Routes/CreateRecipePage';
 // import AboutPage from './Routes/AboutPage';
-// import AccountPage from './Routes/AccountPage';
 import Header from './components/Header';
 import UserDash from './Routes/UserDash'
 import RecipesInListPage from './Routes/RecipesInListPage'
@@ -16,7 +16,7 @@ import RecipesInListPage from './Routes/RecipesInListPage'
 
 function App() {
   return (
-   <div>
+   <div className='App'>
      <Header />
      <main>
        <Switch>
@@ -28,7 +28,7 @@ function App() {
          <Route path={'/dashboard'} component={UserDash} />
          <Route path={'/users/:user_id/lists/:list_id/recipes'} component={RecipesInListPage} />
          {/* <Route path={'/about'} component={AboutPage}/>
-         <Route path={'/account'} component={AccountPage}/> */}
+        */}
        </Switch>
      </main>
    </div>

@@ -1,5 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
+import './RecipeListItem.css'
 
 export default class RecipeListItem extends React.Component {
 
@@ -7,7 +8,7 @@ export default class RecipeListItem extends React.Component {
     const { recipe } = this.props;
     
     return(
-      <Link to={`/recipes/${recipe.id}`} className='RecipeListItem'>
+      <Link to={`/recipes/${recipe.id}`} className='recipe-tile'>
         <section>
           <img src={recipe.image} alt={recipe.title} />
           <h4>{recipe.title}</h4>
