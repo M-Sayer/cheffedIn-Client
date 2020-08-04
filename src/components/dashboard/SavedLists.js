@@ -4,7 +4,6 @@ import { Link } from 'react-router-dom'
 import UsersApiService from '../../services/users-api-service'
 import TokenService from '../../services/token-service'
 import NewListForm from '../../components/NewListForm'
-import ListsApiService from '../../services/lists-api-service'
 import UserListsContext from '../../contexts/UserListsContext'
 
 export default class SavedLists extends React.Component {
@@ -37,20 +36,9 @@ export default class SavedLists extends React.Component {
       })
   }
 
-  handleDeleteList(e, list_id) {
-    e.preventDefault()
-    const uid = TokenService.getUserIdFromToken()
-    ListsApiService.deleteList(list_id)
-      .then(() => UsersApiService.getListsForUser(uid))
-      .then(lists => this.context.setUserLists(lists))
-  }
-
   createUserLists() {
     const lists = this.context.userLists.map(list => (
      <Link key={list.id} to={`/users/${list.author_id}/lists/${list.id}/recipes`}>
-      <section className='delete-lists'>
-        <button onClick={(e) => this.handleDeleteList(e, list.id)}>delete</button>
-      </section> 
       <section className='user-list'>
       <h4>{list.list_name}</h4>
       </section>

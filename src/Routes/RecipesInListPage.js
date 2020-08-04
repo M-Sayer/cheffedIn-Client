@@ -44,6 +44,13 @@ export default class RecipesInListPage extends React.Component {
       .catch(error => console.log(error))
   }
 
+  handleDeleteList(e, list_id) {
+    e.preventDefault()
+    ListsApiService.deleteList(list_id)
+      .then(() => this.props.history.goBack())
+
+  }
+
   toggleEditListName() {
     this.setState({
       ...this.state,
@@ -99,7 +106,11 @@ export default class RecipesInListPage extends React.Component {
         />
         }
         {!this.state.editListName && 
-        <button onClick={(e) => this.toggleEditListName(e)}>edit name</button>}
+         <section className='edit-list'>
+          <button onClick={(e) => this.toggleEditListName(e)}>edit name</button>
+          <button onClick={(e) => this.handleDeleteList(e, this.state.list.id)}>delete</button>
+       </section> 
+        }
         <section className='recipes-list'>
         {this.createRecipesList()}
         </section>
