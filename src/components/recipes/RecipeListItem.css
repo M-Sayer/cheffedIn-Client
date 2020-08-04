@@ -6,19 +6,23 @@
   margin: 5px;
   margin-bottom: 15px;
   line-height: 50%;
+  text-decoration: none;
+  color: #140F0B;
 }
 
 .recipe-tile h4 {
+  margin-top: 10px;
   margin-bottom: 0;
-  
-}
-
-.recipe-tile:hover {
-  cursor: pointer;
+  line-height: 1;  
 }
 
 .recipe-tile img {
   height: 100px;
   width: 100%;
   object-fit: cover;
+}
+
+.recipe-tile button {
+  margin-top: 5px;
+  background-color: #140F0B;
 }

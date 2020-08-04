@@ -44,8 +44,10 @@ const SaveToList = (props) => {
             </Field>
             <ErrorMessage name='list_id' />
            </label>
-           <button type='submit'>save</button>
-           <button onClick={() => props.toggle()}>cancel</button>
+           <section className='selection-buttons'>
+            <button type='submit'>save</button>
+            <button onClick={() => props.toggle()}>cancel</button>
+           </section>
          </Form>
        </Formik>
       </div>

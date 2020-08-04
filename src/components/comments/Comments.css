@@ -1,0 +1,39 @@
+.comments-section-container {
+  background-color: #ef6a46;
+  padding-bottom: 25px;
+}
+
+.comments-section {
+  padding: 15px 0;
+  width: 80%;
+  margin-left: 10%;
+  color: #FFF;
+}
+
+.comments-section ul {
+  padding-left: 0;
+}
+
+.comment {
+  list-style: none;
+  border: 1px solid #140f0b;
+  border-radius: 5px;
+  margin: 10px 0;
+  padding: 0px 10px;
+  color: #FFF;
+  line-height: 1;
+}
+
+.comment p {
+  margin: 10px 0;
+}
+
+.manage-comment {
+  margin-bottom: 5px;
+}
+
+.manage-comment button {
+  font-size: 14px;
+  margin-left: 5px;
+  background-color: #140f0b;
+}

@@ -43,7 +43,7 @@ class RegisterPage extends React.Component {
           this.handleSubmit(values)
         }}
       >
-        <Form>
+        <Form className='form'>
           <label>first name:
             <Field name='first_name' type='text' />
             <ErrorMessage name='first_name' />

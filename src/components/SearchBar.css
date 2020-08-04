@@ -9,6 +9,10 @@
   justify-content: center;
 }
 
+.search input {
+  height: 50%;
+}
+
 .filter-bar {
   display: flex;
   flex-direction: row;
@@ -25,14 +29,4 @@
   font-family: 'cairo', sans-serif;
   font-size: 12px;
   line-height: 50%;
-}
-
-.filter-bar select {
-  margin: 0 2.5px;
-  width: 60px;
-  margin-top: 7px;
-  background: none;
-  border: 2px solid #B73A1C;
-  text-align: center;
-  font-size: 12px;
 }

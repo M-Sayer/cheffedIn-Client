@@ -30,23 +30,36 @@ h1 {
 
 .App {
   background-color: #DFE4E0;
-  padding-bottom: 25px;
+  /* padding-bottom: 25px; */
+}
+
+button {
+  /* width: 100%; */
+  background-color: #ef6a46;
+  border: none;
+  /* border: 2px solid #ef6a46; */
+  text-align: center;
+  font-size: 18px;
+  color: #FFF;
+  border-radius: 5px;
+  padding: 5px;
 }
 
 input[type=submit] {
   width: 100%;
-  background-color: #DFE4E0;
-  border: 2px solid #B73A1C;
+  background-color: #ef6a46;
+  border: none;
+  /* border: 2px solid #ef6a46; */
   text-align: center;
   font-size: 18px;
-  color: #B73A1C;
+  color: #FFF;
   border-radius: 5px;
 }
 
-input[type=submit]:hover {
+/* input[type=submit]:hover {
   background-color: #B73A1C;
   color: #DFE4E0;
-}
+} */
 
 input {
   display: block;
@@ -68,10 +81,37 @@ textarea {
   height  : 90%;
   resize: none;
   overflow: auto;
-
 }
 
-input, textarea, select {
+select {
+  margin: 0 2.5px;
+  width: 60px;
+  margin-top: 7px;
+  background: #ef6a46;
+  border: none;
+  color: #FFF;
+  /* border: 2px solid #800000; */
+  text-align: center;
+  font-size: 12px;
+  border-radius: 5px; 
+}
+
+input, textarea {
   border: 1px solid #7B807A;
   border-radius: 5px; 
+}
+
+.form {
+  width: 80%;
+  margin-left: 10%;
+  padding-bottom: 20px;
+  margin-top: 10px;
+}
+
+.form input {
+  padding: 0 0 0 5px;
+}
+
+.form button[type=submit] {
+  width: 100%;
 }

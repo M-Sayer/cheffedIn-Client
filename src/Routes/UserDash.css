@@ -1,0 +1,25 @@
+.user-dashboard h2 {
+  text-align: center;
+}
+
+.saved-lists {
+  margin: 10px 10px 0px 10px;
+  padding-bottom: 10px;
+}
+
+.delete-lists button{
+  background-color: #140f0b;
+  font-size: 14px;
+}
+
+.saved-lists h4 {
+  margin-bottom: 10px;
+  margin-top: 10px;
+  margin-right: 10px;
+}
+
+.saved-lists a {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}

@@ -48,12 +48,12 @@ export default class SavedLists extends React.Component {
   createUserLists() {
     const lists = this.context.userLists.map(list => (
      <Link key={list.id} to={`/users/${list.author_id}/lists/${list.id}/recipes`}>
-       <section className='user-list'>
-        <h2>{list.list_name}</h2>
+      <section className='delete-lists'>
+        <button onClick={(e) => this.handleDeleteList(e, list.id)}>delete</button>
+      </section> 
+      <section className='user-list'>
+      <h4>{list.list_name}</h4>
       </section>
-       <section className='delete-lists'>
-         <button onClick={(e) => this.handleDeleteList(e, list.id)}>delete</button>
-       </section>
      </Link>
     ))
     return lists
@@ -67,10 +67,10 @@ export default class SavedLists extends React.Component {
   render() {
     return (
       <div className='saved-lists'>
-        <h3>saved lists</h3>
-          <section className='create-list'>
-            <button onClick={(e) => this.handleCreateList(e)}>create list</button>
-          </section>
+        <section className='create-list'>
+          <h3>saved lists</h3>
+          <button onClick={(e) => this.handleCreateList(e)}>create list</button>
+        </section>
 
         {this.state.createList && 
           <NewListForm 

@@ -1,6 +1,12 @@
 header {
   text-align: center;
-  color: #B73A1C;
-  background-color: #140F0B;
+  color: #FFF;
+  background-color: #B73A1C;
   padding: 10px 0 25px 0;
+}
+
+.header-logged-in, .header-logged-out {
+  color: #FFF;
+  text-decoration: none;
+  font-family: 'Orbitron', sans-serif;
 }

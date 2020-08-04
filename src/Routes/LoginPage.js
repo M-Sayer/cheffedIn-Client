@@ -7,12 +7,18 @@ import TokenService from '../services/token-service'
 
 class LoginPage extends React.Component {
 
+  handleLoginSuccess = () => {
+    const { location, history } = this.props
+    const destination = (location.state || {}).from || '/'
+    history.push(destination)
+  }
 
   handleSubmit(creds) {
     LoginApiService.postCreds(creds)
       .then(res => {
         TokenService.saveToken(res.authToken)
       })
+      .then(() => this.handleLoginSuccess())
       
   }
 
@@ -31,7 +37,7 @@ class LoginPage extends React.Component {
           this.handleSubmit(values)
         }}
       >
-        <Form>
+        <Form className='form'>
           <label> username:
             <Field name='user_name' type='text' />
             <ErrorMessage name='user_name' />

@@ -1,4 +1,5 @@
 import React, { useContext, useState, useEffect } from 'react';
+import './RecipePage.css'
 
 import RecipeContext from '../contexts/RecipeContext';
 import UserListsContext from '../contexts/UserListsContext'
@@ -114,20 +115,18 @@ const RecipePage = (props) => {
         </section>
         <h3>the details</h3>
         <section className='recipe-info'>
-          <p><strong>prep-time: </strong>{time}</p> 
-          <p><strong>servings: </strong>{recipe.serving_size}</p>
-          <p><strong>vegetarian: </strong>{vegetarian}</p>
-          <p><strong>ingredients:</strong></p>
+          <p><i>prep-time: </i>{time}</p> 
+          <p><i>servings: </i>{recipe.serving_size}</p>
+          <p><i>vegetarian: </i>{vegetarian}</p>
+          <p><i>ingredients:</i></p>
           <ul className='ingredients-list'>
             {recipe.ingredients}
           </ul>
         </section>
         <h3>the steps</h3>
-        <section className='recipe-steps'>
-          <ul className='recipe-steps'>
-            {recipe.steps}
-          </ul>
-        </section>
+        <p className='recipe-steps'>
+          {recipe.steps}
+        </p>
       </div>
     )
   }

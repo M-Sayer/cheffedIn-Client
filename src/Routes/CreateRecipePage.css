@@ -1,0 +1,91 @@
+.create-recipe {
+  display: block;
+  flex-direction: column;
+  justify-content: center;
+  padding-bottom: 50px;
+  width: 80%;
+  margin-left: 10%;
+  margin-top: 10px;
+}
+
+.create-recipe h3 {
+  text-align: center;
+  margin-top: 0;
+  padding-top: 25px;
+}
+
+.recipe-form {
+  display: flex;
+  flex-direction: column;
+  width: 50%;
+  margin-left: 25%;
+  padding-top: 10px;
+  text-align: left;
+  
+}
+
+.create-recipe button[type=submit] {
+  width: 100%;
+  text-align: center;
+  font-size: 18px;
+  background-color: #140f0b;
+}
+
+input {
+  display: block;
+  
+  padding: 2px 0 2px 5px;
+  margin: 10px 0;
+  width: 100%;
+  height: 90%;
+  
+  overflow: auto;
+}
+
+textarea {
+  display : block;
+
+  padding : 10px 0 10px 5px;
+  margin: 10px 0;
+  width   : 100%;
+  height  : 90%;
+  resize: none;
+  overflow: auto;
+
+}
+
+.create-recipe select {
+  display : block;
+  padding : 10px 0px 10px 2px;
+  margin: 10px 0;
+  width   : 100%;
+  height  : 90%;
+}
+
+input, textarea {
+  border: 1px solid #000000;
+  border-radius: 5px; 
+}
+
+.live-photos {
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+}
+
+.live-photos img {
+  height: 100px;
+  width: 31%;
+  margin: 5px;
+  object-fit: cover;
+  cursor: pointer;
+}
+
+.selected-photo {
+  height: 200px;
+  width: 50%;
+  margin: 5px;
+  justify-content: center;
+  object-fit: cover;
+}

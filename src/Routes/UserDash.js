@@ -1,4 +1,5 @@
 import React from 'react';
+import './UserDash.css'
 
 import SavedLists from '../components/dashboard/SavedLists'
 import PostedRecipes from '../components/dashboard/PostedRecipes'

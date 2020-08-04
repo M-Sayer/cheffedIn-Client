@@ -1,5 +1,7 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
+import './RecipePage.css'
+import '../components/recipes/RecipeListItem.css'
 
 import ListsApiService from '../services/lists-api-service'
 import ListNameForm from '../components/ListNameForm'
@@ -72,7 +74,7 @@ export default class RecipesInListPage extends React.Component {
 
   createRecipesList() {
     const list = this.state.recipes.map(recipe => (
-      <section key={recipe.id} className='recipe-list-item'>
+      <section key={recipe.id} className='recipe-tile'>
         <Link to={`/recipes/${recipe.id}`}>
         <section className='user-list-recipe-item'>
           <img src={recipe.image} alt={recipe.title}></img>
@@ -98,7 +100,7 @@ export default class RecipesInListPage extends React.Component {
         }
         {!this.state.editListName && 
         <button onClick={(e) => this.toggleEditListName(e)}>edit name</button>}
-        <section className='recipesList'>
+        <section className='recipes-list'>
         {this.createRecipesList()}
         </section>
       </div>

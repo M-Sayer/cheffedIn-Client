@@ -17,7 +17,9 @@ import RecipesInListPage from './Routes/RecipesInListPage'
 function App() {
   return (
    <div className='App'>
-     <Header />
+     <>
+      <Header />
+     </>
      <main>
        <Switch>
          <Route exact path={'/'} component={Home}  />

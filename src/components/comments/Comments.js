@@ -1,4 +1,5 @@
 import React from 'react';
+import './Comments.css'
 
 import RecipeContext from '../../contexts/RecipeContext';
 import CommentsApiService from '../../services/comments-api-service';
@@ -58,7 +59,7 @@ export default class Comments extends React.Component {
       <li className='comment' id={idx} key={comment.id}>
         <p className='username'>{comment.author}:</p>
         {this.state.edit_id !== comment.id && 
-          <section>       
+          <section className='manage-comment'>       
             <p>{comment.message}</p>
             {!this.state.edit && uid === comment.author_id &&
               <section>
