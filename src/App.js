@@ -12,6 +12,7 @@ import CreateRecipePage from './Routes/CreateRecipePage';
 import Header from './components/Header';
 import UserDash from './Routes/UserDash'
 import RecipesInListPage from './Routes/RecipesInListPage'
+import PrivateRoute from './Routes/PrivateRoute'
 
 
 function App() {
@@ -24,11 +25,11 @@ function App() {
        <Switch>
          <Route exact path={'/'} component={Home}  />
          <Route path={'/recipes/:recipeId'} component={RecipePage}/>
-         <Route path={'/create'} component={CreateRecipePage} />
+         <PrivateRoute path={'/create'} component={CreateRecipePage} />
          <Route path={'/login'} component={LoginPage} />
-         <Route path={'/register'} component={RegisterPage} />
-         <Route path={'/dashboard'} component={UserDash} />
-         <Route path={'/users/:user_id/lists/:list_id/recipes'} component={RecipesInListPage} />
+         <PrivateRoute path={'/register'} component={RegisterPage} />
+         <PrivateRoute path={'/dashboard'} component={UserDash} />
+         <PrivateRoute path={'/users/:user_id/lists/:list_id/recipes'} component={RecipesInListPage} />
          {/* <Route path={'/about'} component={AboutPage}/>
         */}
        </Switch>
