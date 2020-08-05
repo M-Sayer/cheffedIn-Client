@@ -69,7 +69,6 @@ class CreateRecipePage extends React.Component {
           steps: Yup.string().required('Required'),
         })}
         onSubmit={ (values, { setSubmitting }) => {
-          const author_id = TokenService.getUserIdFromToken()
           const newRecipe = {
             ...values,
             image: this.state.imageUrl
