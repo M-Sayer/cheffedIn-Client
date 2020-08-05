@@ -3,10 +3,39 @@ import { Formik, Field, Form, ErrorMessage } from 'formik';
 import * as Yup from 'yup';
 import './CreateRecipePage.css'
 
+import UnsplashSearch from '../components/Unsplash/UnsplashSearch'
+
 import RecipesApiService from '../services/recipes-api-service';
 
 class CreateRecipePage extends React.Component {
   
+  state = {
+    imageUrl: '',
+    imageAlt: '',
+    imageSearch: '',
+  }
+  
+  cancelImageSearch = () => {
+    this.setState({
+      imageSearch: 'false'
+    })
+  }
+
+  setImage = (url, alt) => {
+    this.setState({
+     imageUrl: url, imageAlt: alt
+    })
+  }
+
+  setDisplayPhoto = (src, alt) => {
+    if(this.state.imageUrl !== ''){
+      return (
+        <img className='selected-photo' src={this.state.imageUrl} alt={this.state.imageAlt} />
+      )
+    }
+    return null
+  }
+
   createRecipeForm = () => {
     return (
       <Formik
@@ -48,28 +77,36 @@ class CreateRecipePage extends React.Component {
       >
         <Form>
           <label htmlFor='title'>Recipe Name:</label>
-          <Field name='title' type='text' />
-          <ErrorMessage name='title' />
+            <Field name='title' type='text' />
+            <ErrorMessage name='title' />
           <label htmlFor='about'>Tell us about this recipe:</label>
-          <Field name='about' type='text' />
-          <ErrorMessage name='about' />
+            <Field name='about' type='text' />
+            <ErrorMessage name='about' />
           <label htmlFor='dish_type'>What type of dish is it?</label>
-          <Field name='dish_type' as='select'>
-            <option value=''>select</option>
-            <option value='appetizer'>appetizer</option>
-            <option value='main'>main</option>
-            <option value='side'>side</option>
-            <option value='dessert'>dessert</option>
-            <option value='beverage'>beverage</option>
-          </Field>
-          <ErrorMessage name='dish_type' />
+            <Field name='dish_type' as='select'>
+              <option value=''>select</option>
+              <option value='appetizer'>appetizer</option>
+              <option value='main'>main</option>
+              <option value='side'>side</option>
+              <option value='dessert'>dessert</option>
+              <option value='beverage'>beverage</option>
+            </Field>
+            <ErrorMessage name='dish_type' />
           <label htmlFor='vegetarian'>Is it vegetarian?</label>
-          <Field name='vegetarian' as='select'>
-            <option value=''>select</option>
-            <option value={true}>yes</option>
-            <option value={false}>no</option>
-          </Field>
-          <ErrorMessage name='vegetarian' />
+            <Field name='vegetarian' as='select'>
+              <option value=''>select</option>
+              <option value={true}>yes</option>
+              <option value={false}>no</option>
+            </Field>
+            <ErrorMessage name='vegetarian' />
+          <label>Choose an image
+            <UnsplashSearch
+              displayPhoto={this.setDisplayPhoto}
+              setImage={this.setImage}
+              cancelSearch={this.cancelImageSearch}
+            />
+            {this.setDisplayPhoto()}
+          </label>
           <label> How long does it take to prepare this item?
             <Field name='prep_time_minutes' as='select'>
               <option value='0'>minutes</option>
@@ -107,7 +144,7 @@ class CreateRecipePage extends React.Component {
             <ErrorMessage name='ingredients' />
           </label>
           <label> How do we make it?
-          <Field name='steps' as='textarea' />
+            <Field name='steps' as='textarea' />
             <ErrorMessage name='steps' />
           </label>
           <button type='submit'>Submit</button>
