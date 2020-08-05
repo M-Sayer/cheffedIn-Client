@@ -2,6 +2,22 @@
   text-align: center;
 }
 
+.dash-container {
+  display: flex;
+  flex-direction: row;
+}
+
+.new-recipe {
+  margin-bottom: 10px;
+}
+
+.posted-recipes {
+  margin: 10px 10px 0px 10px;
+  padding-bottom: 10px;
+  position: absolute;
+  right: 15%;
+}
+
 .create-list {
   margin-bottom: 10px;
 }

@@ -22,8 +22,10 @@ export default class UserDash extends React.Component {
     return (
       <div className='user-dashboard'>
         {this.createWelcome()}
-        <SavedLists />
-        <PostedRecipes />
+        <section className='dash-container'>
+          <SavedLists />
+          <PostedRecipes />
+        </section>
       </div>
     )
   }
