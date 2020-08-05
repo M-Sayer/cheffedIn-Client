@@ -1,5 +1,6 @@
 import React from 'react';
 
+
 const RecipesListContext = React.createContext({
   recipesList: [],
   error: null,
@@ -7,12 +8,14 @@ const RecipesListContext = React.createContext({
   clearError: () => {},
   setRecipesList: () => {},
   handleSearchChange: () => {},
+  setLoggedIn: () => {},
   search: {
     title: '',
     type: '',
     vegetarian: '',
     time: '',
-  } 
+  },
+  isLoggedIn: false 
 })
 
 export default RecipesListContext;
@@ -26,9 +29,13 @@ export class RecipesListProvider extends React.Component {
       type: '',
       vegetarian: '',
       time: '',
-    }
+    },
+    isLoggedIn: false
   };
 
+  setLoggedIn = (boolean) => {
+    this.setState({ isLoggedIn: boolean })
+  }
 
   setRecipesList = (recipesList) => {
     this.setState({ recipesList })
@@ -78,6 +85,8 @@ export class RecipesListProvider extends React.Component {
       search: this.state.search,
       filteredRecipes: filteredRecipes,
       handleSearchChange: this.handleSearchChange,
+      setLoggedIn: this.setLoggedIn,
+      isLoggedIn: this.state.isLoggedIn
     }
     return (
       <RecipesListContext.Provider value={value}>

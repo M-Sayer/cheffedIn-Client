@@ -28,11 +28,16 @@ const RecipePage = (props) => {
         } return res.json()
         //render comments conditionally
       })
-      .then(recipe => recipeContext.setRecipe(recipe))
+      .then(recipe => {
+        RecipeApiService.getRecipeComments(recipeId)
+          .then(comments => recipeContext.setComments(comments))
+          .catch(error => recipeContext.setError(error))
+        
+        recipeContext.setRecipe(recipe)
+        
+      })
       .catch(error => recipeContext.setError(error))
-    RecipeApiService.getRecipeComments(recipeId)
-    .then(comments => recipeContext.setComments(comments))
-    .catch(error => recipeContext.setError(error))
+    
   }, [])
 
   useEffect(() => {

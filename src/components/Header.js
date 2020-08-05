@@ -3,22 +3,20 @@ import {Link} from 'react-router-dom';
 import './Header.css'
 
 import TokenService from '../services/token-service'
+import RecipesListContext from '../contexts/RecipesListContext'
 
 export default class Header extends React.Component {
-  
-  state = {
-    loggedIn: null
-  }
+  static contextType = RecipesListContext
 
   componentDidMount() {
-    TokenService.hasAuthToken() 
-      ? this.setState({ loggedIn : true })
-      : this.setState({ loggedIn : false })
+    this.context.setLoggedIn(
+      TokenService.hasAuthToken()
+    )
   }
 
   logOutUser() {
     TokenService.clearToken()
-    this.setState({ loggedIn: false })
+    this.context.setLoggedIn(false)
   }
 
   renderLogOut() {
@@ -55,12 +53,10 @@ export default class Header extends React.Component {
           <h1>the village cooks</h1>
           <h3>a communal cookbook</h3>
         </section>
-        {this.state.loggedIn
+        {this.context.isLoggedIn
           ? this.renderLogOut()
           : this.renderLogIn()
         }
-        {TokenService.hasAuthToken() && this.renderLogOut()}
-        {!TokenService.hasAuthToken() && this.renderLogIn()}
       </header>
     ) 
   }

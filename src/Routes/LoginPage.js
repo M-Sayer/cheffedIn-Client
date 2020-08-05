@@ -4,21 +4,18 @@ import * as Yup from 'yup';
 
 import LoginApiService from '../services/login-api-service'
 import TokenService from '../services/token-service'
+import RecipesListContext from '../contexts/RecipesListContext'
 
 class LoginPage extends React.Component {
-
-  handleLoginSuccess = () => {
-    const { location, history } = this.props
-    const destination = (location.state || {}).from || '/'
-    history.push(destination)
-  }
+  static contextType = RecipesListContext
 
   handleSubmit(creds) {
     LoginApiService.postCreds(creds)
       .then(res => {
         TokenService.saveToken(res.authToken)
+        this.context.setLoggedIn(true)
       })
-      .then(() => this.handleLoginSuccess())
+      .then(() => this.props.history.goBack())
       
   }
 
