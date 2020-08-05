@@ -72,7 +72,6 @@ class CreateRecipePage extends React.Component {
           const author_id = TokenService.getUserIdFromToken()
           const newRecipe = {
             ...values,
-            author_id: author_id,
             image: this.state.imageUrl
           }
           RecipesApiService.createRecipe(newRecipe)
