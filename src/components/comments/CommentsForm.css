@@ -9,3 +9,8 @@
 .comment-form-container input[type=submit] {
   background-color: #140f0b;
 }
+
+.comment-form input[type=submit] {
+  background-color: #140f0b;
+}
+

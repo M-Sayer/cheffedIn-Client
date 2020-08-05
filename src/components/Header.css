@@ -5,8 +5,16 @@ header {
   padding: 10px 0 25px 0;
 }
 
+.header-text {
+  margin-top: 10%;
+}
+
 .header-logged-in, .header-logged-out {
   font-family: 'Orbitron', sans-serif;
+  font-size: 14px;
+  position: absolute;
+  top: 2%;
+  right: 5%;
 }
 
 .header-logged-out a:link, .header-logged-in a:link {
@@ -19,22 +27,21 @@ header {
 }
 
 .header-logged-out {
-  font-size: 14px;
   display: flex;
-  flex-direction: row;
+  flex-direction: column;
   justify-content: center;
 }
 
-.register-link {
-  margin: 5px
-}
-
-.login-link {
-  margin: 5px;
+.register-link, .login-link {
+  margin: 1px;
 }
 
 .header-dashboard {
   font-family: 'Orbitron', sans-serif;
+  font-size: 14px;
+  position: absolute;
+  top: 2%;
+  left: 5%;
 }
 
 .header-dashboard a:link, .header-dashboard a:visited {
