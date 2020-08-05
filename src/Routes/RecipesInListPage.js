@@ -109,7 +109,8 @@ export default class RecipesInListPage extends React.Component {
         {!this.state.editListName && 
          <section className='edit-list'>
           <button onClick={(e) => this.toggleEditListName(e)}>edit name</button>
-          <button onClick={(e) => this.handleDeleteList(e, this.state.list.id)}>delete</button>
+          <button className='delete'
+            onClick={(e) => this.handleDeleteList(e, this.state.list.id)}>delete</button>
        </section> 
         }
         <section className='recipes-list'>

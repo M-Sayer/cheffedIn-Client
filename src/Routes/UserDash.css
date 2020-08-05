@@ -29,5 +29,9 @@
 }
 
 .create-list-form button {
+  margin: 10px;
+}
 
+.create-list-form-buttons {
+  text-align: center;
 }

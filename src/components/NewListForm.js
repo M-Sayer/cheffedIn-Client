@@ -45,8 +45,10 @@ export default class NewListForm extends React.Component {
             <Field name='list_name' type='text'/>
             <ErrorMessage name='list_name' />
           </label>
-          <button type='submit'>create</button>
-          <button onClick={(e) => this.cancelForm(e)}>cancel</button>
+          <section className='create-list-form-buttons'>
+            <button type='submit'>create</button>
+            <button onClick={(e) => this.cancelForm(e)}>cancel</button>
+          </section>
         </Form>
       </Formik>
     )

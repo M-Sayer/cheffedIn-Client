@@ -24,9 +24,11 @@ export default class ListNameForm extends React.Component {
             <Field name='list_name' type='text' />
             <ErrorMessage name='list_name' />
           </label>
-          <button type='submit'>submit</button>
-          <button onClick={() => this.props.cancelForm()}
-           type='cancel'>cancel</button>
+          <section className='edit-list-name-buttons'>
+            <button type='submit'>submit</button>
+            <button onClick={() => this.props.cancelForm()}
+              type='cancel'>cancel</button>
+          </section>
         </Form>
       </Formik>
     )
