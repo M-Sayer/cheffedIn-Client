@@ -3,7 +3,11 @@ import TokenService from '../services/token-service'
 
 const ListsApiService = {
   getRecipesForList(list_id) {
-    return fetch(`${config.API_ENDPOINT}/lists/${list_id}/recipes`)
+    return fetch(`${config.API_ENDPOINT}/lists/${list_id}/recipes`, {
+      headers: {
+        'authorization': `bearer ${TokenService.getToken()}`
+      }
+    })
       .then(res =>
         (!res.ok)
           ? res.json().then(e => Promise.reject(e))
@@ -64,7 +68,11 @@ const ListsApiService = {
     })
   },
   getListById(list_id) {
-    return fetch(`${config.API_ENDPOINT}/lists/${list_id}`)
+    return fetch(`${config.API_ENDPOINT}/lists/${list_id}`, {
+      headers: {
+        'authorization': `bearer ${TokenService.getToken()}`
+      }
+    })
       .then(res =>
         (!res.ok)
           ? res.json().then(e => Promise.reject(e))
