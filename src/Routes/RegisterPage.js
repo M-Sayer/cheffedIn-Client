@@ -4,12 +4,18 @@ import * as Yup from 'yup';
 
 import RegisterApiService from '../services/register-api-service'
 import TokenService from '../services/token-service'
+import RecipesListContext from '../contexts/RecipesListContext'
 
 class RegisterPage extends React.Component {
-  
+  static contextType = RecipesListContext
+
   handleSubmit(values) {
     RegisterApiService.postUser(values)
-      .then(res => TokenService.saveToken(res.authToken))
+      .then(res => {
+        TokenService.saveToken(res.authToken)
+        this.context.setLoggedIn(true)
+        this.props.history.goBack()
+      })
   }
 
   createRegisterForm() {

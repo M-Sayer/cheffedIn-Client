@@ -34,14 +34,18 @@ export default class Header extends React.Component {
   renderLogIn() {
     return (
       <div className='header-logged-out'>
-        <Link
-          to='/register'>
-          Register
-        </Link>
-        <Link
-          to='/login'>
-          Log In
-        </Link>
+        <section className='register-link'>
+          <Link
+            to='/register'>
+            Register
+          </Link>
+        </section>
+        <section className='login-link'>
+          <Link
+            to='/login'>
+            Log In
+          </Link>
+        </section>
       </div>
     )
   }

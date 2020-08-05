@@ -6,7 +6,29 @@ header {
 }
 
 .header-logged-in, .header-logged-out {
-  color: #FFF;
-  text-decoration: none;
   font-family: 'Orbitron', sans-serif;
+}
+
+.header-logged-out a:link, .header-logged-in a:link {
+  color: #140F0B;
+  text-decoration: none;
+}
+
+.header-logged-out a:visited, .header-logged-in a:visited {
+  color: #140F0B;
+}
+
+.header-logged-out {
+  font-size: 14px;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+}
+
+.register-link {
+  margin: 5px
+}
+
+.login-link {
+  margin: 5px;
 }
