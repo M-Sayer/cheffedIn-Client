@@ -67,7 +67,7 @@ class RegisterPage extends React.Component {
             <ErrorMessage name='user_name' />
           </label>
           <label>password:
-            <Field name='password' type='text' />
+            <Field name='password' type='password' />
             <ErrorMessage name='password' />
           </label>
           <button type='submit'>Submit</button>
