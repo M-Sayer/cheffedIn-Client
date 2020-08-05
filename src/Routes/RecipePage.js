@@ -2,7 +2,7 @@ import React, { useContext, useState, useEffect } from 'react';
 import './RecipePage.css'
 
 import RecipeContext from '../contexts/RecipeContext';
-import UserListsContext from '../contexts/UserListsContext'
+import UserContext from '../contexts/UserContext'
 import TokenService from '../services/token-service';
 import RecipeApiService from '../services/recipes-api-service';
 import UsersApiService from '../services/users-api-service'
@@ -16,7 +16,7 @@ const RecipePage = (props) => {
   const [state, setState] = useState({saveRecipe: false})
   
   const recipeContext = useContext(RecipeContext)
-  const listsContext = useContext(UserListsContext)
+  const listsContext = useContext(UserContext)
 
   useEffect(() => {
     const { recipeId } = props.match.params;

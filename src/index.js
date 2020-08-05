@@ -6,17 +6,17 @@ import './index.css';
 
 import { RecipesListProvider } from './contexts/RecipesListContext';
 import { RecipeProvider } from './contexts/RecipeContext';
-import { UserListsProvider } from './contexts/UserListsContext';
+import { UserProvider } from './contexts/UserContext';
 import App from './App';
 
 ReactDOM.render(
   <BrowserRouter>
     <RecipesListProvider>
-      <UserListsProvider>
+      <UserProvider>
         <RecipeProvider>
           <App />
         </RecipeProvider>
-      </UserListsProvider>
+      </UserProvider>
     </RecipesListProvider>
   </BrowserRouter>,
   document.getElementById('root')

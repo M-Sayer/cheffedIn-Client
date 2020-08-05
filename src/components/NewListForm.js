@@ -6,10 +6,10 @@ import * as Yup from 'yup'
 import ListsApiService from '../services/lists-api-service'
 import UsersApiService from '../services/users-api-service'
 import TokenService from '../services/token-service'
-import UserListsContext from '../contexts/UserListsContext'
+import UserContext from '../contexts/UserContext'
 
 export default class NewListForm extends React.Component {
-  static contextType = UserListsContext
+  static contextType = UserContext
 
   handleSubmit(newList) {
     const uid = TokenService.getUserIdFromToken()

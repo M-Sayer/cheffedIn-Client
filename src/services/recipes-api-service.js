@@ -32,7 +32,7 @@ const RecipeApiService = {
           // why promise reject vs throw new error?
           : res.json() 
       )
-  }
+  },
 }
 
 export default RecipeApiService;

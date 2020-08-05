@@ -6,11 +6,11 @@ import './RecipesInListPage.css'
 
 import ListsApiService from '../services/lists-api-service'
 import ListNameForm from '../components/ListNameForm'
-import UserListsContext from '../contexts/UserListsContext'
+import UserContext from '../contexts/UserContext'
 
 export default class RecipesInListPage extends React.Component {
   // display all recipes in a list saved by a user
-  static contextType = UserListsContext
+  static contextType = UserContext
   
   constructor(props) {
     super(props)

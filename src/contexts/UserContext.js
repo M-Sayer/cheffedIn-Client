@@ -1,23 +1,30 @@
 import React from 'react'
 
-const UserListsContext = React.createContext({
+const UserContext = React.createContext({
   userLists: [],
+  userRecipes: [],
   error: null,
   setUserLists: () => {},
+  setUserRecipes: () => {},
   setError: () => {},
   clearError: () => {},
 })
 
-export default UserListsContext
+export default UserContext
 
-export class UserListsProvider extends React.Component {
+export class UserProvider extends React.Component {
   state = {
     userLists: [],
+    userRecipes: [],
     error: null,
   }
 
   setUserLists = (userLists) => {
     this.setState({ userLists })
+  }
+
+  setUserRecipes = (userRecipes) => {
+    this.setState({ userRecipes })
   }
 
   setError = (error) => {
@@ -32,16 +39,18 @@ export class UserListsProvider extends React.Component {
   render() {
     const value = {
       userLists: this.state.userLists,
-      error: this.state.error,
       setUserLists: this.setUserLists,
+      userRecipes: this.state.userRecipes,
+      setUserRecipes: this.setUserRecipes,
+      error: this.state.error,
       setError: this.setError,
       clearError: this.clearError,
     }
 
     return (
-      <UserListsContext.Provider value={value}>
+      <UserContext.Provider value={value}>
         {this.props.children}
-      </UserListsContext.Provider>
+      </UserContext.Provider>
     )
   }
 

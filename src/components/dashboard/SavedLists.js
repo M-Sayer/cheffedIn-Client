@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom'
 import UsersApiService from '../../services/users-api-service'
 import TokenService from '../../services/token-service'
 import NewListForm from '../../components/NewListForm'
-import UserListsContext from '../../contexts/UserListsContext'
+import UserContext from '../../contexts/UserContext'
 
 export default class SavedLists extends React.Component {
   constructor(props) {
@@ -12,7 +12,7 @@ export default class SavedLists extends React.Component {
     this.toggleCreateList = this.toggleCreateList.bind(this)
   }
 
-  static contextType = UserListsContext
+  static contextType = UserContext
   // create new lists
   // delete lists
 
