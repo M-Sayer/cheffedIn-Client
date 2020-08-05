@@ -86,13 +86,15 @@ export default class Comments extends React.Component {
   render() {
     return (
       <div className='comments-section-container'>
-        <section className='comments-section'>
-        <h4>the word on the street:</h4>
-          <ul className='comments'>
-            {this.renderComments()}
-          </ul>
-      </section>
-      <section>
+        {this.context.comments.length > 0 && 
+          <section className='comments-section'>
+            <h4>the word on the street:</h4>
+            <ul className='comments'>
+              {this.renderComments()}
+            </ul>
+          </section>
+        }
+      <section className='comments-form'>
         {!this.state.edit && (TokenService.getToken() !== null) && <CommentsForm />}
       </section>
       </div>
