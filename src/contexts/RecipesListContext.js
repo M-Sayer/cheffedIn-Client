@@ -25,13 +25,13 @@ export class RecipesListProvider extends React.Component {
   state = {
     recipesList: [],
     error: null,
+    isLoggedIn: false,
     search: {
       title: '',
       type: '',
       vegetarian: '',
       time: '',
     },
-    isLoggedIn: false
   };
 
   setLoggedIn = (boolean) => {
@@ -60,7 +60,6 @@ export class RecipesListProvider extends React.Component {
 
   clearSearch = () => {
     this.setState({
-      ...this.state,
       search: {
         title: '',
         type: '',
