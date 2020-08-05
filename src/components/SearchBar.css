@@ -1,18 +1,20 @@
 .search-bar {
   display: flex;
-  justify-content: center;
-}
-
-.search-form {
-  display: flex;
   flex-direction: column;
   justify-content: center;
+  width: 80%;
+  margin-left: 10%;
 }
+
+/* .search {
+  width: 80%;
+  margin-left: 10%;
+} */
 
 .search input {
   height: 50%;
-  width: 80%;
-  margin-left: 10%;
+  /* width: 80%;
+  margin-left: 10%; */
 }
 
 .filter-bar {
@@ -25,14 +27,14 @@
 }
 
 .filter-bar label {
-  margin: 0 10px;
-  display: flex;
-  flex-direction: column;
+  /* margin: 0 10px; */
+  /* display: flex;
+  flex-direction: column; */
   font-family: 'cairo', sans-serif;
   font-size: 12px;
   line-height: 50%;
 }
 
 .filter-bar select {
-  width: 100px;
+  width: 80px;
 }

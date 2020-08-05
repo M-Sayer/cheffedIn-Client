@@ -5,26 +5,31 @@
 .dash-container {
   display: flex;
   flex-direction: row;
+  line-height: 1;
+}
+
+.dash-container h4 {
+  margin: 15px 0;
+}
+
+.posted-recipes {
+  width: 50%;
+  margin: 10px 5px 0px 10px;
+  padding-bottom: 10px;
 }
 
 .new-recipe {
   margin-bottom: 10px;
 }
 
-.posted-recipes {
-  margin: 10px 10px 0px 10px;
+.saved-lists {
+  width: 50%;
+  margin: 10px 5px 0px 10px;
   padding-bottom: 10px;
-  position: absolute;
-  right: 2%;
 }
 
 .create-list {
   margin-bottom: 10px;
-}
-
-.saved-lists {
-  margin: 10px 10px 0px 10px;
-  padding-bottom: 10px;
 }
 
 .delete-lists button{
