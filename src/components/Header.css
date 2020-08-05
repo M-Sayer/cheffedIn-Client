@@ -32,3 +32,17 @@ header {
 .login-link {
   margin: 5px;
 }
+
+.header-dashboard {
+  font-family: 'Orbitron', sans-serif;
+}
+
+.header-dashboard a:link, .header-dashboard a:visited {
+  color: #140F0B;
+  text-decoration: none;
+}
+
+.header-text a:link, .header-text a:visited {
+  color: #FFF;
+  text-decoration: none;
+}

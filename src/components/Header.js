@@ -49,18 +49,28 @@ export default class Header extends React.Component {
       </div>
     )
   }
+
+  renderDashboard() {
+    return (
+      <div className='header-dashboard'>
+        <Link to='/dashboard'>dashboard</Link>
+      </div>
+    )
+  }
   
   render() {
     return (
       <header>
         <section className='header-text'>
-          <h1>the village cooks</h1>
-          <h3>a communal cookbook</h3>
+          <Link to='/'>
+            <h1>cheffedIn</h1>
+          </Link>
         </section>
         {this.context.isLoggedIn
           ? this.renderLogOut()
-          : this.renderLogIn()
+          : this.renderLogIn() 
         }
+        {this.context.isLoggedIn && this.renderDashboard()}
       </header>
     ) 
   }
