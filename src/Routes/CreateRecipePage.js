@@ -6,6 +6,7 @@ import './CreateRecipePage.css'
 import UnsplashSearch from '../components/Unsplash/UnsplashSearch'
 
 import RecipesApiService from '../services/recipes-api-service';
+import TokenService from '../services/token-service';
 
 class CreateRecipePage extends React.Component {
   
@@ -68,11 +69,14 @@ class CreateRecipePage extends React.Component {
           steps: Yup.string().required('Required'),
         })}
         onSubmit={ (values, { setSubmitting }) => {
-          const testData = {
+          const author_id = TokenService.getUserIdFromToken()
+          const newRecipe = {
             ...values,
-            author_id: 1
+            author_id: author_id,
+            image: this.state.imageUrl
           }
-          RecipesApiService.createRecipe(testData)
+          RecipesApiService.createRecipe(newRecipe)
+            .then(() => this.props.history.goBack())
         }}
       >
         <Form>

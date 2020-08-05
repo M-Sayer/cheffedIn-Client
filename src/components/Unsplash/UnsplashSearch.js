@@ -10,7 +10,8 @@ export default class PhotoSearch extends React.Component {
     active: false
   }
 
-  getPhotos = () => {
+  getPhotos = (e) => {
+    e.preventDefault()
     const key = '4p9nMyeTZlHhsqZYofgzD7oRjgB8SJjl2lAhyXiLvxc';
     let query = this.state.search;
     if(query !== '') {
@@ -57,14 +58,15 @@ export default class PhotoSearch extends React.Component {
     return(
       <div>
         <section className='photo-search'
-        onChange={this.getPhotos()} >
+        >
         <label>
           Photo Search:
           <input type='text'
           value={this.state.search}
           onChange={(e) => this.handleChange(e)}
           ></input>
-          <button type='submit'>Search</button>
+          <button onClick={(e) => this.getPhotos(e)}
+          type='button'>Search</button>
         </label>
         </section>
         {this.displayPhotos()}
