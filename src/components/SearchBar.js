@@ -6,6 +6,10 @@ import RecipesListContext from '../contexts/RecipesListContext';
 export default class SearchBar extends React.Component {
   static contextType = RecipesListContext;
 
+  componentDidMount() {
+    this.context.clearSearch()
+  }
+
   render() {
     return (
         <div className='search-bar'>

@@ -9,6 +9,7 @@ const RecipesListContext = React.createContext({
   setRecipesList: () => {},
   handleSearchChange: () => {},
   setLoggedIn: () => {},
+  clearSearch: () => {},
   search: {
     title: '',
     type: '',
@@ -57,6 +58,18 @@ export class RecipesListProvider extends React.Component {
     })
   }
 
+  clearSearch = () => {
+    this.setState({
+      ...this.state,
+      search: {
+        title: '',
+        type: '',
+        vegetarian: '',
+        time: '',
+      },
+    })
+  }
+
   doFilter() {
     const recipes = this.state.recipesList;
     const filteredRecipes = recipes.filter(recipe => {
@@ -86,7 +99,8 @@ export class RecipesListProvider extends React.Component {
       filteredRecipes: filteredRecipes,
       handleSearchChange: this.handleSearchChange,
       setLoggedIn: this.setLoggedIn,
-      isLoggedIn: this.state.isLoggedIn
+      isLoggedIn: this.state.isLoggedIn,
+      clearSearch: this.clearSearch,
     }
     return (
       <RecipesListContext.Provider value={value}>
