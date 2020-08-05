@@ -33,6 +33,14 @@ const RecipeApiService = {
           : res.json() 
       )
   },
+  deleteRecipe(id) {
+    return fetch(`${config.API_ENDPOINT}/recipes/${id}`, {
+      method: 'DELETE',
+      headers: {
+        'authorization': `bearer ${TokenService.getToken()}`
+      }
+    })
+  }
 }
 
 export default RecipeApiService;

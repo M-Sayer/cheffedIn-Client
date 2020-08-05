@@ -89,16 +89,23 @@ const RecipePage = (props) => {
     toggleSaveRecipe()
   }
 
+  function handleDeleteRecipe() {
+    RecipeApiService.deleteRecipe(props.match.params.recipeId)
+      .then(() => props.history.goBack())
+  }
+
   function renderEditRecipe() {
     const uid = TokenService.getUserIdFromToken()
     if(uid === recipeContext.recipe.author_id) {
       return (
         <div className='edit-recipe'>
-          <section className='edit-recipe-button'>
+          {/* <section className='edit-recipe-button'>
             <button>edit</button>
-          </section>
+          </section> */}
           <section className='delete-recipe-button'>
-            <button>delete</button>
+            <button
+              onClick={handleDeleteRecipe}
+            >delete</button>
           </section>
         </div>
       )
