@@ -28,7 +28,7 @@ function App() {
          <Route path={'/recipes/:recipeId'} component={RecipePage}/>
          <PrivateRoute path={'/create'} component={CreateRecipePage} />
          <PublicOnlyRoute path={'/login'} component={LoginPage} />
-         <Route path={'/register'} component={RegisterPage} />
+         <PublicOnlyRoute path={'/register'} component={RegisterPage} />
          <PrivateRoute path={'/dashboard'} component={UserDash} />
          <PrivateRoute path={'/users/:user_id/lists/:list_id/recipes'} component={RecipesInListPage} />
          {/* <Route path={'/about'} component={AboutPage}/>
