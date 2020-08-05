@@ -20,6 +20,7 @@ export default class CommentForm extends React.Component {
 
   handleSubmit(e) {
     e.preventDefault();
+    this.setState({ comment: '' })
     const recipeId = this.context.recipe.id;
     CommentsApiService.createComment(recipeId, this.state.comment)
       .then(() => RecipesApiService.getRecipeComments(recipeId))
