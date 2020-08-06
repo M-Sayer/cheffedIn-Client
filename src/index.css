@@ -9,6 +9,7 @@ body {
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  background-color: #DFE4E0;
 }
 
 code {
@@ -23,11 +24,6 @@ h2, h3, h4, h5, p {
 
 h1 {
   font-family: 'Orbitron', sans-serif;
-}
-
-.App {
-  background-color: #DFE4E0;
-  /* padding-bottom: 25px; */
 }
 
 button {
