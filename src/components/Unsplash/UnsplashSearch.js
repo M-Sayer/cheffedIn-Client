@@ -61,7 +61,7 @@ export default class PhotoSearch extends React.Component {
         >
         <label>
           Photo Search:
-          <input type='text'
+          <input type='text' required
           value={this.state.search}
           onChange={(e) => this.handleChange(e)}
           ></input>
