@@ -7,6 +7,15 @@
   justify-content: left;
 }
 
+.recipe hr {
+  display: block;
+    height: 1px;
+    border: 0;
+    border-top: 1px solid #ef6a46;
+    margin: 0 0 1em 0;
+    padding: 0;
+}
+
 .recipe select {
   width: 120px;
   text-align: center;
@@ -14,8 +23,8 @@
 }
 
 .recipe h3 {
-  line-height: 25%;
-  margin-bottom: 0;
+  line-height: .5;
+  margin: 0;
 }
 
 .recipe-heading {
@@ -41,6 +50,7 @@
   height: 150px;
   width: 100%;
   object-fit: cover;
+  margin-bottom: 15px;
 }
 
 .delete-recipe-button {

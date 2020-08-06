@@ -138,20 +138,22 @@ const RecipePage = (props) => {
         <section className='recipe-image'>
           <img src={recipe.image} alt={recipe.title} />
         </section>
-        <section>
+        <section className='recipe-about'>
         <h3>about this recipe</h3>
         <p>{recipe.about}</p>
         </section>
+        <hr/>
         <h3>the details</h3>
         <section className='recipe-info'>
           <p><i>prep-time: </i>{time}</p> 
           <p><i>servings: </i>{recipe.serving_size}</p>
           <p><i>vegetarian: </i>{vegetarian}</p>
           <p><i>ingredients:</i></p>
-          <ul className='ingredients-list'>
+          <p className='ingredients-list'>
             {recipe.ingredients}
-          </ul>
+          </p>
         </section>
+        <hr/>
         <h3>the steps</h3>
         <p className='recipe-steps'>
           {recipe.steps}
