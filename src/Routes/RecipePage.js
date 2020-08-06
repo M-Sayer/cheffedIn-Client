@@ -165,7 +165,7 @@ const RecipePage = (props) => {
        {recipeContext.error &&
           <section className='error-container'>
             <p className='error-message'>
-            {recipeContext.error.error}
+            {recipeContext.error.error.message}
             </p>
           </section>
         }
