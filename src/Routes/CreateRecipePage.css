@@ -31,40 +31,12 @@
   background-color: #140f0b;
 }
 
-input {
-  display: block;
-  
-  padding: 2px 0 2px 5px;
-  margin: 10px 0;
-  width: 100%;
-  height: 90%;
-  
-  overflow: auto;
-}
-
-textarea {
-  display : block;
-
-  padding : 10px 0 10px 5px;
-  margin: 10px 0;
-  width   : 100%;
-  height  : 90%;
-  resize: none;
-  overflow: auto;
-
-}
-
 .create-recipe select {
   display : block;
   padding : 10px 0px 10px 2px;
   margin: 10px 0;
   width   : 100%;
   height  : 90%;
-}
-
-input, textarea {
-  border: 1px solid #000000;
-  border-radius: 5px; 
 }
 
 .live-photos {

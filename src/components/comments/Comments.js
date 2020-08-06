@@ -25,6 +25,14 @@ export default class Comments extends React.Component {
     })
   }
 
+  handleCancelEdit() {
+    this.setState({
+      edit: false,
+      edit_id: null,
+      comment: '',
+    })
+  }
+
   handleDelete(e, id) {
     e.preventDefault();
     CommentsApiService.deleteComment(id)
@@ -62,7 +70,7 @@ export default class Comments extends React.Component {
           <section className='manage-comment'>       
             <p>{comment.message}</p>
             {!this.state.edit && uid === comment.author_id &&
-              <section>
+              <section className='manage-comment-buttons'>
                 <button onClick={(e) => this.handleEdit(e, comment.id, comment.message)}>Edit</button>
                 <button onClick={(e) => this.handleDelete(e, comment.id)}>Delete</button>
               </section>}
@@ -77,7 +85,11 @@ export default class Comments extends React.Component {
                 value={this.state.comment}
                 onChange={(e) => this.handleCommentChange(e)} />
               </label>
-              <input type='submit' />
+              <section className='comment-form-buttons'>
+                <button type='submit'>Submit</button>
+                <button type='cancel' 
+                onClick={() => this.handleCancelEdit()}>Cancel</button>
+              </section>
             </form>}
       </li>
     ));

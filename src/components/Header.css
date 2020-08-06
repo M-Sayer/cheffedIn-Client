@@ -2,14 +2,19 @@ header {
   text-align: center;
   color: #FFF;
   background-color: #B73A1C;
-  padding: 10px 0 25px 0;
+  padding: 10px 0 10px 0;
 }
 
 .header-text {
   margin-top: 10%;
 }
 
-.header-logged-in, .header-logged-out {
+.header-text h1 {
+  letter-spacing: 3px;
+  font-size: 36px;
+}
+
+.header-logged-in, .login-link {
   font-family: 'Orbitron', sans-serif;
   font-size: 14px;
   position: absolute;
@@ -36,7 +41,7 @@ header {
   margin: 1px;
 }
 
-.header-dashboard {
+.header-dashboard, .register-link {
   font-family: 'Orbitron', sans-serif;
   font-size: 14px;
   position: absolute;

@@ -8,9 +8,10 @@
 
 .comment-form-container input[type=submit] {
   background-color: #140f0b;
-}
-
-.comment-form input[type=submit] {
-  background-color: #140f0b;
+  border: none;
+  width: 100%;
+  line-height: 2;
+  border-radius: 5px;
+  color: #FFF;
 }
 

@@ -3,8 +3,36 @@
   padding-bottom: 25px;
 }
 
+.comments-section-container h4 {
+  margin: 0;
+}
+
+.comment-form-buttons {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.comments-section-container button[type=submit] {
+  background-color: #140f0b;
+  border: none;
+  width: 100%;
+  border-radius: 5px;
+  color: #FFF;
+  margin-bottom: 10px;
+}
+
+.comments-section-container button[type=cancel] {
+  background-color: #140f0b;
+  border: none;
+  width: 100%;
+  border-radius: 5px;
+  color: #FFF;
+  margin-bottom: 10px;
+}
+
 .comments-section {
-  padding: 15px 0;
+  padding-top: 10px;
   width: 80%;
   margin-left: 10%;
   color: #FFF;
@@ -28,7 +56,9 @@
   margin: 10px 0;
 }
 
-.manage-comment {
+.manage-comment-buttons {
+  display: flex;
+  flex-direction: row;
   margin-bottom: 5px;
 }
 
@@ -36,4 +66,5 @@
   font-size: 14px;
   margin-left: 5px;
   background-color: #140f0b;
+  width: 50%;
 }
