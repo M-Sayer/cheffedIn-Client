@@ -162,6 +162,13 @@ const RecipePage = (props) => {
 
     return (
      <div className='recipe-full'>
+       {recipeContext.error &&
+          <section className='error-container'>
+            <p className='error-message'>
+            {recipeContext.error.error}
+            </p>
+          </section>
+        }
       {renderRecipe()}
       <Comments />
      </div>

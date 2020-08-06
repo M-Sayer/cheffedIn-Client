@@ -14,6 +14,11 @@ class CreateRecipePage extends React.Component {
     imageUrl: '',
     imageAlt: '',
     imageSearch: '',
+    error: null,
+  }
+ 
+  setError(error) {
+    this.setState({ error })
   }
   
   cancelImageSearch = () => {
@@ -35,6 +40,16 @@ class CreateRecipePage extends React.Component {
       )
     }
     return null
+  }
+
+  handleSubmit(values) {
+    const newRecipe = {
+      ...values,
+      image: this.state.imageUrl
+    }
+    RecipesApiService.createRecipe(newRecipe)
+      .then(() => this.props.history.goBack())
+      .catch(error => this.setError(error))
   }
 
   createRecipeForm = () => {
@@ -69,21 +84,16 @@ class CreateRecipePage extends React.Component {
           steps: Yup.string().required('Required'),
         })}
         onSubmit={ (values, { setSubmitting }) => {
-          const newRecipe = {
-            ...values,
-            image: this.state.imageUrl
-          }
-          RecipesApiService.createRecipe(newRecipe)
-            .then(() => this.props.history.goBack())
+          this.handleSubmit(values)
         }}
       >
         <Form>
           <label htmlFor='title'>Recipe Name:</label>
             <Field name='title' type='text' />
-            <ErrorMessage name='title' />
+            <ErrorMessage component='section' className='error-message' name='title' />
           <label htmlFor='about'>Tell us about this recipe:</label>
             <Field name='about' type='text' />
-            <ErrorMessage name='about' />
+            <ErrorMessage component='section' className='error-message' name='about' />
           <label htmlFor='dish_type'>What type of dish is it?</label>
             <Field name='dish_type' as='select'>
               <option value=''>select</option>
@@ -93,14 +103,14 @@ class CreateRecipePage extends React.Component {
               <option value='dessert'>dessert</option>
               <option value='beverage'>beverage</option>
             </Field>
-            <ErrorMessage name='dish_type' />
+            <ErrorMessage component='section' className='error-message' name='dish_type' />
           <label htmlFor='vegetarian'>Is it vegetarian?</label>
             <Field name='vegetarian' as='select'>
               <option value=''>select</option>
               <option value={true}>yes</option>
               <option value={false}>no</option>
             </Field>
-            <ErrorMessage name='vegetarian' />
+            <ErrorMessage component='section' className='error-message' name='vegetarian' />
           <label>Choose an image
             <UnsplashSearch
               displayPhoto={this.setDisplayPhoto}
@@ -116,14 +126,14 @@ class CreateRecipePage extends React.Component {
               <option value='30'>30 minutes</option>
               <option value='45'>45 minutes</option>
             </Field>
-            <ErrorMessage name='prep_time_minutes' />
+            <ErrorMessage component='section' className='error-message' name='prep_time_minutes' />
             <Field name='prep_time_hours' as='select'>
               <option value='0'>hours</option>
               <option value='1'>1 hour</option>
               <option value='2'>2 hours</option>
               <option value='3'>3 hours</option>
             </Field>
-            <ErrorMessage name='prep_time_hours' />
+            <ErrorMessage component='section' className='error-message' name='prep_time_hours' />
           </label>
           <label> How many servings does it yield?
             <Field name='serving_size' as='select'>
@@ -139,15 +149,15 @@ class CreateRecipePage extends React.Component {
               <option value='9'>9</option>
               <option value='10'>10</option>
             </Field>
-            <ErrorMessage name='serving_size' />
+            <ErrorMessage component='section' className='error-message' name='serving_size' />
           </label>
           <label> What are the ingredients?
             <Field name='ingredients' as='textarea' />
-            <ErrorMessage name='ingredients' />
+            <ErrorMessage component='section' className='error-message' name='ingredients' />
           </label>
           <label> How do we make it?
             <Field name='steps' as='textarea' />
-            <ErrorMessage name='steps' />
+            <ErrorMessage component='section' className='error-message' name='steps' />
           </label>
           <button type='submit'>Submit</button>
         </Form>
