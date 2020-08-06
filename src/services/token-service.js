@@ -3,7 +3,6 @@ import jwt from 'jsonwebtoken'
 
 const TokenService = {
   saveToken(token) {
-    console.log(token)
     window.localStorage.setItem(config.AUTH_TOKEN, token)
   },
   getToken() {

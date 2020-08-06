@@ -96,7 +96,7 @@ class RegisterPage extends React.Component {
         {this.state.error &&
           <section className='error-container'>
             <p className='error-message'>
-            {this.state.error.error}
+            {this.state.error.error.message}
             </p>
           </section>
         }
