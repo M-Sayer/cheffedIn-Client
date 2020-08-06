@@ -9,6 +9,18 @@ import RecipesListContext from '../contexts/RecipesListContext'
 class RegisterPage extends React.Component {
   static contextType = RecipesListContext
 
+  state = {
+    error: null
+  }
+
+  setError(error) {
+    this.setState({ error })
+  }
+
+  clearError() {
+    this.setState({ error: null})
+  }
+
   handleSubmit(values) {
     RegisterApiService.postUser(values)
       .then(res => {
@@ -16,6 +28,7 @@ class RegisterPage extends React.Component {
         this.context.setLoggedIn(true)
         this.props.history.goBack()
       })
+      .catch(error => this.setError(error))
   }
 
   createRegisterForm() {
@@ -52,23 +65,23 @@ class RegisterPage extends React.Component {
         <Form className='form'>
           <label>first name:
             <Field name='first_name' type='text' />
-            <ErrorMessage name='first_name' />
+            <ErrorMessage component='section' className='error-message' name='first_name' />
           </label>
           <label>last name:
             <Field name='last_name' type='text' />
-            <ErrorMessage name='last_name' />
+            <ErrorMessage component='section' className='error-message' name='last_name' />
           </label>
           <label>email:
             <Field name='email' type='text' />
-            <ErrorMessage name='email' />
+            <ErrorMessage component='section' className='error-message' name='email' />
           </label>
           <label>username:
             <Field name='user_name' type='text' />
-            <ErrorMessage name='user_name' />
+            <ErrorMessage component='section' className='error-message' name='user_name' />
           </label>
           <label>password:
             <Field name='password' type='password' />
-            <ErrorMessage name='password' />
+            <ErrorMessage component='section' className='error-message' name='password' />
           </label>
           <button type='submit'>Submit</button>
         </Form>
@@ -78,7 +91,15 @@ class RegisterPage extends React.Component {
 
   render() {
     return (
+     
       <div className='register'>
+        {this.state.error &&
+          <section className='error-container'>
+            <p className='error-message'>
+            {this.state.error.error}
+            </p>
+          </section>
+        }
         {this.createRegisterForm()}
       </div>
     )

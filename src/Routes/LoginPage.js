@@ -9,6 +9,14 @@ import RecipesListContext from '../contexts/RecipesListContext'
 class LoginPage extends React.Component {
   static contextType = RecipesListContext
 
+  state = {
+    error: null
+  }
+
+  setError(error) {
+    this.setState({ error })
+  }
+
   handleSubmit(creds) {
     LoginApiService.postCreds(creds)
       .then(res => {
@@ -16,6 +24,7 @@ class LoginPage extends React.Component {
         this.context.setLoggedIn(true)
       })
       .then(() => this.props.history.goBack())
+      .catch(error => this.setError(error))
       
   }
 
@@ -37,11 +46,11 @@ class LoginPage extends React.Component {
         <Form className='form'>
           <label> username:
             <Field name='user_name' type='text' />
-            <ErrorMessage name='user_name' />
+            <ErrorMessage component='section' className='error-message' name='user_name' />
           </label>
           <label> password:
             <Field name='password' type='password' />
-            <ErrorMessage name='password' />
+            <ErrorMessage component='section' className='error-message' name='password' />
           </label>
           <button type='submit'>Submit</button>
         </Form>
@@ -52,6 +61,13 @@ class LoginPage extends React.Component {
   render() {
     return (
       <div className='login'>
+        {this.state.error &&
+          <section className='error-container'>
+            <p className='error-message'>
+            {this.state.error.error}
+            </p>
+          </section>
+        }
         {this.createLoginForm()}
       </div>
     )
