@@ -34,7 +34,7 @@ export default class CommentForm extends React.Component {
         <h4>send your regards to the chef!</h4>
         <form className='comment-form'
           onSubmit={(e) => this.handleSubmit(e)}>
-          <label>
+          <label htmlFor='comment-body'>
             Comment:
             <textarea required type='text' id='comment-body'
             value={this.state.comment}

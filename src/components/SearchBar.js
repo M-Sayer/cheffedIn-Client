@@ -21,7 +21,7 @@ export default class SearchBar extends React.Component {
               onChange={(e) => this.context.handleSearchChange(e)} />
             </section>
             <section className='filter-bar'>
-                <label>
+                <label htmlFor='time'>
                   prep-time:
                   <select id='time' onChange={(e) => this.context.handleSearchChange(e)}>
                     <option value=''>select</option>
@@ -29,7 +29,7 @@ export default class SearchBar extends React.Component {
                     <option value={60}>1 hour or less</option>
                   </select>
                 </label>
-                <label>
+                <label htmlFor='type'>
                   meal type:
                   <select id='type' onChange={(e) => this.context.handleSearchChange(e)}>
                   <option value=''>select</option>
@@ -40,7 +40,7 @@ export default class SearchBar extends React.Component {
                   <option value='beverage'>beverage</option>
                   </select>
                 </label>
-                <label>
+                <label htmlFor='vegetarian'>
                   diet:
                   <select id='vegetarian' onChange={(e) => this.context.handleSearchChange(e)}>
                     <option value=''>select</option>

@@ -79,7 +79,7 @@ export default class Comments extends React.Component {
           {this.state.edit && this.state.edit_id === comment.id &&
             <form className='comment-form'
             onSubmit={(e) => this.handleSubmit(e, comment.id,)}>
-              <label>
+              <label htmlFor='comment-body'>
                 Comment:
                 <textarea required type='text' id='comment-body'
                 value={this.state.comment}

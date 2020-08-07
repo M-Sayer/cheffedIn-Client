@@ -59,15 +59,12 @@ export default class PhotoSearch extends React.Component {
       <div>
         <section className='photo-search'
         >
-        <label>
-          Photo Search:
-          <input type='text' required
+          <input name='unsplash-search-field' type='text' required
           value={this.state.search}
           onChange={(e) => this.handleChange(e)}
           ></input>
           <button onClick={(e) => this.getPhotos(e)}
           type='button'>Search</button>
-        </label>
         </section>
         {this.displayPhotos()}
       </div>

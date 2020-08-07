@@ -1,4 +1,4 @@
-import React, { useContext } from 'react'
+import React from 'react'
 import { Formik, Form, Field, ErrorMessage } from 'formik'
 import * as Yup from 'yup'
 
@@ -37,7 +37,7 @@ const SaveToList = (props) => {
        }}
        >
          <Form>
-           <label>Choose a list
+           <label htmlFor='list_id'>Choose a list
             <Field name='list_id' as='select'>
               <option value=''>select</option>
               {createOptions()}

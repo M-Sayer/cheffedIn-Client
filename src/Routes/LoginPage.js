@@ -44,11 +44,11 @@ class LoginPage extends React.Component {
         }}
       >
         <Form className='form'>
-          <label> username:
+          <label htmlFor='user_name'> username:
             <Field name='user_name' type='text' />
             <ErrorMessage component='section' className='error-message' name='user_name' />
           </label>
-          <label> password:
+          <label htmlFor='password'> password:
             <Field name='password' type='password' />
             <ErrorMessage component='section' className='error-message' name='password' />
           </label>

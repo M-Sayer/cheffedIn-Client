@@ -63,23 +63,23 @@ class RegisterPage extends React.Component {
         }}
       >
         <Form className='form'>
-          <label>first name:
+          <label htmlFor='first_name'>first name:
             <Field name='first_name' type='text' />
             <ErrorMessage component='section' className='error-message' name='first_name' />
           </label>
-          <label>last name:
+          <label htmlFor='last_name'>last name:
             <Field name='last_name' type='text' />
             <ErrorMessage component='section' className='error-message' name='last_name' />
           </label>
-          <label>email:
+          <label htmlFor='email'>email:
             <Field name='email' type='text' />
             <ErrorMessage component='section' className='error-message' name='email' />
           </label>
-          <label>username:
+          <label htmlFor='user_name'>username:
             <Field name='user_name' type='text' />
             <ErrorMessage component='section' className='error-message' name='user_name' />
           </label>
-          <label>password:
+          <label htmlFor='password'>password:
             <Field name='password' type='password' />
             <ErrorMessage component='section' className='error-message' name='password' />
           </label>

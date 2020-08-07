@@ -41,7 +41,7 @@ export default class NewListForm extends React.Component {
         }}
       >
         <Form>
-          <label>list name:
+          <label htmlFor='list_name'>list name:
             <Field name='list_name' type='text'/>
             <ErrorMessage name='list_name' />
           </label>

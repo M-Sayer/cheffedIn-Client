@@ -6,7 +6,6 @@ import './CreateRecipePage.css'
 import UnsplashSearch from '../components/Unsplash/UnsplashSearch'
 
 import RecipesApiService from '../services/recipes-api-service';
-import TokenService from '../services/token-service';
 
 class CreateRecipePage extends React.Component {
   
@@ -88,13 +87,15 @@ class CreateRecipePage extends React.Component {
         }}
       >
         <Form>
-          <label htmlFor='title'>Recipe Name:</label>
+          <label htmlFor='title'>Recipe Name:
             <Field name='title' type='text' />
             <ErrorMessage component='section' className='error-message' name='title' />
-          <label htmlFor='about'>Tell us about this recipe:</label>
+          </label>
+          <label htmlFor='about'>Tell us about this recipe:
             <Field name='about' type='text' />
             <ErrorMessage component='section' className='error-message' name='about' />
-          <label htmlFor='dish_type'>What type of dish is it?</label>
+          </label>
+          <label htmlFor='dish_type'>What type of dish is it?
             <Field name='dish_type' as='select'>
               <option value=''>select</option>
               <option value='appetizer'>appetizer</option>
@@ -104,14 +105,16 @@ class CreateRecipePage extends React.Component {
               <option value='beverage'>beverage</option>
             </Field>
             <ErrorMessage component='section' className='error-message' name='dish_type' />
-          <label htmlFor='vegetarian'>Is it vegetarian?</label>
+          </label>
+          <label htmlFor='vegetarian'>Is it vegetarian?
             <Field name='vegetarian' as='select'>
               <option value=''>select</option>
               <option value={true}>yes</option>
               <option value={false}>no</option>
             </Field>
             <ErrorMessage component='section' className='error-message' name='vegetarian' />
-          <label>Choose an image
+          </label>
+          <label htmlFor='photo-search'>Search Unsplash for a cover image:
             <UnsplashSearch
               displayPhoto={this.setDisplayPhoto}
               setImage={this.setImage}
@@ -119,7 +122,7 @@ class CreateRecipePage extends React.Component {
             />
             {this.setDisplayPhoto()}
           </label>
-          <label> How long does it take to prepare this item?
+          <label htmlFor='prep_time_minutes'> How long does it take to prepare this item?
             <Field name='prep_time_minutes' as='select'>
               <option value='0'>minutes</option>
               <option value='15'>15 minutes</option>
@@ -135,7 +138,7 @@ class CreateRecipePage extends React.Component {
             </Field>
             <ErrorMessage component='section' className='error-message' name='prep_time_hours' />
           </label>
-          <label> How many servings does it yield?
+          <label htmlFor='serving_size'> How many servings does it yield?
             <Field name='serving_size' as='select'>
               <option value=''>select</option>
               <option value='1'>1</option>
@@ -151,11 +154,11 @@ class CreateRecipePage extends React.Component {
             </Field>
             <ErrorMessage component='section' className='error-message' name='serving_size' />
           </label>
-          <label> What are the ingredients?
+          <label htmlFor='ingredients'> What are the ingredients?
             <Field name='ingredients' as='textarea' />
             <ErrorMessage component='section' className='error-message' name='ingredients' />
           </label>
-          <label> How do we make it?
+          <label htmlFor='steps'> How do we make it?
             <Field name='steps' as='textarea' />
             <ErrorMessage component='section' className='error-message' name='steps' />
           </label>
