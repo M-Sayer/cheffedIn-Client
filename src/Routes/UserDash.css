@@ -9,6 +9,10 @@
   margin: 0 10px;
 }
 
+.dash-container a {
+  color: #140F0B;
+}
+
 .dash-container h4 {
   margin: 15px 0;
 }
