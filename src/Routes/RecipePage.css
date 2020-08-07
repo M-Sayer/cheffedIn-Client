@@ -55,10 +55,41 @@
 
 .delete-recipe-button {
   margin-bottom: 10px;
+  text-align: center;
 }
 
 .delete-recipe-button button {
   width: 100%;
   background-color: #140F0B;
+
+}
+
+@media only screen and (min-width: 800px) {
+  
+  .recipe {
+    width: 60%;
+    margin-left: 20%;
+    line-height: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: left;
+  }
+
+  .recipe-image img {
+    height: 250px;
+    width: 100%;
+    object-fit: contain;
+    margin-bottom: 25px;
+  }
+
+  .save-recipe button {
+    width: 40%;
+    margin-bottom: 20px;
+  }
+
+  .delete-recipe-button button {
+    width: 40%;
+    margin-bottom: 20px;
+  }
 
 }
