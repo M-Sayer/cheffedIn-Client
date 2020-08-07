@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom'
 import './RecipesListPage.css'
 
 import RecipeApiService from '../../services/recipes-api-service';
@@ -24,12 +25,21 @@ class RecipesListPage extends React.Component {
   //render recipes
   renderRecipes() {
     const recipesList = this.context.filteredRecipes;
-    return recipesList.map(recipe => 
-      <RecipeListItem
-        key={recipe.id}
-        recipe={recipe}
-      />  
-      )
+    if(recipesList.length > 0) {
+      return recipesList.map(recipe => 
+        <RecipeListItem
+          key={recipe.id}
+          recipe={recipe}
+        />  
+        )
+    } return (
+      <div className='no-recipes'>
+        <h2>Sorry, no results found.</h2>
+        <p>But you can upload a recipe here:</p>
+        <Link to='/create'>Upload Recipe</Link>
+      </div>
+    )
+    
   }
 
   render() {
