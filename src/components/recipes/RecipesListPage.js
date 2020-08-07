@@ -36,7 +36,9 @@ class RecipesListPage extends React.Component {
       <div className='no-recipes'>
         <h2>Sorry, no results found.</h2>
         <p>But you can upload a recipe here:</p>
-        <Link to='/create'>Upload Recipe</Link>
+        <button>
+          <Link to='/create'>Upload Recipe</Link>
+        </button>
       </div>
     )
     

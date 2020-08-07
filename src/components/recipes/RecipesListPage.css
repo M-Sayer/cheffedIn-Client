@@ -6,3 +6,12 @@
   align-items: flex-start;
   margin-top: 10px;
 }
+
+.no-recipes {
+  text-align: center;
+}
+
+.no-recipes a {
+  color: #FFF;
+  text-decoration: none;
+}
