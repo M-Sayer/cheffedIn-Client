@@ -121,3 +121,18 @@ select {
 .error-message {
   color: red;
 }
+
+@media only screen and (min-width: 800px) {
+
+  .form {
+    width: 60%;
+    margin-left: 20%
+  }  
+
+  .error-container {
+    width: 60%;
+    margin-left: 20%;
+  }
+
+}
+  
