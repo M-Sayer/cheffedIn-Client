@@ -42,7 +42,7 @@ export default class RecipesInListPage extends React.Component {
       .then(() => ListsApiService.getListById(this.state.list.id))
       .then(list => this.setList(list))
       .then(() => this.toggleEditListName())
-      .catch(error => console.log(error))
+      .catch(error => this.context.setError(error))
   }
 
   handleDeleteList(e, list_id) {
@@ -65,7 +65,7 @@ export default class RecipesInListPage extends React.Component {
     ListsApiService.deleteRecipeFromList(list_id, recipe_id)
       .then(() => ListsApiService.getRecipesForList(list_id))
       .then(recipes => this.setRecipes(recipes))
-      .catch(error => console.log(error))
+      .catch(error => this.context.setError(error))
   }
 
   //fetch all recipes in list, using list id
@@ -77,7 +77,7 @@ export default class RecipesInListPage extends React.Component {
 
     ListsApiService.getListById(this.props.match.params.list_id)
       .then(list => this.setList(list))
-      .catch(error => console.log(error))
+      .catch(error => this.context.setError(error))
   }
 
   createRecipesList() {
