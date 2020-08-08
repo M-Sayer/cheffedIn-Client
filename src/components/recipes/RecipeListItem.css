@@ -37,6 +37,11 @@
   .recipe-tile button {
     width: 50%;
     margin-left: 25%;
+    margin-top: 20px;
+  }
+
+  .recipe-tile button:hover {
+    background-color: #3a3532;
   }
 
   .recipe-tile img {

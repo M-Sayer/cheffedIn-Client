@@ -78,7 +78,7 @@
   }
 
   .manage-comment button {
-    width: 10%;
+    width: 15%;
   }
 
   .edit-comment-buttons {
@@ -91,6 +91,12 @@
   .edit-comment-buttons button[type=submit] {
     width: 50%;
     margin: 10px;
+  }
+
+  .comment-form-container button[type=submit]:hover,
+  .manage-comment-buttons button:hover,
+  .edit-comment-buttons button:hover {
+    background-color: #3a3532;
   }
 
   .edit-comment textarea {
