@@ -27,6 +27,11 @@
   background-color: #140F0B;
 }
 
+.recipe-tile a {
+  color: #140F0B;
+  text-decoration: none;
+}
+
 @media only screen and (min-width: 800px) {
   
   .recipe-tile button {
@@ -38,6 +43,11 @@
     height: 200px;
     width: 100%;
     object-fit: cover;
+  }
+
+  .recipe-tile a:hover {
+    color: #ef6a46;
+    text-decoration: none;
   }
   
   

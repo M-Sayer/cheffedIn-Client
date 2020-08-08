@@ -84,11 +84,11 @@ export default class RecipesInListPage extends React.Component {
     const list = this.state.recipes.map(recipe => (
       <section key={recipe.id} className='recipe-tile'>
         <Link to={`/recipes/${recipe.id}`}>
-        <section className='user-list-recipe-item'>
-          <img src={recipe.image} alt={recipe.title}></img>
-          <h4>{recipe.title}</h4>
-        </section>
-      </Link>
+          <section className='user-list-recipe-item'>
+            <img src={recipe.image} alt={recipe.title}></img>
+            <h4>{recipe.title}</h4>
+          </section>
+        </Link>
       <button onClick={(e) => this.removeRecipeFromList(e, recipe.id)}>remove</button>
       </section>
     ))
