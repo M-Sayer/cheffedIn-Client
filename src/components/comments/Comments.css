@@ -7,7 +7,7 @@
   margin: 0;
 }
 
-.comment-form-buttons {
+.edit-comment-buttons {
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -74,7 +74,27 @@
 
   .comments-section {
     width: 60%;
-    margin-left: 20%;  
+    margin-left: 20%; 
+  }
+
+  .manage-comment button {
+    width: 10%;
+  }
+
+  .edit-comment-buttons {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+  }
+
+  .edit-comment-buttons button[type=cancel],
+  .edit-comment-buttons button[type=submit] {
+    width: 50%;
+    margin: 10px;
+  }
+
+  .edit-comment textarea {
+    width: 99%;
   }
   
   }

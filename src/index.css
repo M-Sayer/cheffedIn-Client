@@ -134,5 +134,9 @@ select {
     margin-left: 20%;
   }
 
+  button:hover {
+    cursor: pointer;
+  }
+
 }
   

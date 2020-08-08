@@ -77,7 +77,7 @@ export default class Comments extends React.Component {
           </section>
           } 
           {this.state.edit && this.state.edit_id === comment.id &&
-            <form className='comment-form'
+            <form className='edit-comment'
             onSubmit={(e) => this.handleSubmit(e, comment.id,)}>
               <label htmlFor='comment-body'>
                 Comment:
@@ -85,7 +85,7 @@ export default class Comments extends React.Component {
                 value={this.state.comment}
                 onChange={(e) => this.handleCommentChange(e)} />
               </label>
-              <section className='comment-form-buttons'>
+              <section className='edit-comment-buttons'>
                 <button type='submit'>Submit</button>
                 <button type='cancel' 
                 onClick={() => this.handleCancelEdit()}>Cancel</button>
