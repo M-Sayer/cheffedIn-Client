@@ -87,10 +87,6 @@
     margin-bottom: 20px;
   }
 
-  .save-recipe button:hover {
-    background-color: #ff9b73;
-  }
-
   .delete-recipe-button button {
     width: 25%;
     margin-bottom: 20px;
