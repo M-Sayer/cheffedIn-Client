@@ -25,3 +25,24 @@
 .edit-list-name button {
   margin: 10px;
 }
+
+
+@media only screen and (min-width: 800px) {
+
+.edit-list-name {
+  width: 30%;
+  margin-left: 35%;
+}
+
+.edit-list button {
+  margin: 10px;
+  width: 15%;
+  font-size: 14px;
+}
+
+.recipe-tile button {
+  width: 50%;
+}
+
+
+}

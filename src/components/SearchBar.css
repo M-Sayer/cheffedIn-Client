@@ -6,25 +6,15 @@
   margin-left: 10%;
 }
 
-/* .search {
-  width: 80%;
-  margin-left: 10%;
-} */
-
 
 .filter-bar {
   display: flex;
   flex-direction: row;
   justify-content: center;
   text-align: center;
-  /* width: 80%;
-  margin-left: 10%; */
 }
 
 .filter-bar label {
-  /* margin: 0 10px; */
-  /* display: flex;
-  flex-direction: column; */
   font-family: 'cairo', sans-serif;
   font-size: 12px;
   line-height: 50%;
@@ -32,4 +22,13 @@
 
 .filter-bar select {
   width: 80px;
+}
+
+@media only screen and (min-width: 800px) {
+
+  .search {
+    width: 50%;
+    margin-left: 25%;
+  }
+  
 }

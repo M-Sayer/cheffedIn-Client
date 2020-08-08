@@ -26,3 +26,19 @@
   margin-top: 5px;
   background-color: #140F0B;
 }
+
+@media only screen and (min-width: 800px) {
+  
+  .recipe-tile button {
+    width: 50%;
+    margin-left: 25%;
+  }
+
+  .recipe-tile img {
+    height: 200px;
+    width: 100%;
+    object-fit: cover;
+  }
+  
+  
+}
