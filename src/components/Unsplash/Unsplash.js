@@ -2,7 +2,7 @@ import React from 'react';
 
 export default class Unsplash extends React.Component {
   
-// toggle PhotoSearch active to off, so it stops dislaying live search photos
+// toggle PhotoSearch active to off, so it stops displaying live search photos
 // capture clicked photo url, and add to imageurl in form state
 // display the photo they chose
 handleClick = (e) => {

@@ -23,7 +23,7 @@ const CommentsApiService = {
         'authorization': `bearer ${TokenService.getToken()}`
       },
       body: JSON.stringify({message: newData})
-    }) //why - should i verify response?
+    })
   },
   deleteComment(id) {
     return fetch(`${config.API_ENDPOINT}/comments/${id}`, {

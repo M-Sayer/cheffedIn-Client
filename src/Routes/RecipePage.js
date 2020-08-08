@@ -99,9 +99,6 @@ const RecipePage = (props) => {
     if(uid === recipeContext.recipe.author_id) {
       return (
         <div className='edit-recipe'>
-          {/* <section className='edit-recipe-button'>
-            <button>edit</button>
-          </section> */}
           <section className='delete-recipe-button'>
             <button
               onClick={handleDeleteRecipe}

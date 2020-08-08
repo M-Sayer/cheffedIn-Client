@@ -13,7 +13,6 @@ const RecipeApiService = {
     .then(res => 
       (!res.ok)
         ? res.json().then(e => Promise.reject(e)) 
-        // why promise reject vs throw new error?
         : res.json() 
     )
   },
@@ -29,7 +28,6 @@ const RecipeApiService = {
       .then(res => 
         (!res.ok)
           ? res.json().then(e => Promise.reject(e)) 
-          // why promise reject vs throw new error?
           : res.json() 
       )
   },

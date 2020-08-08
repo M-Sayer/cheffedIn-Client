@@ -7,9 +7,6 @@ import UserContext from '../../contexts/UserContext'
 
 export default class PostedRecipes extends React.Component {
   static contextType = UserContext
-  //lists of saved recipes
-
-  //posted recipes
 
   componentDidMount() {
     const uid = TokenService.getUserIdFromToken()

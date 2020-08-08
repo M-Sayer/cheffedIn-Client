@@ -9,7 +9,6 @@ import RecipeListItem from './RecipeListItem';
 class RecipesListPage extends React.Component {
   static contextType = RecipesListContext;
 
-  //load articles
   componentDidMount() {
     this.context.clearError()
     RecipeApiService.getRecipes()
@@ -22,7 +21,6 @@ class RecipesListPage extends React.Component {
       .catch(error => this.context.setError(error))
   }
 
-  //render recipes
   renderRecipes() {
     const recipesList = this.context.filteredRecipes;
     if(recipesList.length > 0) {
@@ -52,9 +50,7 @@ class RecipesListPage extends React.Component {
           ? <p>error</p>
           : this.renderRecipes()
         }
-        
       </div>
-      
     )
   }
 }

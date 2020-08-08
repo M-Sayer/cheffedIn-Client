@@ -8,7 +8,6 @@ import LoginPage from './Routes/LoginPage';
 import RegisterPage from './Routes/RegisterPage';
 import RecipePage from './Routes/RecipePage';
 import CreateRecipePage from './Routes/CreateRecipePage';
-// import AboutPage from './Routes/AboutPage';
 import Header from './components/Header';
 import UserDash from './Routes/UserDash'
 import RecipesInListPage from './Routes/RecipesInListPage'
@@ -31,8 +30,6 @@ function App() {
          <PublicOnlyRoute path={'/register'} component={RegisterPage} />
          <PrivateRoute path={'/dashboard'} component={UserDash} />
          <PrivateRoute path={'/users/:user_id/lists/:list_id/recipes'} component={RecipesInListPage} />
-         {/* <Route path={'/about'} component={AboutPage}/>
-        */}
        </Switch>
      </main>
    </div>

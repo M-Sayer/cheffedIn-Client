@@ -28,7 +28,6 @@ export class UserProvider extends React.Component {
   }
 
   setError = (error) => {
-    console.log(error)
     this.setState({ error })
   }
 
