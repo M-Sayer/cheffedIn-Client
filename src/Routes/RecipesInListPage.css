@@ -13,10 +13,6 @@
   font-size: 14px;
 }
 
-.delete {
-  background-color: #140F0B;
-}
-
 .edit-list-name {
   width: 80%;
   margin-left: 10%;
@@ -49,10 +45,6 @@
   width: 15%;
   margin-left: 42.5%;
   font-size: 14px;
-}
-
-.delete:hover {
-  background-color: #3a3532;
 }
 
 .recipe-tile button {

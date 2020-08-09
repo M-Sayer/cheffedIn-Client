@@ -44,7 +44,7 @@ const SaveToList = (props) => {
             </Field>
             <ErrorMessage name='list_id' />
            </label>
-           <section className='selection-buttons'>
+           <section className='save-recipe-buttons'>
             <button type='submit'>save</button>
             <button onClick={() => props.toggle()}>cancel</button>
            </section>

@@ -22,11 +22,6 @@
   object-fit: cover;
 }
 
-.recipe-tile button {
-  margin-top: 5px;
-  background-color: #140F0B;
-}
-
 .recipe-tile a {
   color: #140F0B;
   text-decoration: none;
@@ -40,18 +35,17 @@
     margin-top: 20px;
   }
 
-  .recipe-tile button:hover {
-    background-color: #3a3532;
-  }
-
   .recipe-tile img {
     height: 200px;
     width: 100%;
     object-fit: cover;
   }
 
-  .recipe-tile a:hover {
+  .recipes-list a:hover {
     color: #ef6a46;
+  }
+
+  .recipe-tile a:hover {
     text-decoration: none;
   }
   

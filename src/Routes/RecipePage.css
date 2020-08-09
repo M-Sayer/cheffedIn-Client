@@ -53,9 +53,10 @@
   margin-bottom: 15px;
 }
 
-.delete-recipe-button {
+.delete-recipe-button button {
   margin-bottom: 10px;
   text-align: center;
+  width: 100%;
 }
 
 
@@ -84,6 +85,7 @@
 
   .delete-recipe-button button {
     width: 25%;
+    margin-left: 37.5%;
     margin-bottom: 20px;
   }
 
