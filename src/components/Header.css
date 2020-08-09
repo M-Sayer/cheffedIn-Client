@@ -1,5 +1,5 @@
 header {
-  /* text-align: center; */
+  text-align: center;
   color: #FFF;
   background-color: #B73A1C;
   padding: 10px 0 10px 0;
@@ -98,10 +98,5 @@ header {
   .header-logout-link {
     margin-left: 10px;
   }
-
-  
-
- 
-  
   
 }
