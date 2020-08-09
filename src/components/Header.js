@@ -19,58 +19,63 @@ export default class Header extends React.Component {
     this.context.setLoggedIn(false)
   }
 
-  renderLogOut() {
+  renderLogout() {
     return (
-      <div className='header-logged-in'>
+      <section className='header-logout-link'>
         <Link
           onClick={() => this.logOutUser()}
           to='/'>
           Logout
         </Link>
-      </div>
+      </section>
     )
   }
 
-  renderLogIn() {
+  renderLogin() {
     return (
-      <div className='header-logged-out'>
-        <section className='register-link'>
-          <Link
-            to='/register'>
-            Register
-          </Link>
-        </section>
-        <section className='login-link'>
+        <section className='header-login-link'>
           <Link
             to='/login'>
             Log In
           </Link>
         </section>
-      </div>
     )
   }
 
   renderDashboard() {
     return (
-      <div className='header-dashboard'>
-        <Link to='/dashboard'>dashboard</Link>
-      </div>
+      <section className='header-dashboard-link'>
+        <Link to='/dashboard'>Dashboard</Link>
+      </section>
+    )
+  }
+
+  renderRegister() {
+    return (
+      <section className='header-register-link'>
+        <Link
+          to='/register'>
+          Register
+        </Link>
+      </section>
     )
   }
   
   render() {
     return (
       <header>
-        <section className='header-text'>
+        <section className='logo-text'>
           <Link to='/'>
             <h1>cheffedIn</h1>
           </Link>
         </section>
-        {this.context.isLoggedIn
-          ? this.renderLogOut()
-          : this.renderLogIn() 
-        }
-        {this.context.isLoggedIn && this.renderDashboard()}
+        <section className='header-links'>
+          {this.context.isLoggedIn && this.renderDashboard()}
+          {this.context.isLoggedIn && this.renderLogout()}
+          {!this.context.isLoggedIn && this.renderRegister()}
+          {!this.context.isLoggedIn && this.renderLogin()}
+
+        </section>
       </header>
     ) 
   }
