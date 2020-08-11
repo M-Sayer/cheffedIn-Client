@@ -4,9 +4,10 @@ import './UserDash.css'
 import SavedLists from '../components/dashboard/SavedLists'
 import PostedRecipes from '../components/dashboard/PostedRecipes'
 import TokenService from '../services/token-service'
+import RecipesContext from '../contexts/RecipesListContext'
 
 export default class UserDash extends React.Component {
-
+  static contextType = RecipesContext
   //lists of saved recipes
 
   //posted recipes
@@ -18,10 +19,29 @@ export default class UserDash extends React.Component {
     )
   }
 
+  logOutUser() {
+    TokenService.clearToken()
+    this.context.setLoggedIn(false)
+  }
+
+  renderLogout() {
+    return (
+        <button className='logout-button'
+          onClick={() => {
+            this.logOutUser()
+            this.props.history.push('/')
+        }}> Logout
+        </button>
+    )
+  }
+
   render() {
     return (
       <div className='user-dashboard'>
-        {this.createWelcome()}
+        <section className='dashboard-header'>
+          {this.createWelcome()}
+          {this.context.isLoggedIn && this.renderLogout()}
+        </section>
         <section className='dash-container'>
           <SavedLists />
           <PostedRecipes />

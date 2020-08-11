@@ -1,11 +1,29 @@
 import React from 'react'
+import { useHistory, NavLink } from 'react-router-dom'
+import './Footer.css'
 
 const Footer = (props) => {
-  return (
-    <div className='footer'>
-      
-    </div>
-  )
+
+  const history = useHistory()
+  
+  function renderButtons() {
+    return (
+      <div className='footer'>
+        <NavLink className='footer-link' 
+          activeClassName='active-footer-link'
+          exact to='/'>Home</NavLink>
+        <NavLink className='footer-link' 
+          activeClassName='active-footer-link'
+          to='/dashboard'>Dashboard</NavLink>
+        <NavLink className='footer-link' 
+          activeClassName='active-footer-link'
+          to='/create'>Create</NavLink>
+      </div>
+    )
+  }
+
+  return renderButtons()
+  
 }
 
 export default Footer

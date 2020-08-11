@@ -1,5 +1,5 @@
 import React, { useContext, useEffect } from 'react';
-import { Link, useHistory } from 'react-router-dom';
+import { NavLink, Link, useHistory } from 'react-router-dom';
 import './Header.css'
 
 import TokenService from '../services/token-service'
@@ -10,27 +10,13 @@ const Header = (props) => {
 
   const history = useHistory()
 
+  const width = window.innerWidth
+
   useEffect(() => {
     recipesContext.setLoggedIn(
       TokenService.hasAuthToken()
     )
   }, [])
-
-  function logOutUser() {
-    TokenService.clearToken()
-    recipesContext.setLoggedIn(false)
-  }
-
-  function renderLogout() {
-    return (
-        <button className='header-logout-button'
-          onClick={() => {
-            logOutUser()
-            history.push('/')
-        }}> Logout
-        </button>
-    )
-  }
 
   function renderLogin() {
     return (
@@ -41,10 +27,21 @@ const Header = (props) => {
     )
   }
 
-  function renderDashboard() {
+  function renderNavLinks() {
     return (
-      <section className='header-dashboard-link'>
-        <Link to='/dashboard'>Dashboard</Link>
+      <section className='header-nav-links'>
+        <NavLink className='header-link'
+          activeClassName='header-link-active'
+          exact to='/'>Home
+        </NavLink>
+        <NavLink className='header-link'
+          activeClassName='header-link-active'
+          to='/dashboard'>Dashboard
+        </NavLink>
+        <NavLink className='header-link'
+          activeClassName='header-link-active'
+          to='/create'>Create Recipe
+        </NavLink>
       </section>
     )
   }
@@ -65,13 +62,13 @@ const Header = (props) => {
           <h1>cheffedIn</h1>
         </Link>
       </section>
-      <section className='header-buttons'>
-        {recipesContext.isLoggedIn && renderDashboard()}
-        {recipesContext.isLoggedIn && renderLogout()}
-        {!recipesContext.isLoggedIn && renderRegister()}
-        {!recipesContext.isLoggedIn && renderLogin()}
-
-      </section>
+      {recipesContext.isLoggedIn && (width > 767) && renderNavLinks()}
+      {!recipesContext.isLoggedIn && 
+        <section className='header-buttons'>
+          {renderRegister()}
+          {renderLogin()}
+        </section>
+      }
     </header>
   ) 
 }

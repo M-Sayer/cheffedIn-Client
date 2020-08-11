@@ -1,0 +1,21 @@
+.footer {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  background-color: #ef6a46;
+  overflow: hidden;
+  position: fixed;
+  bottom: 0;
+  width: 100%;
+  padding: 5px 0 10px 0;
+  font-size: 16px;
+}
+
+.footer-link {
+  color: #FFF;
+  text-decoration: none;
+}
+
+.active-footer-link {
+  text-decoration: underline;
+}

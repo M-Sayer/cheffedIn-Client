@@ -13,6 +13,7 @@ header {
 .logo-text h1 {
   letter-spacing: 3px;
   font-size: 36px;
+  margin: 10px 0 0 0;
 }
 
 .logo-text a {
@@ -20,18 +21,24 @@ header {
   text-decoration: none;
 }
 
-.header-buttons a {
-  color: #FFF;
-  text-decoration: none;
-}
-
 .header-buttons {
   display: inline-flex;
   flex-direction: row;
+  margin-top: 10px;
 }
 
 .header-buttons button {
   margin-left: 10px;
+  background-position: center;
+  transition: background 0.8s;
+}
+.header-buttons button:hover {
+  background: #B73A1C radial-gradient(circle, transparent 1%, #B73A1C 1%) center/15000%;
+}
+.header-buttons button:active {
+  background-color:#ef6a46;
+  background-size: 100%;
+  transition: background 0s;
 }
 
 .header-register-button {
@@ -44,18 +51,7 @@ header {
   border: 2px solid #FFF;
 }
 
-.header-buttons button {
-  background-position: center;
-  transition: background 0.5s;
-}
-.header-buttons button:hover {
-  background: #B73A1C radial-gradient(circle, transparent 1%, #B73A1C 1%) center/15000%;
-}
-.header-buttons button:active {
-  background-color:#ef6a46;
-  background-size: 100%;
-  transition: background 0s;
-}
+
 
 
 /* .header-logged-in, .login-link {
@@ -91,44 +87,58 @@ header {
   text-decoration: none;
 } */
 
+.header-link {
+  text-decoration: none;
+  color: #FFF;
+  margin-left: 10px;
+}
 
-@media only screen and (min-width: 800px) {
+.header-link-active {
+  text-decoration: underline;
+}
 
-  .header {
+@media only screen and (min-width: 768px) {
+
+  header {
     display: flex;
     flex-direction: row;
-    align-items: center;
+    align-items: baseline;
+    padding-bottom: 25px;
+    flex-wrap: nowrap;
   }
 
   .logo-text {
     margin: 0 0 0 15px;
     display: inline-flex;
+    flex-grow: 5;
+    /* position: fixed;
+    top: 0;
+    left: 0; */
   }
 
   .logo-text h1 {
     font-size: 30px;
   }
 
-  .header-links {
+  .header-buttons {
     display: inline-flex;
     margin-left: 50%;
     font-size: 16px;
   }
 
-  .header-register-link {
-
+  .header-buttons button:hover {
+    background-color: #ef6a46;
   }
 
-  .header-login-link {
+  .header-login-button {
     margin-left: 10px;
   }
 
-  .header-dashboard-link {
-  
-  }
-
-  .header-logout-link {
-    margin-left: 10px;
+  .header-nav-links {
+    display: inline-flex;
+    flex-wrap: nowrap;
+    flex-grow: 1;
+    font-size: 16px;
   }
   
 }
