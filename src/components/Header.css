@@ -5,11 +5,6 @@ header {
   padding: 10px 0 10px 0;
 }
 
-/* .logo-text {
-  margin-top: 10%;
-  margin-bottom: 10%;
-} */
-
 .logo-text h1 {
   letter-spacing: 3px;
   font-size: 36px;
@@ -32,9 +27,11 @@ header {
   background-position: center;
   transition: background 0.8s;
 }
+
 .header-buttons button:hover {
   background: #B73A1C radial-gradient(circle, transparent 1%, #B73A1C 1%) center/15000%;
 }
+
 .header-buttons button:active {
   background-color:#ef6a46;
   background-size: 100%;
@@ -50,42 +47,6 @@ header {
   background-color: #B73A1C;
   border: 2px solid #FFF;
 }
-
-
-
-
-/* .header-logged-in, .login-link {
-  font-family: 'Orbitron', sans-serif;
-  font-size: 14px;
-  position: absolute;
-  top: 2%;
-  right: 5%;
-} */
-
-
-/* 
-.header-logged-out {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-} */
-
-/* .register-link, .login-link {
-  margin: 1px;
-} */
-
-/* .header-dashboard, .register-link {
-  font-family: 'Orbitron', sans-serif;
-  font-size: 14px;
-  position: absolute;
-  top: 2%;
-  left: 5%;
-} */
-
-/* .header-dashboard a {
-  color: #140F0B;
-  text-decoration: none;
-} */
 
 .header-link {
   text-decoration: none;
@@ -111,9 +72,6 @@ header {
     margin: 0 0 0 15px;
     display: inline-flex;
     flex-grow: 5;
-    /* position: fixed;
-    top: 0;
-    left: 0; */
   }
 
   .logo-text h1 {

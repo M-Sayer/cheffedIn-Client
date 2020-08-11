@@ -1,10 +1,8 @@
 import React from 'react'
-import { useHistory, NavLink } from 'react-router-dom'
+import { NavLink } from 'react-router-dom'
 import './Footer.css'
 
 const Footer = (props) => {
-
-  const history = useHistory()
   
   function renderButtons() {
     return (
