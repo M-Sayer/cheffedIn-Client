@@ -18,7 +18,7 @@ const SaveToList = (props) => {
     const list_id = values.list_id
     const recipe_id = props.props.match.params.recipeId
     const newData = { list_id: list_id, recipe_id: recipe_id }
-    ListsApiService.postRecipeToList(recipe_id, list_id, newData)
+    ListsApiService.postRecipeToList(list_id, recipe_id, newData)
       .then(() => props.toggle())
   }
   
