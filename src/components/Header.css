@@ -20,38 +20,38 @@ header {
   text-decoration: none;
 }
 
-.header-links a {
+.header-buttons a {
   color: #FFF;
   text-decoration: none;
 }
 
-.header-links {
+.header-buttons {
   display: inline-flex;
   flex-direction: row;
 }
 
-.header-links button {
+.header-buttons button {
   margin-left: 10px;
 }
 
-.header-register-link button {
+.header-register-button {
   background-color: #B73A1C;
   border: 2px solid #FFF;
 }
 
-.header-login-link button {
+.header-login-button {
   background-color: #B73A1C;
   border: 2px solid #FFF;
 }
 
-.header-links button {
+.header-buttons button {
   background-position: center;
   transition: background 0.5s;
 }
-.header-links button:hover {
+.header-buttons button:hover {
   background: #B73A1C radial-gradient(circle, transparent 1%, #B73A1C 1%) center/15000%;
 }
-.header-links button:active {
+.header-buttons button:active {
   background-color:#ef6a46;
   background-size: 100%;
   transition: background 0s;

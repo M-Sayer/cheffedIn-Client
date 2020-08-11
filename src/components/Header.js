@@ -1,52 +1,47 @@
-import React from 'react';
-import {Link} from 'react-router-dom';
+import React, { useContext, useEffect } from 'react';
+import { Link, useHistory } from 'react-router-dom';
 import './Header.css'
 
 import TokenService from '../services/token-service'
 import RecipesListContext from '../contexts/RecipesListContext'
 
-export default class Header extends React.Component {
-  static contextType = RecipesListContext
+const Header = (props) => {
+  const recipesContext = useContext(RecipesListContext)
 
-  componentDidMount() {
-    this.context.setLoggedIn(
+  const history = useHistory()
+
+  useEffect(() => {
+    recipesContext.setLoggedIn(
       TokenService.hasAuthToken()
     )
-  }
+  }, [])
 
-  logOutUser() {
+  function logOutUser() {
     TokenService.clearToken()
-    this.context.setLoggedIn(false)
+    recipesContext.setLoggedIn(false)
   }
 
-  renderLogout() {
+  function renderLogout() {
     return (
-      <section className='header-logout-link'>
-        <button>
-          <Link
-            onClick={() => this.logOutUser()}
-            to='/'>
-            Logout
-          </Link>
+        <button className='header-logout-button'
+          onClick={() => {
+            logOutUser()
+            history.push('/')
+        }}> Logout
         </button>
-      </section>
     )
   }
 
-  renderLogin() {
+  function renderLogin() {
     return (
-        <section className='header-login-link'>
-          <button>
-            <Link
-              to='/login'>
-              Log In
-            </Link>
+          <button className='header-login-button'
+            onClick={() => history.push('/login')}
+            > Log In
           </button>
-        </section>
     )
   }
 
-  renderDashboard() {
+  function renderDashboard() {
     return (
       <section className='header-dashboard-link'>
         <Link to='/dashboard'>Dashboard</Link>
@@ -54,35 +49,31 @@ export default class Header extends React.Component {
     )
   }
 
-  renderRegister() {
+  function renderRegister() {
     return (
-      <section className='header-register-link'>
-        <button>
-          <Link
-            to='/register'>
-            Register
-          </Link>
+        <button className='header-register-button'
+        onClick={() => history.push('/register')}>
+          Register
         </button>
-      </section>
     )
   }
   
-  render() {
-    return (
-      <header>
-        <section className='logo-text'>
-          <Link to='/'>
-            <h1>cheffedIn</h1>
-          </Link>
-        </section>
-        <section className='header-links'>
-          {this.context.isLoggedIn && this.renderDashboard()}
-          {this.context.isLoggedIn && this.renderLogout()}
-          {!this.context.isLoggedIn && this.renderRegister()}
-          {!this.context.isLoggedIn && this.renderLogin()}
+  return (
+    <header>
+      <section className='logo-text'>
+        <Link to='/'>
+          <h1>cheffedIn</h1>
+        </Link>
+      </section>
+      <section className='header-buttons'>
+        {recipesContext.isLoggedIn && renderDashboard()}
+        {recipesContext.isLoggedIn && renderLogout()}
+        {!recipesContext.isLoggedIn && renderRegister()}
+        {!recipesContext.isLoggedIn && renderLogin()}
 
-        </section>
-      </header>
-    ) 
-  }
+      </section>
+    </header>
+  ) 
 }
+
+export default Header
