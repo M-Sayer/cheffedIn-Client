@@ -5,10 +5,10 @@ header {
   padding: 10px 0 10px 0;
 }
 
-.logo-text {
+/* .logo-text {
   margin-top: 10%;
   margin-bottom: 10%;
-}
+} */
 
 .logo-text h1 {
   letter-spacing: 3px;
@@ -23,6 +23,38 @@ header {
 .header-links a {
   color: #FFF;
   text-decoration: none;
+}
+
+.header-links {
+  display: inline-flex;
+  flex-direction: row;
+}
+
+.header-links button {
+  margin-left: 10px;
+}
+
+.header-register-link button {
+  background-color: #B73A1C;
+  border: 2px solid #FFF;
+}
+
+.header-login-link button {
+  background-color: #B73A1C;
+  border: 2px solid #FFF;
+}
+
+.header-links button {
+  background-position: center;
+  transition: background 0.5s;
+}
+.header-links button:hover {
+  background: #B73A1C radial-gradient(circle, transparent 1%, #B73A1C 1%) center/15000%;
+}
+.header-links button:active {
+  background-color:#ef6a46;
+  background-size: 100%;
+  transition: background 0s;
 }
 
 

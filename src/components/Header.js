@@ -22,11 +22,13 @@ export default class Header extends React.Component {
   renderLogout() {
     return (
       <section className='header-logout-link'>
-        <Link
-          onClick={() => this.logOutUser()}
-          to='/'>
-          Logout
-        </Link>
+        <button>
+          <Link
+            onClick={() => this.logOutUser()}
+            to='/'>
+            Logout
+          </Link>
+        </button>
       </section>
     )
   }
@@ -34,10 +36,12 @@ export default class Header extends React.Component {
   renderLogin() {
     return (
         <section className='header-login-link'>
-          <Link
-            to='/login'>
-            Log In
-          </Link>
+          <button>
+            <Link
+              to='/login'>
+              Log In
+            </Link>
+          </button>
         </section>
     )
   }
@@ -53,10 +57,12 @@ export default class Header extends React.Component {
   renderRegister() {
     return (
       <section className='header-register-link'>
-        <Link
-          to='/register'>
-          Register
-        </Link>
+        <button>
+          <Link
+            to='/register'>
+            Register
+          </Link>
+        </button>
       </section>
     )
   }
