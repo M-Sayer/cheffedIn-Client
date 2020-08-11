@@ -39,6 +39,18 @@ button {
   color: #FFF;
   border-radius: 5px;
   padding: 5px;
+  background-position: center;
+  transition: background 0.8s;
+}
+
+button:hover {
+  background: #B73A1C radial-gradient(circle, transparent 1%, #ef6a46 1%) center/15000%;
+}
+
+button:active {
+  background-color:#ef6a46;
+  background-size: 100%;
+  transition: background 0s;
 }
 
 input [type=submit] {
