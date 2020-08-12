@@ -55,7 +55,7 @@ const SaveToList = (props) => {
               <option value=''>select</option>
               {createOptions()}
             </Field>
-            <ErrorMessage name='list_id' />
+            <ErrorMessage component='section' className='error-message' name='list_id' />
            </label>
            <section className='save-recipe-buttons'>
             <button type='submit'>save</button>
