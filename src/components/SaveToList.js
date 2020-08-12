@@ -1,10 +1,12 @@
-import React from 'react'
+import React, { useState } from 'react'
 import { Formik, Form, Field, ErrorMessage } from 'formik'
 import * as Yup from 'yup'
 
 import ListsApiService from '../services/lists-api-service'
 
 const SaveToList = (props) => {
+
+  const [state, setState] = useState({error: false})
 
   function createOptions() {
     const lists = props.listsContext.userLists.map(list => (
@@ -15,16 +17,27 @@ const SaveToList = (props) => {
   }
   
   function handleSubmit(values) {
+    setState({ error: false})
     const list_id = values.list_id
     const recipe_id = props.props.match.params.recipeId
     const newData = { list_id: list_id, recipe_id: recipe_id }
     ListsApiService.postRecipeToList(list_id, recipe_id, newData)
-      .then(() => props.toggle())
+      .then(res => {
+
+          props.toggle()
+        
+      })
+      .catch(error => setState({ error: error.error }))
   }
   
   function renderListsSelection() {
     return (
       <div className='user-list-selection'>
+         {state.error &&
+          <div className='error-container'>
+            <p className='error-message'>{state.error}</p>
+          </div>
+         }
        <Formik
        initialValues={{
          list_id: ''
