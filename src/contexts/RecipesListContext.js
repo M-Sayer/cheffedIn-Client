@@ -8,7 +8,6 @@ const RecipesListContext = React.createContext({
   clearError: () => {},
   setRecipesList: () => {},
   handleSearchChange: () => {},
-  setLoggedIn: () => {},
   clearSearch: () => {},
   search: {
     title: '',
@@ -16,7 +15,6 @@ const RecipesListContext = React.createContext({
     vegetarian: '',
     time: '',
   },
-  isLoggedIn: false 
 })
 
 export default RecipesListContext;
@@ -25,7 +23,6 @@ export class RecipesListProvider extends React.Component {
   state = {
     recipesList: [],
     error: null,
-    isLoggedIn: false,
     search: {
       title: '',
       type: '',
@@ -33,10 +30,6 @@ export class RecipesListProvider extends React.Component {
       time: '',
     },
   };
-
-  setLoggedIn = (boolean) => {
-    this.setState({ isLoggedIn: boolean })
-  }
 
   setRecipesList = (recipesList) => {
     this.setState({ recipesList })
@@ -97,8 +90,6 @@ export class RecipesListProvider extends React.Component {
       search: this.state.search,
       filteredRecipes: filteredRecipes,
       handleSearchChange: this.handleSearchChange,
-      setLoggedIn: this.setLoggedIn,
-      isLoggedIn: this.state.isLoggedIn,
       clearSearch: this.clearSearch,
     }
     return (

@@ -3,17 +3,17 @@ import { NavLink, Link, useHistory } from 'react-router-dom';
 import './Header.css'
 
 import TokenService from '../services/token-service'
-import RecipesListContext from '../contexts/RecipesListContext'
+import UserContext from '../contexts/UserContext'
 
 const Header = (props) => {
-  const recipesContext = useContext(RecipesListContext)
+  const userContext = useContext(UserContext)
 
   const history = useHistory()
 
   const width = window.innerWidth
 
   useEffect(() => {
-    recipesContext.setLoggedIn(
+    userContext.setLoggedIn(
       TokenService.hasAuthToken()
     )
   }, [])
@@ -62,8 +62,8 @@ const Header = (props) => {
           <h1>cheffedIn</h1>
         </Link>
       </section>
-      {recipesContext.isLoggedIn && (width > 767) && renderNavLinks()}
-      {!recipesContext.isLoggedIn && 
+      {userContext.isLoggedIn && (width > 767) && renderNavLinks()}
+      {!userContext.isLoggedIn && 
         <section className='header-buttons'>
           {renderRegister()}
           {renderLogin()}

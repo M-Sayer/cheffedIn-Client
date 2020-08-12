@@ -14,12 +14,12 @@ import RecipesInListPage from './Routes/RecipesInListPage'
 import PrivateRoute from './Routes/PrivateRoute'
 import PublicOnlyRoute from './Routes/PublicOnlyRoute'
 import Footer from './components/Footer'
-import RecipesListContext from './contexts/RecipesListContext'
+import UserContext from './contexts/UserContext'
 
 
 function App() {
 
-  const recipesContext = useContext(RecipesListContext)
+  const userContext = useContext(UserContext)
   
   function renderFooter() {
     let width = window.innerWidth;
@@ -45,7 +45,7 @@ function App() {
         <PrivateRoute path={'/users/:user_id/lists/:list_id/recipes'} component={RecipesInListPage} />
       </Switch>
     </main>
-    {recipesContext.isLoggedIn && renderFooter()}
+    {userContext.isLoggedIn && renderFooter()}
    </div>
   );
 }

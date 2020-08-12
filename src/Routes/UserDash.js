@@ -4,10 +4,10 @@ import './UserDash.css'
 import SavedLists from '../components/dashboard/SavedLists'
 import PostedRecipes from '../components/dashboard/PostedRecipes'
 import TokenService from '../services/token-service'
-import RecipesContext from '../contexts/RecipesListContext'
+import UserContext from '../contexts/UserContext'
 
 export default class UserDash extends React.Component {
-  static contextType = RecipesContext
+  static contextType = UserContext
   //lists of saved recipes
 
   //posted recipes

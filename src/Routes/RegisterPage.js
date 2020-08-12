@@ -4,10 +4,10 @@ import * as Yup from 'yup';
 
 import RegisterApiService from '../services/register-api-service'
 import TokenService from '../services/token-service'
-import RecipesListContext from '../contexts/RecipesListContext'
+import UserContext from '../contexts/UserContext'
 
 class RegisterPage extends React.Component {
-  static contextType = RecipesListContext
+  static contextType = UserContext
 
   state = {
     error: null
