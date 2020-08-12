@@ -16,18 +16,23 @@ const SaveToList = (props) => {
     return lists
   }
   
-  function handleSubmit(values) {
+  async function handleSubmit(values) {
     setState({ error: false})
     const list_id = values.list_id
     const recipe_id = props.props.match.params.recipeId
     const newData = { list_id: list_id, recipe_id: recipe_id }
-    ListsApiService.postRecipeToList(list_id, recipe_id, newData)
-      .then(res => {
-
-          props.toggle()
-        
-      })
-      .catch(error => setState({ error: error.error }))
+    
+    try {
+      let response = await ListsApiService.postRecipeToList(list_id, recipe_id, newData)
+      
+      if(!response.ok) {
+        let e = await response.json()
+        await Promise.reject(e)
+      } return props.toggle()
+    } 
+    catch (e) {
+      setState({ error: e.error })
+    } 
   }
   
   function renderListsSelection() {
