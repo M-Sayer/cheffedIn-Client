@@ -125,13 +125,17 @@ select {
   margin-top: 10px;
 }
 
-.error-container {
+.error-container, .success-container {
   width: 80%;
   margin-left: 10%;
 }
 
 .error-message {
   color: red;
+}
+
+.success-container {
+  color: green;
 }
 
 @media only screen and (min-width: 800px) {

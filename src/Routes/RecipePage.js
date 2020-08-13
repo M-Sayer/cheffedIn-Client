@@ -116,15 +116,11 @@ const RecipePage = (props) => {
 
   function renderSuccess() {
     return (
-      <div className='success'>
+      <div className='success-container'>
         <p>Recipe added to list!</p>
       </div>
     )
   }
-
-  // function hideSuccess() {
-    
-  // }
 
   function showSuccess() {
     setSuccess({success: true})
@@ -192,7 +188,6 @@ const RecipePage = (props) => {
           </p>
         </section>
       }
-      {/* {success && hideSuccess()} */}
       {renderRecipe()}
       <Comments />
      </div>
