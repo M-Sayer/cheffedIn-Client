@@ -28,7 +28,10 @@ const SaveToList = (props) => {
       if(!response.ok) {
         let e = await response.json()
         await Promise.reject(e)
-      } return props.toggle()
+      } else { 
+        props.toggle()
+        props.showSuccess()
+      }
     } 
     catch (e) {
       setState({ error: e.error })

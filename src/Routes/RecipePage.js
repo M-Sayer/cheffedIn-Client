@@ -14,6 +14,7 @@ import SaveToList from '../components/SaveToList'
 const RecipePage = (props) => {
 
   const [state, setState] = useState({saveRecipe: false})
+  const [success, setSuccess] = useState({success: false})
   
   const recipeContext = useContext(RecipeContext)
   const listsContext = useContext(UserContext)
@@ -48,6 +49,10 @@ const RecipePage = (props) => {
         .then(lists => listsContext.setUserLists(lists))
         .catch(error => listsContext.setError)
     }
+  }, [])
+
+  useEffect(() => {
+    setSuccess({success: false})
   }, [])
 
   function makeTime(recipe) {
@@ -109,6 +114,23 @@ const RecipePage = (props) => {
     }
   }
 
+  function renderSuccess() {
+    return (
+      <div className='success'>
+        <p>Recipe added to list!</p>
+      </div>
+    )
+  }
+
+  // function hideSuccess() {
+    
+  // }
+
+  function showSuccess() {
+    setSuccess({success: true})
+    return setTimeout(() => setSuccess({success: false}), 2000) 
+  }
+
   function renderRecipe() {
     const recipe = recipeContext.recipe;
     const time = makeTime(recipe);
@@ -121,10 +143,12 @@ const RecipePage = (props) => {
         </section>
         {TokenService.hasAuthToken() &&
           <section className='save-recipe'>
+            {success.success && renderSuccess()}
             {!state.saveRecipe && <button onClick={(e) => handleSaveRecipe(e)}
             >save recipe</button>}
             {state.saveRecipe &&
               <SaveToList
+              showSuccess={showSuccess}
               props={props} 
               toggle={toggleSaveRecipe}
               listsContext={listsContext}/>
@@ -161,13 +185,14 @@ const RecipePage = (props) => {
 
     return (
      <div className='recipe-full'>
-       {recipeContext.error &&
-          <section className='error-container'>
-            <p className='error-message'>
-            {recipeContext.error.error.message}
-            </p>
-          </section>
-        }
+      {recipeContext.error &&
+        <section className='error-container'>
+          <p className='error-message'>
+          {recipeContext.error.error.message}
+          </p>
+        </section>
+      }
+      {/* {success && hideSuccess()} */}
       {renderRecipe()}
       <Comments />
      </div>
