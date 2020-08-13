@@ -125,17 +125,38 @@ select {
   margin-top: 10px;
 }
 
-.error-container, .success-container {
-  width: 80%;
-  margin-left: 10%;
+.popup-error-container {
+  color: red;
+  font-size: 16px;
+  position: relative;
 }
 
-.error-message {
-  color: red;
+.popup-error-message {
+  width: 80%;
+  height: auto;
+  background-color: honeydew;
+  position: absolute;
+  transform: translate(-50%,-125%);
+  border-radius: 5px;
 }
 
 .success-container {
   color: green;
+  font-size: 16px;
+  position: relative;
+}
+
+.success-message {
+  width: 80%;
+  height: auto;
+  background-color: honeydew;
+  position: absolute;
+  transform: translate(-50%,-125%);
+  border-radius: 5px;
+}
+
+.success-message p, .popup-error-message p {
+  margin: 5px;
 }
 
 @media only screen and (min-width: 800px) {
@@ -145,15 +166,13 @@ select {
     margin-left: 20%
   }  
 
-  .error-container {
-    width: 60%;
-    margin-left: 20%;
-  }
-
   button:hover {
     cursor: pointer;
     background-color: #800000;
   }
 
+  .success-message, .popup-error-message {
+    width: 25%;
+  }
 }
   

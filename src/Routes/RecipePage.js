@@ -117,7 +117,9 @@ const RecipePage = (props) => {
   function renderSuccess() {
     return (
       <div className='success-container'>
-        <p>Recipe added to list!</p>
+        <span className='success-message'>
+          <p>Recipe added to list!</p>
+        </span>
       </div>
     )
   }

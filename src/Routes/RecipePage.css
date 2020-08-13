@@ -30,6 +30,11 @@
 .recipe-heading {
   font-family: 'Orbitron', sans-serif;
   text-align: center;
+  margin-bottom: 15px;
+}
+
+.recipe-heading h5 {
+  margin-top: 0;
 }
 
 .save-recipe {

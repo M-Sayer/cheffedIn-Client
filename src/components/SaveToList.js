@@ -6,7 +6,7 @@ import ListsApiService from '../services/lists-api-service'
 
 const SaveToList = (props) => {
 
-  const [state, setState] = useState({error: false})
+  const [state, setState] = useState({error: false, errorMessage: ''})
 
   function createOptions() {
     const lists = props.listsContext.userLists.map(list => (
@@ -17,7 +17,7 @@ const SaveToList = (props) => {
   }
   
   async function handleSubmit(values) {
-    setState({ error: false})
+    setState({ ...state, error: false })
     const list_id = values.list_id
     const recipe_id = props.props.match.params.recipeId
     const newData = { list_id: list_id, recipe_id: recipe_id }
@@ -34,18 +34,29 @@ const SaveToList = (props) => {
       }
     } 
     catch (e) {
-      setState({ error: e.error })
+      showError(e)
     } 
+  }
+
+  function renderError() {
+    return (
+      <div className='popup-error-container'>
+        <span className='popup-error-message'>
+          <p>{state.errorMessage}</p>
+        </span>
+      </div>
+    )
+  }
+
+  function showError(e) {
+    setState({ error:true, errorMessage: e.error })
+    return setTimeout(() => setState({error:false}), 2000) 
   }
   
   function renderListsSelection() {
     return (
-      <div className='user-list-selection'>
-         {state.error &&
-          <div className='error-container'>
-            <p className='error-message'>{state.error}</p>
-          </div>
-         }
+      <section className='user-list-selection'>
+        {state.error && renderError()}
        <Formik
        initialValues={{
          list_id: ''
@@ -71,7 +82,7 @@ const SaveToList = (props) => {
            </section>
          </Form>
        </Formik>
-      </div>
+      </section>
     )
   }
 
