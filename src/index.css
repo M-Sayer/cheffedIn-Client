@@ -159,6 +159,15 @@ select {
   margin: 5px;
 }
 
+.error-container {
+  width: 80%;
+  margin-left: 10%;
+}
+
+.error-message {
+  color: red;
+}
+
 @media only screen and (min-width: 800px) {
 
   .form {
@@ -173,6 +182,11 @@ select {
 
   .success-message, .popup-error-message {
     width: 25%;
+  }
+
+  .error-container {
+    width: 60%;
+    margin-left: 20%;
   }
 }
   
