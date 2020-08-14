@@ -10,7 +10,37 @@ export default class SearchBar extends React.Component {
     this.context.clearSearch()
   }
 
+  render
+
+  renderFilterButtons(id, values) {
+    const buttons = values.map(value => {
+      let name
+      if(value === 30) {
+        name = 'Under 30 Minutes'
+      } else if(value === 60) {
+        name = 'Under 1 Hour'
+      } else if(value === 'true') {
+        name = 'vegetarian'
+      } else {
+        name = value
+      }
+
+      return (
+        <button
+          onClick={(e) => this.context.handleSearchChange(e)} 
+          id={id}
+          value={value}
+          className='filter-button'>
+          {name}
+        </button>
+    )})
+
+    return buttons
+  }
+
   render() {
+    
+    
     return (
         <div className='search-bar'>
           <form className='search-form'>
@@ -21,33 +51,9 @@ export default class SearchBar extends React.Component {
               onChange={(e) => this.context.handleSearchChange(e)} />
             </section>
             <section className='filter-bar'>
-                <label htmlFor='time'>
-                  prep-time:
-                  <select id='time' onChange={(e) => this.context.handleSearchChange(e)}>
-                    <option value=''>select</option>
-                    <option value={30}>30 minutes or less</option>
-                    <option value={60}>1 hour or less</option>
-                  </select>
-                </label>
-                <label htmlFor='type'>
-                  meal type:
-                  <select id='type' onChange={(e) => this.context.handleSearchChange(e)}>
-                  <option value=''>select</option>
-                  <option value='appetizer'>appetizer</option>
-                  <option value='main'>main</option>
-                  <option value='side'>side</option>
-                  <option value='dessert'>dessert</option>
-                  <option value='beverage'>beverage</option>
-                  </select>
-                </label>
-                <label htmlFor='vegetarian'>
-                  diet:
-                  <select id='vegetarian' onChange={(e) => this.context.handleSearchChange(e)}>
-                    <option value=''>select</option>
-                    <option value='false'>non-vegetarian</option>
-                    <option value='true'>vegetarian</option>
-                  </select>
-                </label>
+                {this.renderFilterButtons('time', [30, 60])}
+                {this.renderFilterButtons('type', ['appetizer', 'main', 'dessert', 'side', 'beverage'])}
+                {this.renderFilterButtons('vegetarian', ['true'])}
             </section>
           </form>
         </div>
