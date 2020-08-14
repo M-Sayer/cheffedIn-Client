@@ -30,10 +30,8 @@ h1 {
 }
 
 button {
-  /* width: 100%; */
   background-color: #ef6a46;
   border: none;
-  /* border: 2px solid #ef6a46; */
   text-align: center;
   font-size: 14px;
   color: #FFF;
@@ -57,17 +55,11 @@ input [type=submit] {
   width: 100%;
   background-color: #ef6a46;
   border: none;
-  /* border: 2px solid #ef6a46; */
   text-align: center;
   font-size: 18px;
   color: #FFF;
   border-radius: 5px;
 }
-
-/* input[type=submit]:hover {
-  background-color: #B73A1C;
-  color: #DFE4E0;
-} */
 
 input[type=text], input[type=password] {
   display: block;
@@ -103,7 +95,6 @@ select {
   background: #ef6a46;
   border: none;
   color: #FFF;
-  /* border: 2px solid #800000; */
   text-align: center;
   font-size: 12px;
   border-radius: 5px; 
