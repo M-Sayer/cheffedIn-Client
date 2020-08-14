@@ -54,6 +54,10 @@ header {
   margin-left: 10px;
 }
 
+.header-link:hover {
+  text-decoration: underline;
+}
+
 .header-link-active {
   text-decoration: underline;
 }
