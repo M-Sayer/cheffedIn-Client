@@ -10,7 +10,7 @@ export default class Home extends React.Component {
     return (
       <div className='home-page'>
         <SearchBar />
-        <RecipesListPage />
+        <RecipesListPage history={this.props.history}/>
       </div>
     )
   }

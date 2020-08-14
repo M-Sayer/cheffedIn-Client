@@ -1,5 +1,4 @@
 import React from 'react';
-import { Link } from 'react-router-dom'
 import './RecipesListPage.css'
 
 import RecipeApiService from '../../services/recipes-api-service';
@@ -34,8 +33,8 @@ class RecipesListPage extends React.Component {
       <div className='no-recipes'>
         <h2>Sorry, no results found.</h2>
         <p>But you can upload a recipe here:</p>
-        <button>
-          <Link to='/create'>Upload Recipe</Link>
+        <button onClick={() => this.props.history.push('/create')}>
+          Upload Recipe
         </button>
       </div>
     )
