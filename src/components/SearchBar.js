@@ -6,11 +6,35 @@ import RecipesListContext from '../contexts/RecipesListContext';
 export default class SearchBar extends React.Component {
   static contextType = RecipesListContext;
 
+  state = {
+    30: false,
+    60: false,
+    appetizer: false,
+    main: false,
+    dessert: false,
+    side: false,
+    beverage: false,
+    vegetarian: false,
+  }
+
   componentDidMount() {
     this.context.clearSearch()
   }
 
-  render
+  handleToggleFilter(e) {
+    e.preventDefault()
+    //toggle whether a filter button should be active
+    //if false => set state to true and call search function for selected button
+    //if true => set state to false and clear selected button from search
+    if (this.state[e.target.key] === false) {
+      this.setState({
+        ...this.state,
+        [e.target.key]: true
+      })
+
+      this.context.handleSearchChange(e)
+    }
+  }
 
   renderFilterButtons(id, values) {
     const buttons = values.map(value => {
@@ -27,7 +51,8 @@ export default class SearchBar extends React.Component {
 
       return (
         <button
-          onClick={(e) => this.context.handleSearchChange(e)} 
+          onClick={(e) => this.handleToggleFilter(e)} 
+          key={name}
           id={id}
           value={value}
           className='filter-button'>
