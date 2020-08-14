@@ -14,6 +14,7 @@ export default class NewListForm extends React.Component {
   handleSubmit(newList) {
     const uid = TokenService.getUserIdFromToken()
     this.props.toggleCreateList()
+    this.props.showSuccess()
     ListsApiService.postList(newList)
       .then(() => UsersApiService.getListsForUser(uid))
       .then(lists => this.context.setUserLists(lists))
@@ -56,7 +57,7 @@ export default class NewListForm extends React.Component {
 
   render() {
     return (
-      <section className='create-list-form'>
+      <section className={this.props.class}>
         {this.createListForm()}
       </section>
     )

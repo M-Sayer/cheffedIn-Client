@@ -61,7 +61,8 @@ export default class SavedLists extends React.Component {
         </section>
 
         {this.state.createList && 
-          <NewListForm 
+          <NewListForm
+          class={'dashboard-create-list'} 
           toggleCreateList={this.toggleCreateList} />
         }
         {this.createUserLists()}

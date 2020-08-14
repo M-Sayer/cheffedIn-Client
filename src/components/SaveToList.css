@@ -1,0 +1,7 @@
+@media only screen and (min-width: 800px) {
+
+  .create-list-form {
+    width: 60%;
+    margin-left: 20%;
+  }
+}

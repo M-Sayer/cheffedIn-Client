@@ -1,8 +1,10 @@
 import React, { useState } from 'react'
 import { Formik, Form, Field, ErrorMessage } from 'formik'
 import * as Yup from 'yup'
+import './SaveToList.css'
 
 import ListsApiService from '../services/lists-api-service'
+import CreateNewList from './CreateNewList'
 
 const SaveToList = (props) => {
 
@@ -72,6 +74,7 @@ const SaveToList = (props) => {
            <label htmlFor='list_id'>Choose a list
             <Field name='list_id' as='select'>
               <option value=''>select</option>
+              <option value='new-list'>create new list</option>
               {createOptions()}
             </Field>
             <ErrorMessage component='section' className='error-message' name='list_id' />
@@ -80,6 +83,7 @@ const SaveToList = (props) => {
             <button type='submit'>save</button>
             <button onClick={() => props.toggle()}>cancel</button>
            </section>
+           <CreateNewList createList={props.createList} />
          </Form>
        </Formik>
       </section>

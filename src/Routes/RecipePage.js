@@ -9,11 +9,16 @@ import UsersApiService from '../services/users-api-service'
 
 import Comments from '../components/comments/Comments';
 import SaveToList from '../components/SaveToList'
+import NewListForm from '../components/NewListForm'
 
 
 const RecipePage = (props) => {
 
-  const [state, setState] = useState({saveRecipe: false})
+  const [state, setState] = useState({
+    saveRecipe: false,
+    createList: false,
+  })
+
   const [success, setSuccess] = useState({success: false})
   
   const recipeContext = useContext(RecipeContext)
@@ -86,7 +91,7 @@ const RecipePage = (props) => {
   }
 
   function toggleSaveRecipe() {
-    setState({ saveRecipe: !state.saveRecipe})
+    setState({ ...state, saveRecipe: !state.saveRecipe })
   }
 
   function handleSaveRecipe(e) {
@@ -118,7 +123,7 @@ const RecipePage = (props) => {
     return (
       <div className='success-container'>
         <span className='success-message'>
-          <p>Recipe added to list!</p>
+          <p>Success!</p>
         </span>
       </div>
     )
@@ -127,6 +132,14 @@ const RecipePage = (props) => {
   function showSuccess() {
     setSuccess({success: true})
     return setTimeout(() => setSuccess({success: false}), 2000) 
+  }
+
+  function showCreateNewList() {
+    setState({ createList: true, saveRecipe: false })
+  }
+
+  function hideCreateList() {
+    setState({ saveRecipe: !state.saveRecipe, createList: !state.createList })
   }
 
   function renderRecipe() {
@@ -142,18 +155,26 @@ const RecipePage = (props) => {
         {TokenService.hasAuthToken() &&
           <section className='save-recipe'>
             {success.success && renderSuccess()}
-            {!state.saveRecipe && <button onClick={(e) => handleSaveRecipe(e)}
+            {!state.saveRecipe && !state.createList && <button onClick={(e) => handleSaveRecipe(e)}
             >save recipe</button>}
             {state.saveRecipe &&
               <SaveToList
               showSuccess={showSuccess}
               props={props} 
               toggle={toggleSaveRecipe}
+              createList={showCreateNewList}
               listsContext={listsContext}/>
+            }
+            {state.createList &&
+              <NewListForm 
+              showSuccess={showSuccess}
+              class='recipe-create-list'
+              toggleCreateList={hideCreateList}/>
             }
           </section>
         }
-        {renderEditRecipe()}
+        
+        {!state.createList && renderEditRecipe()}
         <section className='recipe-image'>
           <img src={recipe.image} alt={recipe.title} />
         </section>
