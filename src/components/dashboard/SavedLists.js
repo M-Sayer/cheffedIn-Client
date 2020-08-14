@@ -57,7 +57,9 @@ export default class SavedLists extends React.Component {
       <div className='saved-lists'>
         <section className='create-list'>
           <h3>my lists</h3>
-          <button onClick={(e) => this.handleCreateList(e)}>create list</button>
+          {!this.state.createList && 
+            <button onClick={(e) => this.handleCreateList(e)}>create list</button>
+          }
         </section>
 
         {this.state.createList && 
