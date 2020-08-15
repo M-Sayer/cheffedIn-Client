@@ -51,7 +51,7 @@ export default class SearchBar extends React.Component {
         </section>)
       : section = 
         (<label htmlFor={id}>{id}
-          <select onChange={(e) => this.context.handleSearchChange(e)}>
+          <select id={id} onChange={(e) => this.context.handleSearchChange(e)}>
             <option value=''>select</option>
             {filters}
           </select>
@@ -72,9 +72,9 @@ export default class SearchBar extends React.Component {
           </section>
           <section className='filter-bar'>
             {this.renderSearchFilters('time', [30, 60])}
-
+            
             {this.renderSearchFilters('type', ['appetizer', 'main', 'dessert', 'side', 'beverage'])}
-
+            
             {this.renderSearchFilters('vegetarian', ['true'])}
           </section>
         </form>
