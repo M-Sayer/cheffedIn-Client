@@ -50,6 +50,10 @@
     text-decoration: none;
   }
 
+  .recipe-tile {
+    padding: 10px
+  }
+
   .recipe-tile:hover {
     background-color: #140F0B;
   }
