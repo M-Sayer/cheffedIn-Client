@@ -10,47 +10,75 @@ export default class SearchBar extends React.Component {
     this.context.clearSearch()
   }
 
+  renderSearchFilters(id, values) {
+
+    const filters = values.map((value, idx) => {
+      let name
+      if(value === 30) {
+        name = 'Under 30 Minutes'
+      } else if(value === 60) {
+        name = 'Under 1 Hour'
+      } else if(value === 'true') {
+        name = 'vegetarian'
+      } else {
+        name = value
+      }
+
+      if(window.innerWidth > 767) {
+        return (
+          <button
+            onClick={(e) => this.context.handleSearchChange(e)} 
+            key={idx}
+            id={id}
+            value={value}
+            className={`${
+              this.context.search[id] === `${value}`
+              ? 'filter-button-on'
+              : 'filter-button-off' 
+            }`}>
+            {name}
+          </button>
+        )
+      } return (
+        <option value={value}>{name}</option>
+      )
+  })
+    let section
+    window.innerWidth > 767
+      ? section = 
+        (<section className={`filter-bar-${id}`}>
+          {filters}
+        </section>)
+      : section = 
+        (<label htmlFor={id}>{id}
+          <select id={id} onChange={(e) => this.context.handleSearchChange(e)}>
+            <option value=''>select</option>
+            {filters}
+          </select>
+        </label>)
+    return section
+  
+  }
+
   render() {
     return (
-        <div className='search-bar'>
-          <form className='search-form'>
-            <section className='search'>
-              <input placeholder='search for recipes...'
-              type='text' id='title' 
-              value={this.context.search.title} 
-              onChange={(e) => this.context.handleSearchChange(e)} />
-            </section>
-            <section className='filter-bar'>
-                <label htmlFor='time'>
-                  prep-time:
-                  <select id='time' onChange={(e) => this.context.handleSearchChange(e)}>
-                    <option value=''>select</option>
-                    <option value={30}>30 minutes or less</option>
-                    <option value={60}>1 hour or less</option>
-                  </select>
-                </label>
-                <label htmlFor='type'>
-                  meal type:
-                  <select id='type' onChange={(e) => this.context.handleSearchChange(e)}>
-                  <option value=''>select</option>
-                  <option value='appetizer'>appetizer</option>
-                  <option value='main'>main</option>
-                  <option value='side'>side</option>
-                  <option value='dessert'>dessert</option>
-                  <option value='beverage'>beverage</option>
-                  </select>
-                </label>
-                <label htmlFor='vegetarian'>
-                  diet:
-                  <select id='vegetarian' onChange={(e) => this.context.handleSearchChange(e)}>
-                    <option value=''>select</option>
-                    <option value='false'>non-vegetarian</option>
-                    <option value='true'>vegetarian</option>
-                  </select>
-                </label>
-            </section>
-          </form>
-        </div>
+      <div className='search-bar'>
+        <form className='search-form'>
+          <section className='search'>
+            <input placeholder='search for recipes...'
+            type='text' id='title' 
+            value={this.context.search.title} 
+            onChange={(e) => this.context.handleSearchChange(e)} />
+          </section>
+          <section className='filter-bar'>
+            {this.renderSearchFilters('time', [30, 60])}
+            
+            {this.renderSearchFilters('type', ['appetizer', 'main', 'dessert', 'side', 'beverage'])}
+            
+            {this.renderSearchFilters('vegetarian', ['true'])}
+          </section>
+        </form>
+      </div>
     )
   }
 }

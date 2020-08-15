@@ -35,5 +35,14 @@
     width: 50%;
     margin-left: 25%;
   }
-  
+
+  .filter-bar button {
+    margin: 5px;
+    border-radius: 15px;
+  }
+
+  .filter-button-on {
+    background-color: #000;
+  }
+
 }
