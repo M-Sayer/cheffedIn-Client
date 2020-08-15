@@ -20,6 +20,7 @@
   height: 100px;
   width: 100%;
   object-fit: cover;
+  display: block;
 }
 
 .recipe-tile a {
@@ -52,6 +53,5 @@
   .recipe-tile:hover {
     background-color: #140F0B;
   }
-  
   
 }
