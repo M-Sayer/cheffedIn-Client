@@ -48,6 +48,10 @@
   .recipe-tile a:hover {
     text-decoration: none;
   }
+
+  .recipe-tile:hover {
+    background-color: #140F0B;
+  }
   
   
 }
