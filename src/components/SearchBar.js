@@ -40,7 +40,7 @@ export default class SearchBar extends React.Component {
           </button>
         )
       } return (
-        <option value={value}>{name}</option>
+        <option key={idx} value={value}>{name}</option>
       )
   })
     let section

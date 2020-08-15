@@ -27,7 +27,7 @@
 }
 
 
-@media only screen and (min-width: 800px) {
+@media only screen and (min-width: 768px) {
 
 .edit-list-name {
   width: 30%;

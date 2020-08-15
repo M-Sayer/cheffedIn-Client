@@ -27,7 +27,7 @@
   text-decoration: none;
 }
 
-@media only screen and (min-width: 800px) {
+@media only screen and (min-width: 768px) {
   
   .recipe-tile button {
     width: 50%;
