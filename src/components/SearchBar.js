@@ -10,8 +10,9 @@ export default class SearchBar extends React.Component {
     this.context.clearSearch()
   }
 
-  renderFilterButtons(id, values) {
-    const buttons = values.map((value, idx) => {
+  renderSearchFilters(id, values) {
+
+    const filters = values.map((value, idx) => {
       let name
       if(value === 30) {
         name = 'Under 30 Minutes'
@@ -23,22 +24,40 @@ export default class SearchBar extends React.Component {
         name = value
       }
 
-      return (
-        <button
-          onClick={(e) => this.context.handleSearchChange(e)} 
-          key={idx}
-          id={id}
-          value={value}
-          className={`${
-            this.context.search[id] === `${value}`
-            ? 'filter-button-on'
-            : 'filter-button-off' 
-          }`}>
-          {name}
-        </button>
-    )})
-
-    return buttons
+      if(window.innerWidth > 767) {
+        return (
+          <button
+            onClick={(e) => this.context.handleSearchChange(e)} 
+            key={idx}
+            id={id}
+            value={value}
+            className={`${
+              this.context.search[id] === `${value}`
+              ? 'filter-button-on'
+              : 'filter-button-off' 
+            }`}>
+            {name}
+          </button>
+        )
+      } return (
+        <option value={value}>{name}</option>
+      )
+  })
+    let section
+    window.innerWidth > 767
+      ? section = 
+        (<section className={`filter-bar-${id}`}>
+          {filters}
+        </section>)
+      : section = 
+        (<label htmlFor={id}>{id}
+          <select onChange={(e) => this.context.handleSearchChange(e)}>
+            <option value=''>select</option>
+            {filters}
+          </select>
+        </label>)
+    return section
+  
   }
 
   render() {
@@ -52,15 +71,11 @@ export default class SearchBar extends React.Component {
             onChange={(e) => this.context.handleSearchChange(e)} />
           </section>
           <section className='filter-bar'>
-            <section className='filter-bar-time'>
-              {this.renderFilterButtons('time', [30, 60])}
-            </section>
-            <section className='filter-bar-type'>
-              {this.renderFilterButtons('type', ['appetizer', 'main', 'dessert', 'side', 'beverage'])}
-            </section>  
-            <section className='filter-bar-vegetarian'>
-              {this.renderFilterButtons('vegetarian', ['true'])}
-            </section>
+            {this.renderSearchFilters('time', [30, 60])}
+
+            {this.renderSearchFilters('type', ['appetizer', 'main', 'dessert', 'side', 'beverage'])}
+
+            {this.renderSearchFilters('vegetarian', ['true'])}
           </section>
         </form>
       </div>
