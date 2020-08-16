@@ -70,4 +70,9 @@
     width: 60%;
     margin-left: 0;
   }
+
+  .saved-lists a:hover,
+  .posted-recipes a:hover {
+    color: #ef6a46;
+  }
 }
