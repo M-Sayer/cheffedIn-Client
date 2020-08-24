@@ -6,7 +6,7 @@
 
 This app was built during COVID-19, a time which saw more people staying at home, as well as making more meals at home and experimenting with more varieties of cooking. This app is designed to allow users to share their recipes with others, search for recipes uploaded by other users, save recipes from other users to their own lists so that they can try them later, and interact with other users through commenting on recipes.
 
-This project was built utilizing Javascript/CSS & React/JSX for the front end client. For the back end, express.js and Node.js were utilized to architect the REST API, with postgreSQL for the database. 
+This project was built utilizing Javascript/CSS & React/JSX for the front end client. For the back end, express.js and Node.js were utilized to architect the REST API, with postgreSQL for the database. It was designed mobile-first.
 
 The client is deployed to Vercel, and the server and database are deployed to Heroku. 
 
