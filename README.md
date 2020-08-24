@@ -6,6 +6,17 @@
 
 This app was built during COVID-19, a time which saw more people staying at home, as well as making more meals at home and experimenting with more varieties of cooking. This app is designed to allow users to share their recipes with others, search for recipes uploaded by other users, save recipes from other users to their own lists so that they can try them later, and interact with other users through commenting on recipes.
 
+This project was built utilizing Javascript/CSS & React/JSX for the front end client. For the back end, express.js and Node.js were utilized to architect the REST API, with postgreSQL for the database. 
+
+The client is deployed to Vercel, and the server and database are deployed to Heroku. 
+
+Basic smoke testing has been added to the React components, and HTTP integration testing was implemented using Mocha and Chai. User authentication was implemented using JWT tokens, and passwords were encrypted using bcrypt with 256 encryption and a salt of 10. The XSS library was also implemented for basic security, to sanitize and prevent corss-site scripting
+
+The Formik library was researched and implemented for the majority of forms on the site, and a simple implementation of the Unsplash API was included in the create recipe form, to demonstrate the ability to learn and work with 3rd party API's. 
+
+Backend code can be viewed here (https://github.com/M-Sayer/Capstone-API)
+*see API documentation below*
+
 ![image1](./images/image1.png)
 ![image2](./images/image2.png)
 ![image3](./images/image3.png)
@@ -13,76 +24,175 @@ This app was built during COVID-19, a time which saw more people staying at home
 ![image5](./images/image5.png)
 ![image6](./images/image6.png)
 
+API Documentation:
 
-This project was built using React for the front end, Express for the API, and postgreSQL for the Database. The client is deployed to Vercel, and the server and database is deployed to Heroku. 
+### RECIPES
 
-API code can be viewed here (https://github.com/M-Sayer/Capstone-API)
+  #### /recipes
+    GET - returns json data about all recipes
+      success response 
+      code 200 & sanitized recipes data
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+    POST - posts new recipe data to recipe table containing all recipes // auth required
+      success response 
+      code 201 && sanitized recipe data
 
-## Available Scripts
+      error response
+      code 400 & { error: 'Missing {value missing} in request body }
 
-In the project directory, you can run:
+  #### /recipes/:recipe_id
+    GET - returns json data about a single recipe // auth required
+      success response
+      code 200 & sanitized recipe data
+      
+    PATCH - edits data for specified recipe // auth required
+      success response
+      code 204
 
-### `npm start`
+    DELETE - deletes specified recipe // auth required
+      success response
+      code 204
 
-Runs the app in the development mode.<br />
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+  #### /recipes/:recipe_id/comments
+    GET - returns json data containing all comments for specified recipe
+      success response
+      code 200 & sanitized comments
 
-The page will reload if you make edits.<br />
-You will also see any lint errors in the console.
 
-### `npm test`
+### COMMENTS
 
-Launches the test runner in the interactive watch mode.<br />
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+  #### /comments
+    POST - posts new comment to comments table // auth required
+      success response
+      code 201 && sanitized comment
 
-### `npm run build`
+      error response
+      code 400 & { error: 'Missing {value missing} in request body }
 
-Builds the app for production to the `build` folder.<br />
-It correctly bundles React in production mode and optimizes the build for the best performance.
+  #### /comments/:comment_id
+    DELETE - deletes specified comment // auth required
+      succes response
+      code 204
 
-The build is minified and the filenames include the hashes.<br />
-Your app is ready to be deployed!
+    PATCH - edits data for specified comment // auth required
+      success response
+      code 204
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+      error response
+      code 400 & { error: 'Missing {value missing} in request body }
 
-### `npm run eject`
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+### LOGIN
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+  #### /login
+    POST - posts login data to be verified
+      success response
+      code 200 & JWT auth token
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
+      error response
+      code 401 && { error: 'missing credentials' }
 
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
+      OR
 
-## Learn More
+      code 401 && { error: 'invalid credentials' }
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+### REGISTER
 
-### Code Splitting
+  #### /register
+    POST - posts data to user table with encrypted password if successful
+      success response
+      code 200 & JWT auth token
 
-This section has moved here: https://facebook.github.io/create-react-app/docs/code-splitting
+      error response
+      code 400 & { error: 'Missing {value missing} in request body }
 
-### Analyzing the Bundle Size
+      OR 
 
-This section has moved here: https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size
+      code 401 && { error: 'username unavailable' }
 
-### Making a Progressive Web App
+      OR
 
-This section has moved here: https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app
+      code 401 && { error: 'email already in use' }
 
-### Advanced Configuration
 
-This section has moved here: https://facebook.github.io/create-react-app/docs/advanced-configuration
+### USERS
 
-### Deployment
+  #### /users/:user_id/lists
+    GET - returns json data for all lists created by associated user // auth required
+      succes response
+      code 200 & sanitized lists
 
-This section has moved here: https://facebook.github.io/create-react-app/docs/deployment
+      error response
+      code 404 & { error: 'no lists found' }
 
-### `npm run build` fails to minify
+  #### /users/:user_id/recipes
+    GET - returns json data for all recipes created by associated user // auth required
+      success response
+      code 200 & sanitized recipes
 
-This section has moved here: https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify
+      error response
+      code 404 & { error: 'no recipes found' }
+
+
+### LISTS
+
+  #### /lists
+    POST - posts new list to lists table // auth required
+      success response
+      code 201 & sanitized list
+
+      error response
+      code 400 & { error: 'Missing {value missing} in request body }
+
+  #### /lists/:list_id
+    GET - returns json data for specified list // auth required
+      success response
+      code 200 & sanitized list
+
+      error response
+      code 500 & { error: 'something went wrong, please try again later' }
+    
+    DELETE - deletes specified list from lists table // auth required
+      succes response
+      code 204
+
+    PATCH = edits data for specified list // auth required
+      succes response
+      code 204
+
+  #### /lists/:list_id/recipes
+    GET - returns json data for all recipes associated with given list (many to many table) // auth   
+      required
+        success response
+        code 200 & sanitized recipes
+
+        error response
+        code 404 & { error; 'no recipes found' }
+
+  #### /lists/:list_id/recipes/:recipe_id
+    DELETE - deletes list_id/recipe_id pair from junction table (removes recipe from list) // auth required
+      success response
+      code 204
+
+      error response
+      code 404 & { error: 'not found' }
+
+    POST - creates new list_id/recipe_id in junction table (adds recipe to list) // auth required
+      succes response
+      code 200
+
+      error response
+      code 400 & { error: 'Missing {value missing} in request body }
+
+      OR
+
+      code 404 & { error; 'list not found' }
+
+      OR 
+
+      code 409 & { error: 'Recipe already in list' }
+      
+
+
+    
