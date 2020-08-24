@@ -42,10 +42,9 @@ class RecipesListPage extends React.Component {
   }
 
   render() {
-    const { error } = this.context;
     return (
       <div className='recipes-list'>
-        {error
+        {this.context.error
           ? <p>error</p>
           : this.renderRecipes()
         }
