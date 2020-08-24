@@ -9,11 +9,8 @@ export default class RecipeListItem extends React.Component {
     
     return(
       <Link to={`/recipes/${recipe.id}`} className='recipe-tile'>
-        <section>
-          <img src={recipe.image} alt={recipe.title} />
-          <h4>{recipe.title}</h4>
-          <p>by {recipe.author}</p>
-        </section>
+        <img src={recipe.image} alt={recipe.title} />
+        <h4>{recipe.title}</h4>
       </Link>
     )
   }

@@ -20,6 +20,7 @@
   height: 100px;
   width: 100%;
   object-fit: cover;
+  display: block;
 }
 
 .recipe-tile a {
@@ -27,7 +28,7 @@
   text-decoration: none;
 }
 
-@media only screen and (min-width: 800px) {
+@media only screen and (min-width: 768px) {
   
   .recipe-tile button {
     width: 50%;
@@ -48,6 +49,13 @@
   .recipe-tile a:hover {
     text-decoration: none;
   }
-  
+
+  .recipe-tile {
+    padding: 10px
+  }
+
+  .recipe-tile:hover {
+    background-color: #140F0B;
+  }
   
 }

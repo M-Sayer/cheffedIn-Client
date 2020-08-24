@@ -65,9 +65,14 @@
 }
 
 
-@media only screen and (min-width: 800px) {
+@media only screen and (min-width: 768px) {
   .dashboard-create-list {
     width: 60%;
     margin-left: 0;
+  }
+
+  .saved-lists a:hover,
+  .posted-recipes a:hover {
+    color: #ef6a46;
   }
 }

@@ -70,7 +70,7 @@
   width: 50%;
 }
 
-@media only screen and (min-width: 800px) {
+@media only screen and (min-width: 768px) {
 
   .comments-section {
     width: 60%;

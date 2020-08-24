@@ -47,12 +47,18 @@ export class RecipesListProvider extends React.Component {
   handleSearchChange = (e) => {
     e.preventDefault();
     this.setState({
-      search: {...this.state.search, [e.target.id]: e.target.value.toLowerCase()}
+      ...this.state,
+      search: {
+        ...this.state.search, 
+        [e.target.id]: this.state.search[e.target.id] === e.target.value.toLowerCase()
+          ? '' 
+          : e.target.value.toLowerCase()}
     })
   }
 
   clearSearch = () => {
     this.setState({
+      ...this.state,
       search: {
         title: '',
         type: '',
