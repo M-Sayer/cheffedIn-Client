@@ -9,7 +9,9 @@ const UserContext = React.createContext({
   setError: () => {},
   clearError: () => {},
   setLoggedIn: () => {},
-  isLoggedIn: false 
+  closeModal: () => {},
+  isLoggedIn: false,
+  landingModal: true, 
 })
 
 export default UserContext
@@ -20,6 +22,11 @@ export class UserProvider extends React.Component {
     userRecipes: [],
     error: null,
     isLoggedIn: false,
+    landingModal: true,
+  }
+
+  closeModal = () => {
+    this.setState({...this.state, landingModal: false})
   }
 
   setLoggedIn = (boolean) => {
@@ -53,6 +60,8 @@ export class UserProvider extends React.Component {
       clearError: this.clearError,
       setLoggedIn: this.setLoggedIn,
       isLoggedIn: this.state.isLoggedIn,
+      landingModal: this.state.landingModal,
+      closeModal: this.closeModal,
     }
 
     return (
