@@ -1,12 +1,12 @@
 import React from 'react';
-import { Link, BrowserRouter } from 'react-router-dom'
+import { Link, BrowserRouter } from 'react-router-dom';
 
-import TokenService from '../../services/token-service'
-import UsersApiService from '../../services/users-api-service'
-import UserContext from '../../contexts/UserContext'
+import TokenService from '../../services/token-service';
+import UsersApiService from '../../services/users-api-service';
+import UserContext from '../../contexts/UserContext';
 
-import PostedRecipes from './PostedRecipes'
-import ReactDOM from 'react-dom'
+import PostedRecipes from './PostedRecipes';
+import ReactDOM from 'react-dom';
 
 it('renders without crashing', () => {
   // first create a DOM element to render the component into

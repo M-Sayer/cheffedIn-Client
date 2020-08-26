@@ -1,6 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import './RecipeListItem.css'
+import './RecipeListItem.css';
 
 export default class RecipeListItem extends React.Component {
 

@@ -1,17 +1,20 @@
-import React, { useState } from 'react'
+import React, { useState, useContext } from 'react'
 import { Formik, Form, Field, ErrorMessage } from 'formik'
 import * as Yup from 'yup'
 import './SaveToList.css'
 
 import ListsApiService from '../services/lists-api-service'
 import CreateNewList from './CreateNewList'
+import UserContext from '../contexts/UserContext'
 
 const SaveToList = (props) => {
 
   const [state, setState] = useState({error: false, errorMessage: ''})
 
+  const userContext = useContext(UserContext)
+
   function createOptions() {
-    const lists = props.listsContext.userLists.map(list => (
+    const lists = userContext.userLists.map(list => (
       <option key={list.id} value={list.id}>{list.list_name}</option>
     ))
     

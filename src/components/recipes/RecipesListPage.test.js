@@ -15,10 +15,14 @@ it('renders without crashing', () => {
   // render the component, this is the actual test, if something is wrong it will fail here
   const error = ''
   ReactDOM.render(
-  <RecipesListContext.Provider value={error}>
-    <RecipesListPage />
-  </RecipesListContext.Provider>
-  , div);
+    <RecipesListContext.Provider value={{
+      error,
+      filteredRecipes: [],
+      clearError: () => {},
+    }}>
+      <RecipesListPage />
+    </RecipesListContext.Provider>
+    , div);
 
   // clean up code
   ReactDOM.unmountComponentAtNode(div);

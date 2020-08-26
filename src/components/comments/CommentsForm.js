@@ -1,5 +1,5 @@
 import React from 'react';
-import './CommentsForm.css'
+import './CommentsForm.css';
 
 import RecipeContext from '../../contexts/RecipeContext';
 import CommentsApiService from '../../services/comments-api-service';

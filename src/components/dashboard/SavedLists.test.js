@@ -1,13 +1,13 @@
-import React from 'react'
-import { Link, BrowserRouter } from 'react-router-dom'
+import React from 'react';
+import { Link, BrowserRouter } from 'react-router-dom';
 
-import UsersApiService from '../../services/users-api-service'
-import TokenService from '../../services/token-service'
-import NewListForm from '../../components/NewListForm'
-import UserContext from '../../contexts/UserContext'
+import UsersApiService from '../../services/users-api-service';
+import TokenService from '../../services/token-service';
+import NewListForm from '../../components/NewListForm';
+import UserContext from '../../contexts/UserContext';
 
-import SavedLists from './SavedLists'
-import ReactDOM from 'react-dom'
+import SavedLists from './SavedLists';
+import ReactDOM from 'react-dom';
 
 it('renders without crashing', () => {
   // first create a DOM element to render the component into

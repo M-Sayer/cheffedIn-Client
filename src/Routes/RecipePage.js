@@ -162,8 +162,7 @@ const RecipePage = (props) => {
               showSuccess={showSuccess}
               props={props} 
               toggle={toggleSaveRecipe}
-              createList={showCreateNewList}
-              listsContext={listsContext}/>
+              createList={showCreateNewList}/>
             }
             {state.createList &&
               <NewListForm 
